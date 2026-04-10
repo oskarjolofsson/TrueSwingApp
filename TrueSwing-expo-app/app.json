@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "trueswing",
     "name": "my-expo-app",
     "slug": "my-expo-app",
     "version": "1.0.0",
@@ -11,7 +12,8 @@
     },
     "plugins": [
       "expo-router",
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-web-browser"
     ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,7 +27,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.my-expo-app"
     },
     "android": {
       "adaptiveIcon": {
