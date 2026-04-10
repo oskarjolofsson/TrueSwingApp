@@ -6,19 +6,17 @@ import * as QueryParams from "expo-auth-session/build/QueryParams";
 import * as WebBrowser from "expo-web-browser";
 import * as Linking from "expo-linking";
 import { supabase } from "lib/supabase";
+import type { AppUser, AuthContextType } from "./types";
 
 WebBrowser.maybeCompleteAuthSession();
 
-type AuthContextType = {
-  session: Session | null;
-  user: User | null;
-  loading: boolean;
+type AuthContextWithMethods = AuthContextType & {
   signInWithPassword: (email: string, password: string) => Promise<void>;
   signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
 };
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextWithMethods | undefined>(undefined);
 
 const redirectTo = makeRedirectUri({
   scheme: "trueswing",
@@ -55,8 +53,19 @@ async function createSessionFromUrl(url: string) {
 
 export function AuthProvider({ children }: PropsWithChildren) {
   const [session, setSession] = useState<Session | null>(null);
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<AppUser | null>(null);  // Changed from User
   const [loading, setLoading] = useState(true);
+
+  // Helper to transform Supabase User to AppUser
+  function toAppUser(supabaseUser: User | undefined): AppUser | null {
+    if (!supabaseUser) return null;
+    return {
+      id: supabaseUser.id,
+      email: supabaseUser.email ?? null,
+      name: supabaseUser.user_metadata?.full_name ?? null,
+      photoURL: supabaseUser.user_metadata?.avatar_url ?? null,
+    };
+  }
 
   useEffect(() => {
     let mounted = true;
@@ -71,7 +80,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
         }
 
         setSession(data.session ?? null);
-        setUser(data.session?.user ?? null);
+        setUser(toAppUser(data.session?.user));  // Use transformer
       } catch (error) {
         console.error("initializeAuth error:", error);
       } finally {
@@ -87,7 +96,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
       (event, nextSession) => {
         console.log("onAuthStateChange:", event, !!nextSession);
         setSession(nextSession ?? null);
-        setUser(nextSession?.user ?? null);
+        setUser(toAppUser(nextSession?.user));  // Use transformer
         setLoading(false);
       }
     );
