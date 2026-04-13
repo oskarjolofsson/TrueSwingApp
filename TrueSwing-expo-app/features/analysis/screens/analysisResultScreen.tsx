@@ -21,106 +21,39 @@ import {
 
 import useAnalysisData from "features/analysis/hooks/useAnalysisData";
 import useAnalyses from "features/analysis/hooks/useAnalyses";
-import type { Issue } from "features/issues/types";
 import LoadingState from "features/shared/components/LoadingState";
 import ErrorState from "features/shared/components/ErrorState";
 import TextBox from "features/shared/components/TextBox";
 import Reel from "features/analysis/components/Reel";
+import type { Analysis } from "features/analysis/types";
 
 const { width, height } = Dimensions.get("window");
 
-function IssueModal({
-    visible,
-    issue,
-    onClose,
+function ReelContainer({
+    analysis,
+    isActive,
 }: {
-    visible: boolean;
-    issue: Issue | null;
-    onClose: () => void;
+    analysis: Analysis;
+    isActive: boolean;
 }) {
-    return (
-        <Modal
-            visible={visible}
-            transparent
-            animationType="slide"
-            statusBarTranslucent
-            onRequestClose={onClose}
-        >
-            <View className="flex-1 justify-end bg-black/70">
-                <Pressable className="flex-1" onPress={onClose} />
+    const { videoURL, issues, activeIssue, setActiveIssue, loading } = useAnalysisData(analysis);
 
-                <View
-                    className="rounded-t-[32px] border-t border-white/10 bg-[#0B0D12] px-6 pb-8 pt-5"
-                    style={{ minHeight: height * 0.52 }}
-                >
-                    <View className="mb-5 flex-row items-center justify-between">
-                        <View className="h-1.5 w-14 rounded-full bg-white/20" />
-                        <TouchableOpacity
-                            onPress={onClose}
-                            className="rounded-full border border-white/10 bg-white/5 p-2"
-                        >
-                            <X size={18} color="#fff" />
-                        </TouchableOpacity>
-                    </View>
-
-                    {issue ? (
-                        <>
-                            <View className="mb-4 flex-row items-center justify-between">
-                                <View className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5">
-                                    <Text className="text-xs text-zinc-300">
-                                        {issue.phase ?? "General"}
-                                    </Text>
-                                </View>
-
-                                {typeof issue.confidence === "number" && (
-                                    <Text className="text-sm text-zinc-400">
-                                        {Math.round(issue.confidence * 100)}%
-                                    </Text>
-                                )}
-                            </View>
-
-                            <Text className="mb-4 text-3xl font-bold text-white">
-                                {issue.title}
-                            </Text>
-
-                            {!!issue.current_motion && (
-                                <View className="mb-4 rounded-2xl border border-white/10 bg-white/5 p-4">
-                                    <Text className="mb-2 text-xs uppercase tracking-widest text-zinc-400">
-                                        What’s happening
-                                    </Text>
-                                    <Text className="text-base leading-6 text-zinc-100">
-                                        {issue.current_motion}
-                                    </Text>
-                                </View>
-                            )}
-
-                            {!!issue.expected_motion && (
-                                <View className="mb-4 rounded-2xl border border-white/10 bg-white/5 p-4">
-                                    <Text className="mb-2 text-xs uppercase tracking-widest text-zinc-400">
-                                        What to feel instead
-                                    </Text>
-                                    <Text className="text-base leading-6 text-zinc-100">
-                                        {issue.expected_motion}
-                                    </Text>
-                                </View>
-                            )}
-
-                            <TouchableOpacity
-                                activeOpacity={0.9}
-                                className="mt-3 flex-row items-center justify-center rounded-2xl bg-white px-5 py-4"
-                            >
-                                <Dumbbell size={18} color="#000" />
-                                <Text className="ml-2 text-base font-semibold text-black">
-                                    Start practice
-                                </Text>
-                            </TouchableOpacity>
-                        </>
-                    ) : (
-                        <Text className="text-zinc-400">No issue selected.</Text>
-                    )}
-                </View>
+    if (loading) {
+        return (
+            <View style={{ width, height }} className="bg-black justify-center items-center">
+                <Text className="text-white">Loading analysis details...</Text>
             </View>
-        </Modal>
+        );
+    }
+
+    return (
+        <Reel
+            video_url={videoURL ?? null}
+            issues={issues}
+            active_issue={activeIssue}
+            setActiveIssue={setActiveIssue}
+            shouldPlay={isActive}
+        />
     );
 }
 
@@ -161,18 +94,7 @@ function InactiveAnalysisReel({
 
 export default function AnalysisResultScreen() {
     const {
-        setAnalysis,
-        activeIssue,
-        setActiveIssue,
-        totalIssues,
-        videoURL,
-        analysisError,
-    } = useAnalysisData();
-
-    const {
-        activeAnalysis,
         allAnalyses,
-        setActiveAnalysisById,
         loading,
         error,
     } = useAnalyses();
@@ -180,11 +102,7 @@ export default function AnalysisResultScreen() {
     const reelRef = useRef<FlatList>(null);
     const [activeAnalysisIndex, setActiveAnalysisIndex] = useState(0);
 
-    const analyses = useMemo(() => {
-        if (allAnalyses?.length) return allAnalyses;
-        if (activeAnalysis) return [activeAnalysis];
-        return [];
-    }, [allAnalyses, activeAnalysis]);
+    const analyses = allAnalyses;
 
     const syncActiveAnalysis = useCallback(
         (index: number) => {
@@ -193,11 +111,8 @@ export default function AnalysisResultScreen() {
             if (index === activeAnalysisIndex) return;
 
             setActiveAnalysisIndex(index);
-            setActiveAnalysisById(analysis.analysis_id);
-            setAnalysis(analysis);
-            setActiveIssue(0);
         },
-        [analyses, activeAnalysisIndex, setActiveAnalysisById, setAnalysis, setActiveIssue]
+        [analyses, activeAnalysisIndex]
     );
 
     const syncActiveAnalysisRef = useRef(syncActiveAnalysis);
@@ -214,21 +129,17 @@ export default function AnalysisResultScreen() {
         }
     ).current;
 
-    useEffect(() => {
-        setAnalysis(activeAnalysis);
-    }, [activeAnalysis, setAnalysis]);
-
     const viewabilityConfig = useRef({
         itemVisiblePercentThreshold: 80,
     }).current;
 
-    const isReady = allAnalyses.length > 0 && activeAnalysis !== null;
+    const isReady = allAnalyses.length > 0;
     const isInitialLoad = loading && !isReady;
 
     if (isInitialLoad) return <LoadingState title="Loading Analysis" subtitle="" />;
 
     // Only show error if we aren't loading, or if we have a hard error on load
-    if (!loading && (error || analysisError)) {
+    if (!loading && error) {
          return <ErrorState title="Failed to load analysis" />;
     }
     if (!analyses.length) {
@@ -261,9 +172,10 @@ export default function AnalysisResultScreen() {
                 onViewableItemsChanged={onViewableItemsChanged}
                 viewabilityConfig={viewabilityConfig}
                 renderItem={({ item, index }) => {
+                    const shouldRender = Math.abs(index - activeAnalysisIndex) <= 1;
                     const isActive = index === activeAnalysisIndex;
 
-                    if (!isActive) {
+                    if (!shouldRender) {
                         return (
                             <InactiveAnalysisReel
                                 reelIndex={index}
@@ -273,11 +185,9 @@ export default function AnalysisResultScreen() {
                     }
 
                     return (
-                        <Reel
-                            video_url={videoURL ?? null}
-                            issues={activeAnalysis?.issues ?? []}
-                            active_issue={activeIssue}
-                            setActiveIssue={setActiveIssue}
+                        <ReelContainer
+                            analysis={item}
+                            isActive={isActive}
                         />
                     );
                 }}

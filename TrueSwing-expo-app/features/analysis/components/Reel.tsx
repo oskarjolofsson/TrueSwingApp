@@ -15,6 +15,7 @@ type ReelProps = {
     issues: Issue[]
     active_issue: number
     setActiveIssue: (index: number) => void
+    shouldPlay?: boolean
 }
 
 export default function Reel({
@@ -22,6 +23,7 @@ export default function Reel({
     issues,
     active_issue,
     setActiveIssue,
+    shouldPlay = true,
 }: ReelProps) {
 
     const [modalVisible, setModalVisible] = useState(false);
@@ -31,13 +33,24 @@ export default function Reel({
     const currentIssue = issues[active_issue] ?? null;
 
     const source: VideoSource | null = video_url ? video_url : null;
-    const [isPlaying, setIsPlaying] = useState(true);
+    const [isPlaying, setIsPlaying] = useState(shouldPlay);
 
     const player = useVideoPlayer(source, (playerInstance) => {
         playerInstance.loop = true;
         playerInstance.muted = true;
-        playerInstance.play();
+        if (shouldPlay) {
+            playerInstance.play();
+        }
     });
+
+    useEffect(() => {
+        if (!player) return;
+        if (shouldPlay) {
+            player.play();
+        } else {
+            player.pause();
+        }
+    }, [shouldPlay, player]);
 
     useEffect(() => {
         if (!player) return;

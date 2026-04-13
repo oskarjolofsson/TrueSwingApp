@@ -6,11 +6,9 @@ import type { Issue } from 'features/issues/types';
 
 interface UseAnalysesReturn {
     allAnalyses: Analysis[];
-    activeAnalysis: AnalysisWithIssues | null;
-    setActiveAnalysisById: (analysisId: string) => Promise<void>;
     loading: boolean;
     error: string | null;
-    deleteActiveAnalysis: () => Promise<void>;
+    deleteActiveAnalysis: (analysisId: string) => Promise<void>;
 }
 
 export type { UseAnalysesReturn };
@@ -21,7 +19,6 @@ export type { UseAnalysesReturn };
  */
 export default function useAnalyses(): UseAnalysesReturn {
     const [allAnalyses, setAllAnalyses] = useState<Analysis[]>([]);
-    const [activeAnalysis, setActiveAnalysis] = useState<AnalysisWithIssues | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -43,19 +40,9 @@ export default function useAnalyses(): UseAnalysesReturn {
 
                 setAllAnalyses(fetched);
 
-                // 3. Resolve active analysis ID (no web Window in React Native by default)
-                const resolvedAnalysisId = fetched[0]?.analysis_id ?? null;
-
-                // 4. Fetch active analysis with issues
-                if (resolvedAnalysisId) {
-                    await loadAnalysisWithIssues(resolvedAnalysisId);
-                } else {
-                    setActiveAnalysis(null);
-                }
             } catch (err) {
                 console.error('Error fetching analyses:', err);
                 setError(err instanceof Error ? err.message : 'Failed to fetch analyses');
-                setActiveAnalysis(null);
             } finally {
                 setLoading(false);
             }
@@ -64,80 +51,12 @@ export default function useAnalyses(): UseAnalysesReturn {
         fetchData();
     }, []);
 
-    /**
-     * Load analysis and fetch its associated issues
-     */
-    const loadAnalysisWithIssues = async (analysisId: string): Promise<void> => {
+    const deleteActiveAnalysis = async (analysis_id: string): Promise<void> => {
         try {
-            // Fetch analysis metadata
-            const analysisData = await analysisService.getAnalysisById(analysisId);
-
-            // Fetch issues for this analysis
-            let issues: Issue[] = [];
-            let analysisIssues: any[] = [];
-            
-            try {
-                // Try to fetch from the analysis-issues endpoint
-                analysisIssues = await analysisService.getAnalysisIssues(analysisId);
-                
-                // Fetch full issue details
-                issues = await issueService.getIssuesByAnalysis(analysisId);
-                
-                // Merge confidence scores from AnalysisIssue into Issues
-                const issuesWithConfidence = issues.map(issue => {
-                    const analysisIssue = analysisIssues.find(ai => ai.issue_id === issue.id);
-                    return {
-                        ...issue,
-                        confidence: analysisIssue?.confidence
-                    };
-                });
-
-                // Combine analysis with issues
-                const combined: AnalysisWithIssues = {
-                    ...analysisData,
-                    issues: issuesWithConfidence
-                };
-
-                setActiveAnalysis(combined);
-            } catch (issueErr) {
-                // If issues fetch fails, still show the analysis
-                console.error('Error fetching issues:', issueErr);
-                setActiveAnalysis({
-                    ...analysisData,
-                    issues: []
-                });
-            }
-        } catch (err) {
-            console.error('Error loading analysis:', err);
-            throw err;
-        }
-    };
-
-    /**
-     * Method to switch active analysis by ID
-     */
-    const setActiveAnalysisById = async (analysisId: string): Promise<void> => {
-        try {
-            setLoading(true);
-            setError(null);
-            
-            await loadAnalysisWithIssues(analysisId);
-        } catch (err) {
-            console.error('Error setting active analysis:', err);
-            setError(err instanceof Error ? err.message : 'Failed to load analysis');
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const deleteActiveAnalysis = async (): Promise<void> => {
-        if (!activeAnalysis) return;
-        try {
-            await analysisService.deleteAnalysis(activeAnalysis.analysis_id);
+            await analysisService.deleteAnalysis(analysis_id);
             // Refresh the list of analyses after deletion
             const updatedAnalyses = await analysisService.getAnalysesForUser();
             setAllAnalyses(updatedAnalyses);
-            setActiveAnalysis(null);
         } catch (err) {
             console.error('Error deleting analysis:', err);
             setError(err instanceof Error ? err.message : 'Failed to delete analysis');
@@ -146,8 +65,6 @@ export default function useAnalyses(): UseAnalysesReturn {
 
     return {
         allAnalyses,
-        activeAnalysis,
-        setActiveAnalysisById,
         loading,
         error,
         deleteActiveAnalysis
