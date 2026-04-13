@@ -43,14 +43,8 @@ export default function useAnalyses(): UseAnalysesReturn {
 
                 setAllAnalyses(fetched);
 
-                // 3. Resolve active analysis ID
-                const urlParams = new URLSearchParams(window.location.search);
-                const analysisIdFromUrl = urlParams.get('analysisId');
-
-                const resolvedAnalysisId =
-                    analysisIdFromUrl ??
-                    fetched[0]?.analysis_id ??
-                    null;
+                // 3. Resolve active analysis ID (no web Window in React Native by default)
+                const resolvedAnalysisId = fetched[0]?.analysis_id ?? null;
 
                 // 4. Fetch active analysis with issues
                 if (resolvedAnalysisId) {

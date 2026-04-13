@@ -8,6 +8,7 @@ interface UseAnalysisDataReturn {
     issue: (Issue & { confidence?: number }) | null;
     activeIssue: number;
     setActiveIssue: (index: number) => void;
+    issues: (Issue & { confidence?: number })[];
     totalIssues: number;
     videoURL: string | null;
     analysisError: string | null;
@@ -25,6 +26,10 @@ export default function useAnalysisData(): UseAnalysisDataReturn {
     // Call hook at top level, not inside useEffect
     const videoURL = useVideoURL(analysis);
 
+    const sortedIssues = analysis?.issues
+        ? [...analysis.issues].sort((a, b) => (b.confidence || 0) - (a.confidence || 0))
+        : [];
+
     // Current issue with confidence from analysis
     const [issue, setIssue] = useState<(Issue & { confidence?: number }) | null>(null);
 
@@ -39,23 +44,21 @@ export default function useAnalysisData(): UseAnalysisDataReturn {
         // Clear error if analysis is successful
         setAnalysisError(null);
         
-        // Sort based on confidence
-        const issues = analysis?.issues?.sort((a, b) => (b.confidence || 0) - (a.confidence || 0)) || [];
-        
-        if (issues && issues.length > 0 && activeIssue < issues.length) {
-            const issueData = issues[activeIssue];
-            setIssue(issueData);
+        if (sortedIssues.length > 0 && activeIssue >= 0 && activeIssue < sortedIssues.length) {
+            setIssue(sortedIssues[activeIssue]);
         } else {
             setIssue(null);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [analysis, activeIssue]);
 
     return {
         setAnalysis,
         issue,
+        issues: sortedIssues,
         activeIssue,
         setActiveIssue,
-        totalIssues: analysis?.issues?.length || 0,
+        totalIssues: sortedIssues.length,
         videoURL,
         analysisError
     };
