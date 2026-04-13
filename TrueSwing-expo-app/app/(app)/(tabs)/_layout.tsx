@@ -68,26 +68,19 @@ export default function TabsLayout() {
             }}
             tabBar={(props) => <SimpleTabBar {...props} />}
         >
-            <Tabs.Screen 
-                name="analysis" 
-                options={{ 
-                    title: "Analysis",
-                    tabBarIcon: ({ color, size }) => <NotebookPen color={color} size={size} />,
-                }}   
-            />
-            <Tabs.Screen
-                name="index"
-                options={{
-                    title: "Home",
-                    tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
-                }}
-            />
             <Tabs.Screen
                 name="upload"
                 options={{
                     title: "Upload",
                     tabBarIcon: ({ color, size }) => <Upload color={color} size={size} />,
                 }}
+            />
+            <Tabs.Screen 
+                name="index" 
+                options={{ 
+                    title: "Analysis",
+                    tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
+                }}   
             />
             <Tabs.Screen 
                 name="profile" 

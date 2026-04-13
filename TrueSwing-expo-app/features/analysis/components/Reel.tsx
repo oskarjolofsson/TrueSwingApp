@@ -5,7 +5,7 @@ import { FlatList, Text, View, StatusBar, Dimensions, SafeAreaView, TouchableOpa
 import { useVideoPlayer, VideoView, VideoSource } from "expo-video";
 import { LinearGradient } from "expo-linear-gradient";
 import TextBox from "features/shared/components/TextBox";
-import { ChevronLeft, ChevronRight, Pause, Trash2, Share2  } from "lucide-react-native";
+import { ChevronLeft, ChevronRight, Pause, Trash2, Share2, Dumbbell, RotateCcw } from "lucide-react-native";
 import IssuePill from "./IssuePill";
 import type { Analysis } from "../types";
 
@@ -18,6 +18,7 @@ type ReelProps = {
     active_issue: number
     setActiveIssue: (index: number) => void
     shouldPlay?: boolean
+    onDelete?: () => void
 }
 
 export default function Reel({
@@ -27,6 +28,7 @@ export default function Reel({
     active_issue,
     setActiveIssue,
     shouldPlay = true,
+    onDelete,
 }: ReelProps) {
 
     const issueRailRef = useRef<FlatList<Issue>>(null);
@@ -38,8 +40,9 @@ export default function Reel({
     const [isPlaying, setIsPlaying] = useState(shouldPlay);
 
     const player = useVideoPlayer(source, (playerInstance) => {
-        playerInstance.loop = true;
+        playerInstance.loop = false;
         playerInstance.muted = true;
+        playerInstance.volume = 0; // Add this line
         if (shouldPlay) {
             playerInstance.play();
         }
@@ -48,7 +51,7 @@ export default function Reel({
     useEffect(() => {
         if (!player) return;
         if (shouldPlay) {
-            player.play();
+            player.replay();
         } else {
             player.pause();
         }
@@ -114,13 +117,12 @@ export default function Reel({
 
             <View className="absolute inset-0">
                 {video_url ? (
-                    
                     <VideoView
                         player={player}
                         style={{ width: "100%", height: "100%" }}
                         contentFit="contain"
                         nativeControls={false}
-                        allowsFullscreen={false}
+                        fullscreenOptions={{ enable: false }}
                     />
                 ) : (
                     <View className="flex-1 items-center justify-center bg-[#0B0D12]">
@@ -144,16 +146,21 @@ export default function Reel({
                         if (player.playing) {
                             player.pause();
                         } else {
-                            player.play();
+                            // Check if the video has ended. If it has, replay from the start. Otherwise, just play.
+                            if (player.currentTime >= player.duration) {
+                                player.replay();
+                            } else {
+                                player.play();
+                            }
                         }
                     }}
                 />
             </View>
-                
+
             <ReelHeader
                 dateLabel={analysis.created_at ? new Date(analysis.created_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }) : ''}
             />
-            
+
 
             {/* Issues */}
             <SafeAreaView className="flex-1 z-10" style={{ flex: 1, zIndex: 10 }} pointerEvents="box-none">
@@ -204,8 +211,9 @@ export default function Reel({
 
                                         <TouchableOpacity
                                             activeOpacity={0.9}
-                                            className="mt-5 self-start rounded-2xl bg-white px-5 py-3"
+                                            className="mt-5 self-start rounded-2xl bg-white px-5 py-3 flex-row items-center gap-2"
                                         >
+                                            <Dumbbell size={16} color="#000" />
                                             <Text className="font-semibold text-black">
                                                 Start practice
                                             </Text>
@@ -261,7 +269,7 @@ export default function Reel({
                                         <IssuePill
                                             label={item.title}
                                             active={index === active_issue}
-                                            onPress={() => { setActiveIssue(index);  }}
+                                            onPress={() => { setActiveIssue(index); }}
                                         />
                                     )}
                                 />
@@ -275,14 +283,21 @@ export default function Reel({
             {!isPlaying && (
                 <View className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
                     <View className="bg-black/30 rounded-full p-4 mb-40">
-                        {/* If using lucide-react-native: */}
-                        <Pause 
-                            size={30} 
-                            color="rgba(255, 255, 255, 0.6)" // 60% opacity for the outline
-                            fill="transparent"               // Remove the solid white fill
-                            strokeWidth={1.5}                // A thin outline
-                        />
-                        
+                        {player.currentTime >= player.duration ? (
+                            <RotateCcw
+                                size={30}
+                                color="rgba(255, 255, 255, 0.6)" // 60% opacity for the outline
+                                fill="transparent"               // Remove the solid white fill
+                                strokeWidth={1.5}                // A thin outline
+                            />
+                        ) : (
+                            <Pause
+                                size={30}
+                                color="rgba(255, 255, 255, 0.6)" // 60% opacity for the outline
+                                fill="transparent"               // Remove the solid white fill
+                                strokeWidth={1.5}                // A thin outline
+                            />
+                        )}
                     </View>
                 </View>
             )}
@@ -291,42 +306,42 @@ export default function Reel({
 }
 
 type AnalysisHeaderProps = {
-  onDelete?: () => void;
-  onShare?: () => void;
-  dateLabel?: string;
+    onDelete?: () => void;
+    onShare?: () => void;
+    dateLabel?: string;
 };
 
 function ReelHeader({
-  onDelete,
-  onShare,
-  dateLabel = "",
+    onDelete,
+    onShare,
+    dateLabel = "",
 }: AnalysisHeaderProps) {
-  return (
-    <View className="absolute top-0 left-0 right-0 z-50 border-b border-white/10 bg-slate-950/65 px-4 pt-16 pb-3">
-      <View className="flex-row items-center justify-between">
-        {/* Left */}
-        <Pressable
-          onPress={onDelete}
-          className="flex-row items-center gap-2 rounded-lg bg-white/10 px-3 py-2 active:bg-white/20"
-        >
-          <Trash2 size={18} color="white" />
-          <Text className="text-sm font-medium text-white">Delete</Text>
-        </Pressable>
+    return (
+        <View className="absolute top-0 left-0 right-0 z-50 border-b border-white/10 bg-slate-950/65 px-4 pt-16 pb-3">
+            <View className="flex-row items-center justify-between">
+                {/* Left */}
+                <Pressable
+                    onPress={onDelete}
+                    className="flex-row items-center gap-2 rounded-lg bg-white/10 px-3 py-2 active:bg-white/20"
+                >
+                    <Trash2 size={18} color="red" />
+                    <Text className="text-sm font-medium text-white">Delete</Text>
+                </Pressable>
 
-        {/* Center */}
-        <View className="items-center">
-          <Text className="text-sm font-semibold text-white">{dateLabel}</Text>
-        </View>
+                {/* Center */}
+                <View className="items-center">
+                    <Text className="text-sm font-bold text-white p-2">{dateLabel}</Text>
+                </View>
 
-        {/* Right */}
-        <Pressable
+                {/* Right */}
+                {/* <Pressable
           onPress={onShare}
           className="flex-row items-center gap-2 rounded-lg bg-white/10 px-3 py-2 active:bg-white/20"
         >
           <Share2 size={18} color="white" />
           <Text className="text-sm font-medium text-white">Share</Text>
-        </Pressable>
-      </View>
-    </View>
-  );
+        </Pressable> */}
+            </View>
+        </View>
+    );
 }
