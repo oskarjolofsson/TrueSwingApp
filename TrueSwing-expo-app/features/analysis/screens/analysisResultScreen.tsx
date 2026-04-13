@@ -25,35 +25,9 @@ import type { Issue } from "features/issues/types";
 import LoadingState from "features/shared/components/LoadingState";
 import ErrorState from "features/shared/components/ErrorState";
 import TextBox from "features/shared/components/TextBox";
+import Reel from "features/analysis/components/Reel";
 
 const { width, height } = Dimensions.get("window");
-
-function IssuePill({
-    label,
-    active,
-    onPress,
-}: {
-    label: string | null | undefined;
-    active: boolean;
-    onPress: () => void;
-}) {
-    return (
-        <TouchableOpacity
-            activeOpacity={0.85}
-            onPress={onPress}
-            className={`mr-2 rounded-full border px-4 py-2 ${active ? "border-white bg-white" : "border-white/20 bg-black/35"
-                }`}
-        >
-            <Text
-                numberOfLines={1}
-                className={`text-sm font-medium ${active ? "text-black" : "text-white"
-                    }`}
-            >
-                {label || "Unknown Issue"}
-            </Text>
-        </TouchableOpacity>
-    );
-}
 
 function IssueModal({
     visible,
@@ -150,215 +124,6 @@ function IssueModal({
     );
 }
 
-function ActiveAnalysisReel({
-    videoURL,
-    issues,
-    activeIssue,
-    totalIssues,
-    setActiveIssue,
-    reelIndex,
-    totalAnalyses,
-}: {
-    videoURL?: string | null;
-    issues: Issue[];
-    activeIssue: number;
-    totalIssues: number;
-    setActiveIssue: (index: number) => void;
-    reelIndex: number;
-    totalAnalyses: number;
-}) {
-    const [modalVisible, setModalVisible] = useState(false);
-    const issueRailRef = useRef<FlatList<Issue>>(null);
-
-    const currentIssue = issues[activeIssue] ?? null;
-
-    const source: VideoSource | null = videoURL ? videoURL : null;
-
-    const player = useVideoPlayer(source, (playerInstance) => {
-        playerInstance.loop = true;
-        playerInstance.muted = true;
-        playerInstance.play();
-    });
-
-    const openIssue = (index: number) => {
-        setActiveIssue(index);
-        setModalVisible(true);
-    };
-
-    const goPrevIssue = () => {
-        if (activeIssue <= 0) return;
-        const nextIndex = activeIssue - 1;
-        setActiveIssue(nextIndex);
-        issueRailRef.current?.scrollToIndex({
-            index: nextIndex,
-            animated: true,
-            viewPosition: 0.5,
-        });
-    };
-
-    const goNextIssue = () => {
-        if (activeIssue >= issues.length - 1) return;
-        const nextIndex = activeIssue + 1;
-        setActiveIssue(nextIndex);
-        issueRailRef.current?.scrollToIndex({
-            index: nextIndex,
-            animated: true,
-            viewPosition: 0.5,
-        });
-    };
-
-    return (
-        <View style={{ width, height }} className="bg-black">
-            <StatusBar barStyle="light-content" />
-
-            <View className="absolute inset-0">
-                {videoURL ? (
-                    <VideoView
-                        player={player}
-                        style={{ width: "100%", height: "100%" }}
-                        contentFit="contain"
-                        nativeControls={false}
-                        allowsFullscreen={false}
-                    />
-                ) : (
-                    <View className="flex-1 items-center justify-center bg-[#0B0D12]">
-                        <Text className="text-zinc-500">No video available</Text>
-                    </View>
-                )}
-
-                <LinearGradient
-                    colors={[
-                        "rgba(0,0,0,0.55)",
-                        "rgba(0,0,0,0.10)",
-                        "rgba(0,0,0,0.58)",
-                    ]}
-                    locations={[0, 0.42, 1]}
-                    style={{ position: "absolute", inset: 0 }}
-                />
-            </View>
-
-            <SafeAreaView className="flex-1 z-10" style={{ flex: 1, zIndex: 10 }}>
-                <View className="flex-1 justify-between px-5 pb-8 pt-3">
-                    <View className="flex-row items-center justify-between">
-                        <View className="rounded-full border border-white/10 bg-black/25 px-4 py-2">
-                            <Text className="text-sm text-white">
-                                Analysis {reelIndex + 1} / {totalAnalyses}
-                            </Text>
-                        </View>
-
-                        <View className="rounded-full border border-white/10 bg-black/25 px-4 py-2">
-                            <Text className="text-sm text-zinc-200">
-                                {totalIssues} issue{totalIssues === 1 ? "" : "s"}
-                            </Text>
-                        </View>
-                    </View>
-
-                    <View>
-                        {currentIssue ? (
-                            <View className="mb-5 rounded-[28px] border border-white/10 bg-black/35 p-5">
-                                <Text className="mb-2 text-xs uppercase tracking-widest text-zinc-400">
-                                    Current issue
-                                </Text>
-
-                                <Text className="mb-3 text-3xl font-bold text-white">
-                                    {currentIssue.title}
-                                </Text>
-
-                                {!!currentIssue.current_motion && (
-                                    <Text className="mb-3 text-base leading-6 text-zinc-200">
-                                        {currentIssue.current_motion}
-                                    </Text>
-                                )}
-
-                                {!!currentIssue.expected_motion && (
-                                    <Text className="text-base leading-6 text-zinc-300">
-                                        {currentIssue.expected_motion}
-                                    </Text>
-                                )}
-
-                                <TouchableOpacity
-                                    activeOpacity={0.9}
-                                    className="mt-5 self-start rounded-2xl bg-white px-5 py-3"
-                                >
-                                    <Text className="font-semibold text-black">
-                                        Start practice
-                                    </Text>
-                                </TouchableOpacity>
-                            </View>
-                        ) : (
-                            <View className="mb-5 rounded-[28px] border border-white/10 bg-black/35 p-5">
-                                <Text className="text-zinc-300">
-                                    No issues found for this analysis.
-                                </Text>
-                            </View>
-                        )}
-
-                        {issues.length > 0 && (
-                            <View className="mb-4">
-                                <View className="mb-3 flex-row items-center justify-between">
-                                    <Text className="text-sm font-medium text-zinc-200">
-                                        Tap an issue
-                                    </Text>
-
-                                    <View className="flex-row items-center">
-                                        <TouchableOpacity
-                                            onPress={goPrevIssue}
-                                            disabled={activeIssue === 0}
-                                            className={`mr-2 rounded-full border p-2 ${activeIssue === 0
-                                                    ? "border-white/10 bg-black/15"
-                                                    : "border-white/20 bg-black/35"
-                                                }`}
-                                        >
-                                            <ChevronLeft size={16} color="#fff" />
-                                        </TouchableOpacity>
-
-                                        <TouchableOpacity
-                                            onPress={goNextIssue}
-                                            disabled={activeIssue === issues.length - 1}
-                                            className={`rounded-full border p-2 ${activeIssue === issues.length - 1
-                                                    ? "border-white/10 bg-black/15"
-                                                    : "border-white/20 bg-black/35"
-                                                }`}
-                                        >
-                                            <ChevronRight size={16} color="#fff" />
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-
-                                <FlatList
-                                    ref={issueRailRef}
-                                    data={issues}
-                                    horizontal
-                                    showsHorizontalScrollIndicator={false}
-                                    keyExtractor={(item) => item.id}
-                                    contentContainerStyle={{ paddingRight: 12 }}
-                                    renderItem={({ item, index }) => (
-                                        <IssuePill
-                                            label={item.title}
-                                            active={index === activeIssue}
-                                            onPress={() => openIssue(index)}
-                                        />
-                                    )}
-                                />
-                            </View>
-                        )}
-
-                        <Text className="text-sm text-zinc-300">
-                            Swipe vertically for more analyses
-                        </Text>
-                    </View>
-                </View>
-            </SafeAreaView>
-
-            <IssueModal
-                visible={modalVisible}
-                issue={currentIssue}
-                onClose={() => setModalVisible(false)}
-            />
-        </View>
-    );
-}
-
 function InactiveAnalysisReel({
     reelIndex,
     totalAnalyses,
@@ -425,8 +190,6 @@ export default function AnalysisResultScreen() {
         (index: number) => {
             const analysis = analyses[index];
             if (!analysis) return;
-
-            // ADD THIS CHECK: Prevent loop if we are already on this index
             if (index === activeAnalysisIndex) return;
 
             setActiveAnalysisIndex(index);
@@ -452,10 +215,8 @@ export default function AnalysisResultScreen() {
     ).current;
 
     useEffect(() => {
-        console.log("Active analysis updated:", activeAnalysis?.analysis_id);
-        console.log("Video URL:", videoURL);
-        console.log("Issues:", activeAnalysis?.issues?.map((issue) => issue.title));
-    }, [activeAnalysis, videoURL]);
+        setAnalysis(activeAnalysis);
+    }, [activeAnalysis, setAnalysis]);
 
     const viewabilityConfig = useRef({
         itemVisiblePercentThreshold: 80,
@@ -466,12 +227,13 @@ export default function AnalysisResultScreen() {
     if (error || analysisError) return <ErrorState title="Failed to load analysis" />;
 
     if (!analyses.length) {
-        <TextBox
-            header={"You have no analyses made yet"}
-            text={"Upload a video to get your first swing analysis"}
-            // ctaOnClick={() => navigate("/dashboard/upload")} 
-            ctaText={"Create Analysis"}
-        />
+        return (
+            <TextBox
+                header={"You have no analyses made yet"}
+                text={"Upload a video to get your first swing analysis"}
+                ctaText={"Create Analysis"}
+            />
+        );
     }
 
     return (
@@ -506,14 +268,11 @@ export default function AnalysisResultScreen() {
                     }
 
                     return (
-                        <ActiveAnalysisReel
-                            videoURL={videoURL}
-                            issues={activeAnalysis?.issues || item.issues || []}
-                            activeIssue={activeIssue}
-                            totalIssues={totalIssues}
+                        <Reel
+                            video_url={videoURL ?? null}
+                            issues={activeAnalysis?.issues ?? []}
+                            active_issue={activeIssue}
                             setActiveIssue={setActiveIssue}
-                            reelIndex={index}
-                            totalAnalyses={analyses.length}
                         />
                     );
                 }}
