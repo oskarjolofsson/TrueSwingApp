@@ -1,4 +1,4 @@
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Linking, Alert } from "react-native";
 import { useAuth } from "features/auth/AuthProvider";
 import LoadingState from "features/shared/components/LoadingState";
@@ -15,8 +15,6 @@ import { Mail, CircleHelp, ChevronRight, User2 } from "lucide-react-native";
 
 export default function ProfileScreen() {
     const profile = {
-        name: "Oskar Olofsson",
-        email: "oskarjolofsson@gmail.com",
         supportEmail: "team@trueswing.se",
     };
 

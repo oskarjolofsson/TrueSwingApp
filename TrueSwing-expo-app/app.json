@@ -14,7 +14,14 @@
       "expo-router",
       "expo-secure-store",
       "expo-web-browser",
-      "expo-video"
+      "expo-video",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "This app uses the camera to record your golf swing.",
+          "microphonePermission": "This app uses the microphone when recording swing videos."
+        }
+      ]
     ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -29,7 +36,11 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.my-expo-app"
+      "bundleIdentifier": "com.anonymous.my-expo-app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to record your golf swing.",
+        "NSMicrophoneUsageDescription": "This app uses the microphone when recording swing videos."
+      }
     },
     "android": {
       "adaptiveIcon": {
