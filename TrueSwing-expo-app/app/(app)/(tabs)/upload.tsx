@@ -3,6 +3,8 @@ import UploadFlow from "features/upload/uploadFlow";
 
 export default function Upload() {
   return (
-    <UploadFlow />
+    <View style={{ flex: 1 }}>
+        <UploadFlow />
+    </View>
   );
 }

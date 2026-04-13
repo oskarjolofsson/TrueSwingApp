@@ -19,7 +19,8 @@
         "expo-camera",
         {
           "cameraPermission": "This app uses the camera to record your golf swing.",
-          "microphonePermission": "This app uses the microphone when recording swing videos."
+          "microphonePermission": "This app uses the microphone when recording swing videos.",
+          "recordAudioAndroid": true
         }
       ]
     ],
@@ -36,7 +37,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.my-expo-app",
+      "bundleIdentifier": "app.trueswing.se",
       "infoPlist": {
         "NSCameraUsageDescription": "This app uses the camera to record your golf swing.",
         "NSMicrophoneUsageDescription": "This app uses the microphone when recording swing videos."
