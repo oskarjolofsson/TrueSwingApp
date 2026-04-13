@@ -5,13 +5,15 @@ import { FlatList, Text, View, StatusBar, Dimensions, SafeAreaView, TouchableOpa
 import { useVideoPlayer, VideoView, VideoSource } from "expo-video";
 import { LinearGradient } from "expo-linear-gradient";
 import TextBox from "features/shared/components/TextBox";
-import { ChevronLeft, ChevronRight, Pause } from "lucide-react-native";
+import { ChevronLeft, ChevronRight, Pause, Trash2, Share2  } from "lucide-react-native";
 import IssuePill from "./IssuePill";
+import type { Analysis } from "../types";
 
 const { width, height } = Dimensions.get("window");
 
 type ReelProps = {
     video_url: string | null
+    analysis: Analysis
     issues: Issue[]
     active_issue: number
     setActiveIssue: (index: number) => void
@@ -20,13 +22,13 @@ type ReelProps = {
 
 export default function Reel({
     video_url,
+    analysis,
     issues,
     active_issue,
     setActiveIssue,
     shouldPlay = true,
 }: ReelProps) {
 
-    const [modalVisible, setModalVisible] = useState(false);
     const issueRailRef = useRef<FlatList<Issue>>(null);
     const issueCardsRef = useRef<FlatList<Issue>>(null);
 
@@ -147,6 +149,11 @@ export default function Reel({
                     }}
                 />
             </View>
+                
+            <ReelHeader
+                dateLabel={analysis.created_at ? new Date(analysis.created_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }) : ''}
+            />
+            
 
             {/* Issues */}
             <SafeAreaView className="flex-1 z-10" style={{ flex: 1, zIndex: 10 }} pointerEvents="box-none">
@@ -281,4 +288,45 @@ export default function Reel({
             )}
         </View>
     )
+}
+
+type AnalysisHeaderProps = {
+  onDelete?: () => void;
+  onShare?: () => void;
+  dateLabel?: string;
+};
+
+function ReelHeader({
+  onDelete,
+  onShare,
+  dateLabel = "",
+}: AnalysisHeaderProps) {
+  return (
+    <View className="absolute top-0 left-0 right-0 z-50 border-b border-white/10 bg-slate-950/65 px-4 pt-16 pb-3">
+      <View className="flex-row items-center justify-between">
+        {/* Left */}
+        <Pressable
+          onPress={onDelete}
+          className="flex-row items-center gap-2 rounded-lg bg-white/10 px-3 py-2 active:bg-white/20"
+        >
+          <Trash2 size={18} color="white" />
+          <Text className="text-sm font-medium text-white">Delete</Text>
+        </Pressable>
+
+        {/* Center */}
+        <View className="items-center">
+          <Text className="text-sm font-semibold text-white">{dateLabel}</Text>
+        </View>
+
+        {/* Right */}
+        <Pressable
+          onPress={onShare}
+          className="flex-row items-center gap-2 rounded-lg bg-white/10 px-3 py-2 active:bg-white/20"
+        >
+          <Share2 size={18} color="white" />
+          <Text className="text-sm font-medium text-white">Share</Text>
+        </Pressable>
+      </View>
+    </View>
+  );
 }

@@ -49,6 +49,7 @@ function ReelContainer({
     return (
         <Reel
             video_url={videoURL ?? null}
+            analysis={analysis}
             issues={issues}
             active_issue={activeIssue}
             setActiveIssue={setActiveIssue}
