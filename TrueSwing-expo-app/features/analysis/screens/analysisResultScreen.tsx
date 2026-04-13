@@ -222,10 +222,15 @@ export default function AnalysisResultScreen() {
         itemVisiblePercentThreshold: 80,
     }).current;
 
-    if (loading) return <LoadingState title="Loading Analysis" subtitle="" />;
+    const isReady = allAnalyses.length > 0 && activeAnalysis !== null;
+    const isInitialLoad = loading && !isReady;
 
-    if (error || analysisError) return <ErrorState title="Failed to load analysis" />;
+    if (isInitialLoad) return <LoadingState title="Loading Analysis" subtitle="" />;
 
+    // Only show error if we aren't loading, or if we have a hard error on load
+    if (!loading && (error || analysisError)) {
+         return <ErrorState title="Failed to load analysis" />;
+    }
     if (!analyses.length) {
         return (
             <TextBox
