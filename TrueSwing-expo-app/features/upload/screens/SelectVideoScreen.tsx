@@ -31,7 +31,7 @@ const RecordingTimer = memo(function RecordingTimer({ isRecording, insets }: { i
     return (
         <View
             className="absolute top-0 w-full items-center z-10 pointer-events-none"
-            style={{ 
+            style={{
                 paddingTop: insets.top > 0 ? insets.top + 16 : 40,
                 opacity: isRecording ? 1 : 0
             }}
@@ -46,7 +46,7 @@ const RecordingTimer = memo(function RecordingTimer({ isRecording, insets }: { i
     );
 });
 
-export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUri }: ScreenProps & { setVideoUri: (uri: string | null) => void , videoUri: string | null }) {
+export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUri, isActive }: ScreenProps & { setVideoUri: (uri: string | null) => void, videoUri: string | null, isActive: boolean }) {
     const cameraRef = useRef<CameraView | null>(null);
     const insets = useSafeAreaInsets();
 
@@ -58,6 +58,7 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
     const [isRecording, setIsRecording] = useState(false);
     const [isBusy, setIsBusy] = useState(false);
     const [isCameraReady, setIsCameraReady] = useState(false);
+    const [cameraKey, setCameraKey] = useState(0);
 
     useEffect(() => {
         if (videoUri) {
@@ -91,30 +92,31 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
     };
 
     const startRecording = async () => {
-        if (!cameraRef.current || isRecording || isBusy) return;
-        setIsBusy(true);
-        setIsRecording(true);
+        if (!cameraRef.current || isRecording || isBusy || !isCameraReady) return;
 
-        // Wait 100ms for React/Yoga layout passes to finish rendering the new Timer UI
-        setTimeout(async () => {
-            if (!cameraRef.current) return;
-            
-            try {
-                const video = await cameraRef.current.recordAsync({
-                    maxDuration: 30,
-                });
+        try {
+            setIsBusy(true);
+            setIsRecording(true);
 
-                if (video?.uri) {
-                    setVideoUri(video.uri);
-                }
-            } catch (error) {
-                console.error("recordAsync error:", error);
-                Alert.alert("Recording failed", "Could not record the video.");
-            } finally {
-                setIsRecording(false);
-                setIsBusy(false);
+            const video = await cameraRef.current.recordAsync({
+                maxDuration: 30,
+            });
+
+            if (video?.uri) {
+                setVideoUri(video.uri);
             }
-        }, 100);
+        } catch (error) {
+            console.error("recordAsync error:", error);
+            setIsCameraReady(false);
+            setIsRecording(false);
+            setIsBusy(false);
+            setCameraKey((k) => k + 1);
+            Alert.alert("Recording failed", "Camera session reset. Try again.");
+            return;
+        } finally {
+            setIsRecording(false);
+            setIsBusy(false);
+        }
     };
 
     const stopRecording = async () => {
@@ -129,6 +131,7 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
 
     const flipCamera = () => {
         if (isRecording) return;
+        setIsCameraReady(false);
         setFacing((current) => (current === "back" ? "front" : "back"));
     };
 
@@ -164,12 +167,20 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
     return (
         <View className="flex-1 bg-black">
             <CameraView
+                active={isActive}
+                key={cameraKey}
                 ref={cameraRef}
                 style={StyleSheet.absoluteFill}
                 facing={facing}
                 mode="video"
                 mute={false}
-                onCameraReady={() => setIsCameraReady(true)}
+                onCameraReady={() => {
+                    console.log("camera ready");
+                    setIsCameraReady(true);
+                }}
+                onMountError={(e) => {
+                    console.error("camera mount error", e);
+                }}
             />
 
             <View
@@ -177,10 +188,10 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
                 style={{ paddingBottom: insets.bottom > 0 ? insets.bottom : 24 }}
             >
                 <View className="flex-row items-center justify-center px-6 pt-2 pb-5 min-h-[100px]">
-                    
-                    <View 
-                        className="absolute left-6" 
-                        style={{ opacity: isRecording ? 0 : 1 }} 
+
+                    <View
+                        className="absolute left-6"
+                        style={{ opacity: isRecording ? 0 : 1 }}
                         pointerEvents={isRecording ? "none" : "auto"}
                     >
                         <Pressable
@@ -196,20 +207,18 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
                     <Pressable
                         onPress={isRecording ? stopRecording : startRecording}
                         disabled={!isCameraReady || (isBusy && !isRecording)}
-                        className={`h-[84px] w-[84px] items-center justify-center rounded-full shadow-md border-[6px] ${
-                            isRecording ? "border-red-500" : "border-white"
-                        }`}
+                        className={`h-[84px] w-[84px] items-center justify-center rounded-full shadow-md border-[6px] ${isRecording ? "border-red-500" : "border-white"
+                            }`}
                     >
                         <View
-                            className={`bg-red-500 ${
-                                isRecording ? "h-[30px] w-[30px] rounded-lg" : "h-[56px] w-[56px] rounded-full"
-                            }`}
+                            className={`bg-red-500 ${isRecording ? "h-[30px] w-[30px] rounded-lg" : "h-[56px] w-[56px] rounded-full"
+                                }`}
                         />
                     </Pressable>
-                    
-                    <View 
+
+                    <View
                         className="absolute right-6"
-                        style={{ opacity: isRecording ? 0 : 1 }} 
+                        style={{ opacity: isRecording ? 0 : 1 }}
                         pointerEvents={isRecording ? "none" : "auto"}
                     >
                         <Pressable
@@ -235,7 +244,7 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
                 </Text>
             </View>
 
-            <RecordingTimer isRecording={isRecording} insets={insets} />
+            {/* <RecordingTimer isRecording={isRecording} insets={insets} /> */}
         </View>
     );
 }

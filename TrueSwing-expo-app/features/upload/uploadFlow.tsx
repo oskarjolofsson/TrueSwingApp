@@ -5,7 +5,7 @@ import TrimVideoScreen from "./screens/TrimVideoScreen";
 import PromptsScreen from "./screens/PromptsScreen";
 import UploadProgressScreen from "./screens/UploadProgressScreen";
 import { useVideo } from "./hooks/useVideo";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 
 interface ScreenMap {
@@ -24,8 +24,8 @@ export default function UploadFlow() {
 
     return (
         <View style={{ flex: 1 }}>
-            {currentScreen === 'SelectVideo' && <SelectVideoScreen onNext={next} onBack={() => {}} setVideoUri={setVideoUri} videoUri={videoUri}/>}
-            {currentScreen === 'TrimVideo' && <TrimVideoScreen onNext={next} onBack={prev} videoUri={videoUri} setTrimmedVideoUri={setTrimmedVideoUri} removeVideo={removeVideo} trimmedUri={trimmedVideoUri} />}
+            {currentScreen === 'SelectVideo' && <SelectVideoScreen onNext={next} onBack={() => {}} setVideoUri={setVideoUri} videoUri={videoUri} isActive={currentScreen === 'SelectVideo'}/>}
+            {currentScreen === 'TrimVideo' && <TrimVideoScreen onNext={next} onBack={prev} videoUri={videoUri}  removeVideo={removeVideo} setVideoUri={setVideoUri} />}
             {currentScreen === 'Prompts' && <PromptsScreen onNext={next} onBack={prev} />}
             {currentScreen === 'UploadProgress' && <UploadProgressScreen onBack={prev} onNext={() => {}} />}
         </View>
