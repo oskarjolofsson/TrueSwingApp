@@ -26,7 +26,8 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "This app needs access to your photos for you to select swing videos from your gallery."
+          "photosPermission": "This app needs access to your photos for you to select swing videos from your gallery.",
+          "savePhotosPermission": "This app needs permission to save trimmed swing videos to your gallery."
         }
       ]
     ],
@@ -53,7 +54,14 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "app.trueswing.se"
     }
   }
 }

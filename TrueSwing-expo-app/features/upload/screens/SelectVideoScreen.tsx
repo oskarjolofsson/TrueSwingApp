@@ -80,7 +80,7 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
     const pickImageAsync = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ['videos'],
-            allowsEditing: true,
+            allowsEditing: false,
             quality: 1,
         });
 
@@ -244,7 +244,7 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
                 </Text>
             </View>
 
-            {/* <RecordingTimer isRecording={isRecording} insets={insets} /> */}
+            <RecordingTimer isRecording={isRecording} insets={insets} />
         </View>
     );
 }

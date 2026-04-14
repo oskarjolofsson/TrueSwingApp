@@ -11,6 +11,7 @@ export function useScreenSequence<T extends string>({ screens }: { screens: T[] 
   };
 
   const prev = () => {
+    console.log("=== PREV CALLED ===", currentIndex);
     if (currentIndex > 0) {
       setCurrentIndex(prev => prev - 1);
     }
@@ -24,7 +25,6 @@ export function useScreenSequence<T extends string>({ screens }: { screens: T[] 
   };
 
   return {
-    // Nu vet TS att currentScreen är av typen T (t.ex. 'SelectVideo' | 'TrimVideo'...)
     currentScreen: screens[currentIndex] as T,
     currentIndex,
     next,

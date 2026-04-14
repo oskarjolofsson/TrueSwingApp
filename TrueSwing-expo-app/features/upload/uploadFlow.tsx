@@ -17,8 +17,9 @@ interface ScreenMap {
 
 type ScreenName = keyof ScreenMap;
 
+const allScreens = ['SelectVideo', 'TrimVideo', 'Prompts', 'UploadProgress'];
+
 export default function UploadFlow() {
-    const allScreens: ScreenName[] = ['SelectVideo', 'TrimVideo', 'Prompts', 'UploadProgress'];
     const { currentScreen, next, prev, goTo } = useScreenSequence({ screens: allScreens });
     const { videoUri, setVideoUri, removeVideo, trimmedVideoUri, setTrimmedVideoUri } = useVideo();
 
