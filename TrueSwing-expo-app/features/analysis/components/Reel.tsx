@@ -1,13 +1,14 @@
 import type { Issue } from "features/issues/types";
 
 import { useState, useEffect, useRef } from "react";
-import { FlatList, Text, View, StatusBar, Dimensions, SafeAreaView, TouchableOpacity, Pressable } from "react-native";
+import { FlatList, Text, View, StatusBar, Dimensions, TouchableOpacity, Pressable } from "react-native";
 import { useVideoPlayer, VideoView, VideoSource } from "expo-video";
 import { LinearGradient } from "expo-linear-gradient";
 import TextBox from "features/shared/components/TextBox";
 import { ChevronLeft, ChevronRight, Pause, Trash2, Share2, Dumbbell, RotateCcw } from "lucide-react-native";
 import IssuePill from "./IssuePill";
 import type { Analysis } from "../types";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const { width, height } = Dimensions.get("window");
 

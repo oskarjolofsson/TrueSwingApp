@@ -1,5 +1,6 @@
-import { Dimensions, FlatList, Pressable, SafeAreaView, Text, View } from "react-native";
+import { Dimensions, FlatList, Pressable, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import type { Analysis } from "features/analysis/types";
 

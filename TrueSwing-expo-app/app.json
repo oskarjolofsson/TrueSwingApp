@@ -22,6 +22,12 @@
           "microphonePermission": "This app uses the microphone when recording swing videos.",
           "recordAudioAndroid": true
         }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "This app needs access to your photos for you to select swing videos from your gallery."
+        }
       ]
     ],
     "orientation": "portrait",
