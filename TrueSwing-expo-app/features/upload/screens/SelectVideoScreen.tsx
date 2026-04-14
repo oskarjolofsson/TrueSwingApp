@@ -1,5 +1,5 @@
 import { ScreenProps } from "./types";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { ActivityIndicator, Alert, Pressable, StyleSheet, Text, View } from "react-native";
 import {
     CameraType,
@@ -11,7 +11,7 @@ import { RefreshCw, LibraryBig } from "lucide-react-native";
 import { useSafeAreaInsets, SafeAreaView } from "react-native-safe-area-context";
 import * as ImagePicker from 'expo-image-picker';
 
-function RecordingTimer({ isRecording, insets }: { isRecording: boolean, insets: any }) {
+const RecordingTimer = memo(function RecordingTimer({ isRecording, insets }: { isRecording: boolean, insets: any }) {
     const [recordingTime, setRecordingTime] = useState(0);
 
     useEffect(() => {
@@ -26,24 +26,25 @@ function RecordingTimer({ isRecording, insets }: { isRecording: boolean, insets:
         return () => clearInterval(interval);
     }, [isRecording]);
 
-    if (!isRecording) return null;
-
     const formattedTime = new Date(recordingTime * 1000).toISOString().substring(14, 19);
 
     return (
         <View
             className="absolute top-0 w-full items-center z-10 pointer-events-none"
-            style={{ paddingTop: insets.top > 0 ? insets.top + 16 : 40 }}
+            style={{ 
+                paddingTop: insets.top > 0 ? insets.top + 16 : 40,
+                opacity: isRecording ? 1 : 0
+            }}
         >
             <View className="flex-row items-center rounded-full bg-red-600/90 px-4 py-1.5">
                 <View className="mr-2 h-2.5 w-2.5 rounded-full bg-white" />
-                <Text className="font-mono text-base font-bold text-white tracking-widest">
+                <Text className="w-[64px] text-center font-mono text-base font-bold text-white tracking-widest tabular-nums">
                     {formattedTime}
                 </Text>
             </View>
         </View>
     );
-}
+});
 
 export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUri }: ScreenProps & { setVideoUri: (uri: string | null) => void , videoUri: string | null }) {
     const cameraRef = useRef<CameraView | null>(null);
@@ -92,7 +93,6 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
     const startRecording = async () => {
         if (!cameraRef.current || isRecording || isBusy) return;
         setIsBusy(true);
-        setVideoUri(null);
         setIsRecording(true);
 
         // Wait 100ms for React/Yoga layout passes to finish rendering the new Timer UI
@@ -178,18 +178,20 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
             >
                 <View className="flex-row items-center justify-center px-6 pt-2 pb-5 min-h-[100px]">
                     
-                    {!isRecording && (
-                        <View className="absolute left-6">
-                            <Pressable
-                                onPress={flipCamera}
-                                disabled={isRecording}
-                                className="min-w-[72px] items-center rounded-2xl bg-black/40 px-4 py-3 active:bg-white/60 active:border active:border-white/60"
-                            >
-                                <RefreshCw size={20} color="white" />
-                                <Text className="text-xs text-white">Flip</Text>
-                            </Pressable>
-                        </View>
-                    )}
+                    <View 
+                        className="absolute left-6" 
+                        style={{ opacity: isRecording ? 0 : 1 }} 
+                        pointerEvents={isRecording ? "none" : "auto"}
+                    >
+                        <Pressable
+                            onPress={flipCamera}
+                            disabled={isRecording}
+                            className="min-w-[72px] items-center rounded-2xl bg-black/40 px-4 py-3 active:bg-white/60 active:border active:border-white/60"
+                        >
+                            <RefreshCw size={20} color="white" />
+                            <Text className="text-xs text-white">Flip</Text>
+                        </Pressable>
+                    </View>
 
                     <Pressable
                         onPress={isRecording ? stopRecording : startRecording}
@@ -205,19 +207,22 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
                         />
                     </Pressable>
                     
-                    {!isRecording && (
-                        <View className="absolute right-6">
-                            <Pressable
-                                onPress={() => {
-                                    pickImageAsync();
-                                }}
-                                className="min-w-[72px] items-center rounded-2xl bg-black/40 px-4 py-3 active:bg-white/60 active:border active:border-white/60"
-                            >
-                                <LibraryBig size={20} color="white" />
-                                <Text className="text-xs text-white">Gallery</Text>
-                            </Pressable>
-                        </View>
-                    )}
+                    <View 
+                        className="absolute right-6"
+                        style={{ opacity: isRecording ? 0 : 1 }} 
+                        pointerEvents={isRecording ? "none" : "auto"}
+                    >
+                        <Pressable
+                            onPress={() => {
+                                pickImageAsync();
+                            }}
+                            disabled={isRecording}
+                            className="min-w-[72px] items-center rounded-2xl bg-black/40 px-4 py-3 active:bg-white/60 active:border active:border-white/60"
+                        >
+                            <LibraryBig size={20} color="white" />
+                            <Text className="text-xs text-white">Gallery</Text>
+                        </Pressable>
+                    </View>
                 </View>
 
                 <Text
