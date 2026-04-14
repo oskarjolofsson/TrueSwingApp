@@ -5,6 +5,7 @@ import TrimVideoScreen from "./screens/TrimVideoScreen";
 import PromptsScreen from "./screens/PromptsScreen";
 import UploadProgressScreen from "./screens/UploadProgressScreen";
 import { useVideo } from "./hooks/useVideo";
+import { useState } from "react";
 
 
 interface ScreenMap {
@@ -21,9 +22,11 @@ export default function UploadFlow() {
     const { currentScreen, next, prev, goTo } = useScreenSequence({ screens: allScreens });
     const { videoUri, setVideoUri, removeVideo } = useVideo();
 
+    const [isCameraReady, setIsCameraReady] = useState(false);
+
     // Record to map all screen names to their respective components
     const screens: Record<ScreenName, React.ReactElement> = {
-        SelectVideo: <SelectVideoScreen onNext={next} onBack={() => {}} setVideoUri={setVideoUri} videoUri={videoUri} />,
+        SelectVideo: <SelectVideoScreen onNext={next} onBack={() => {}} setVideoUri={setVideoUri} videoUri={videoUri}/>,
         TrimVideo: <TrimVideoScreen onNext={next} onBack={prev} videoUri={videoUri} setVideoUri={setVideoUri} removeVideo={removeVideo} />,
         Prompts: <PromptsScreen onNext={next} onBack={prev} />,
         UploadProgress: <UploadProgressScreen onBack={prev} onNext={() => {}} />

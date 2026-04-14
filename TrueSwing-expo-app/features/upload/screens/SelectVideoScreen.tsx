@@ -56,6 +56,7 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
     const [facing, setFacing] = useState<CameraType>("back");
     const [isRecording, setIsRecording] = useState(false);
     const [isBusy, setIsBusy] = useState(false);
+    const [isCameraReady, setIsCameraReady] = useState(false);
 
     useEffect(() => {
         if (videoUri) {
@@ -168,6 +169,7 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
                 facing={facing}
                 mode="video"
                 mute={false}
+                onCameraReady={() => setIsCameraReady(true)}
             />
 
             <View
@@ -191,7 +193,7 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
 
                     <Pressable
                         onPress={isRecording ? stopRecording : startRecording}
-                        disabled={isBusy && !isRecording}
+                        disabled={!isCameraReady || (isBusy && !isRecording)}
                         className={`h-[84px] w-[84px] items-center justify-center rounded-full shadow-md border-[6px] ${
                             isRecording ? "border-red-500" : "border-white"
                         }`}
