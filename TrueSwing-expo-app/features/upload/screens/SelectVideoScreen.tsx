@@ -45,7 +45,7 @@ function RecordingTimer({ isRecording, insets }: { isRecording: boolean, insets:
     );
 }
 
-export default function SelectVideoScreen({ onBack, onNext }: ScreenProps) {
+export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUri }: ScreenProps & { setVideoUri: (uri: string | null) => void , videoUri: string | null }) {
     const cameraRef = useRef<CameraView | null>(null);
     const insets = useSafeAreaInsets();
 
@@ -55,7 +55,6 @@ export default function SelectVideoScreen({ onBack, onNext }: ScreenProps) {
 
     const [facing, setFacing] = useState<CameraType>("back");
     const [isRecording, setIsRecording] = useState(false);
-    const [videoUri, setVideoUri] = useState<string | null>(null);
     const [isBusy, setIsBusy] = useState(false);
 
     useEffect(() => {
@@ -91,8 +90,6 @@ export default function SelectVideoScreen({ onBack, onNext }: ScreenProps) {
 
     const startRecording = async () => {
         if (!cameraRef.current || isRecording || isBusy) return;
-
-        // First update the UI exactly as before
         setIsBusy(true);
         setVideoUri(null);
         setIsRecording(true);
@@ -113,8 +110,6 @@ export default function SelectVideoScreen({ onBack, onNext }: ScreenProps) {
                 console.error("recordAsync error:", error);
                 Alert.alert("Recording failed", "Could not record the video.");
             } finally {
-                // Because recordAsync blocks until stopRecording() is called,
-                // we clean up the state in this finally block.
                 setIsRecording(false);
                 setIsBusy(false);
             }
@@ -167,7 +162,6 @@ export default function SelectVideoScreen({ onBack, onNext }: ScreenProps) {
 
     return (
         <View className="flex-1 bg-black">
-            {/* Camera stretches everywhere - underneath notch and tab bars */}
             <CameraView
                 ref={cameraRef}
                 style={StyleSheet.absoluteFill}
@@ -176,14 +170,12 @@ export default function SelectVideoScreen({ onBack, onNext }: ScreenProps) {
                 mute={false}
             />
 
-            {/* We force the controls to stick to the bottom, but pad them so they sit above the home bar */}
             <View
                 className="absolute bottom-0 left-0 right-0 w-full"
                 style={{ paddingBottom: insets.bottom > 0 ? insets.bottom : 24 }}
             >
                 <View className="flex-row items-center justify-center px-6 pt-2 pb-5 min-h-[100px]">
                     
-                    {/* Absolutely position the left button */}
                     {!isRecording && (
                         <View className="absolute left-6">
                             <Pressable
@@ -197,7 +189,6 @@ export default function SelectVideoScreen({ onBack, onNext }: ScreenProps) {
                         </View>
                     )}
 
-                    {/* Center record button stays exactly in the middle */}
                     <Pressable
                         onPress={isRecording ? stopRecording : startRecording}
                         disabled={isBusy && !isRecording}
@@ -212,7 +203,6 @@ export default function SelectVideoScreen({ onBack, onNext }: ScreenProps) {
                         />
                     </Pressable>
                     
-                    {/* Absolutely position the right button */}
                     {!isRecording && (
                         <View className="absolute right-6">
                             <Pressable
@@ -228,7 +218,6 @@ export default function SelectVideoScreen({ onBack, onNext }: ScreenProps) {
                     )}
                 </View>
 
-                {/* Helper text dropped slightly under controls with shadow for visibility */}
                 <Text
                     className="px-6 text-center text-sm font-medium text-white"
                     style={{ textShadowColor: "rgba(0, 0, 0, 0.8)", textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 3 }}
@@ -239,7 +228,6 @@ export default function SelectVideoScreen({ onBack, onNext }: ScreenProps) {
                 </Text>
             </View>
 
-            {/* Isolated Timer UI overlay */}
             <RecordingTimer isRecording={isRecording} insets={insets} />
         </View>
     );
