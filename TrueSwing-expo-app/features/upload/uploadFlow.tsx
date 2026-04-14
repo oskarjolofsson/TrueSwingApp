@@ -21,12 +21,12 @@ const allScreens = ['SelectVideo', 'TrimVideo', 'Prompts', 'UploadProgress'];
 
 export default function UploadFlow() {
     const { currentScreen, next, prev, goTo } = useScreenSequence({ screens: allScreens });
-    const { videoUri, setVideoUri, removeVideo, trimmedVideoUri, setTrimmedVideoUri } = useVideo();
+    const { videoUri, setVideoUri, removeVideo, trimmedVideoUri, setTrimmedVideoUri, trimVideo } = useVideo();
 
     return (
         <View style={{ flex: 1 }}>
-            {currentScreen === 'SelectVideo' && <SelectVideoScreen onNext={next} onBack={() => {}} setVideoUri={setVideoUri} videoUri={videoUri} isActive={currentScreen === 'SelectVideo'}/>}
-            {currentScreen === 'TrimVideo' && <TrimVideoScreen onNext={next} onBack={prev} videoUri={videoUri}  removeVideo={removeVideo} setVideoUri={setVideoUri} />}
+            {currentScreen === 'SelectVideo' && <SelectVideoScreen onNext={next} onBack={() => {}} setVideoUri={setVideoUri} videoUri={videoUri} isActive={currentScreen === 'SelectVideo'} />}
+            {currentScreen === 'TrimVideo' && <TrimVideoScreen onNext={next} onBack={prev} videoUri={videoUri}  removeVideo={removeVideo} setVideoUri={setVideoUri} trimVideo={trimVideo} />}
             {currentScreen === 'Prompts' && <PromptsScreen onNext={next} onBack={prev} />}
             {currentScreen === 'UploadProgress' && <UploadProgressScreen onBack={prev} onNext={() => {}} />}
         </View>

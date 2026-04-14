@@ -14,6 +14,7 @@ type TrimScreenProps = ScreenProps & {
   videoUri: string | null;
   setVideoUri: (uri: string | null) => void;
   removeVideo: () => void;
+  trimVideo: (startMs: number, endMs: number) => Promise<void>;
 };
 
 export default function TrimScreen({
@@ -21,6 +22,7 @@ export default function TrimScreen({
   onNext,
   videoUri,
   setVideoUri,
+  trimVideo
 }: TrimScreenProps) {
 
   // Video preview
@@ -36,10 +38,6 @@ export default function TrimScreen({
     playerInstance.volume = 0;
     playerInstance.pause();
   });
-
-  useEffect(() => {
-    console.log("Trim range changed:", { trimStart, trimEnd });
-  }, [trimStart, trimEnd]);
 
   useEffect(() => {
     if (!player) return;
@@ -58,7 +56,7 @@ export default function TrimScreen({
     // Listen for status changes (like when the video metadata loads)
     const statusSubscription = player.addListener('statusChange', (event) => {
       if (event.status === 'readyToPlay' && player.duration) {
-        setDuration(player.duration);
+        setDuration(Math.floor(player.duration * 1000));
       }
     });
 
@@ -69,18 +67,16 @@ export default function TrimScreen({
   }, [player]);
 
   const handleSeek = useCallback((ms: number) => {
-    console.log("Seeking to:", ms);
     if (player) {
       player.currentTime = ms / 1000;
       player.pause();
     }
   }, [player]);
 
-  useEffect(() => {
-    if (player) {
-      setDuration(Math.floor(player.duration * 1000));
-    }
-  }, [player]);
+  const handleRangeChange = useCallback((start: number, end: number) => {
+    setTrimStart(start);
+    setTrimEnd(end);
+  }, []);
 
   return (
     <View style={{ width, height }} className="bg-black">
@@ -155,7 +151,7 @@ export default function TrimScreen({
             <Pressable onPress={() => {setVideoUri(null); onBack();}}>
               <Text className="text-white font-medium text-lg">Back</Text>
             </Pressable>
-            <Pressable onPress={onNext}>
+            <Pressable onPress={() => {trimVideo(trimStart, trimEnd);onNext()}}>
               <Text className="text-white font-bold text-lg">Next</Text>
             </Pressable>
           </View>
@@ -165,11 +161,7 @@ export default function TrimScreen({
               videoUri={videoUri!}
               durationMs={duration} 
               onSeek={handleSeek}
-              onRangeChange={(start, end) => {
-                setTrimStart(start);
-                setTrimEnd(end);
-              }}
-              // See step 2 below for passing playheadPos
+              onRangeChange={handleRangeChange}
             />
           )}
         </View>

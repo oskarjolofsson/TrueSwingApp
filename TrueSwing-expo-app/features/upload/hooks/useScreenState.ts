@@ -11,7 +11,6 @@ export function useScreenSequence<T extends string>({ screens }: { screens: T[] 
   };
 
   const prev = () => {
-    console.log("=== PREV CALLED ===", currentIndex);
     if (currentIndex > 0) {
       setCurrentIndex(prev => prev - 1);
     }

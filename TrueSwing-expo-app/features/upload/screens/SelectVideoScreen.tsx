@@ -46,7 +46,7 @@ const RecordingTimer = memo(function RecordingTimer({ isRecording, insets }: { i
     );
 });
 
-export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUri, isActive }: ScreenProps & { setVideoUri: (uri: string | null) => void, videoUri: string | null, isActive: boolean }) {
+export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUri, isActive }: ScreenProps & { setVideoUri: (uri: string | null) => void, videoUri: string | null, isActive: boolean}) {
     const cameraRef = useRef<CameraView | null>(null);
     const insets = useSafeAreaInsets();
 
