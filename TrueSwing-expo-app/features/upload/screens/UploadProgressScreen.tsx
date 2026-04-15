@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import { ScreenProps } from "./types";
+import { ScreenProps } from "../types";
 
 export default function ProgressScreen({onBack, onNext}: ScreenProps) {
 

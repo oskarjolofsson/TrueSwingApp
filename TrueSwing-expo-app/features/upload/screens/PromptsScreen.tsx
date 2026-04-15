@@ -1,8 +1,15 @@
 import { View, Text } from "react-native";
-import { ScreenProps } from "./types";
+import { ScreenProps } from "../types";
+import { useEffect } from "react";
+import type { Prompt } from "../types";
+import type { UsePromptReturn } from "../hooks/usePrompt";
 
+type Props = ScreenProps & {
+    prompt: UsePromptReturn;
+};
 
-export default function PromptScreen({onBack, onNext}: ScreenProps) {
+export default function PromptScreen({onBack, onNext, prompt}: Props) {
+
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -11,7 +18,7 @@ export default function PromptScreen({onBack, onNext}: ScreenProps) {
                 
             </Text>
 
-            <View className="mt-8 flex-row space-x-4">
+            <View className="absolute mt-8 flex-row space-x-4">
                 <Text className="text-white bg-gray-500 px-4 py-2 rounded-lg" onPress={onBack}>
                     Previous
                 </Text>
