@@ -1,5 +1,5 @@
 import type { Prompt } from "../types";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 export type UsePromptReturn = {
     prompt: Prompt;
@@ -14,13 +14,15 @@ export function usePrompt() {
         miss: "",
         extra: ""
     });
-    const setDesiredShot = (shot: string) => setPrompt(prev => ({ ...prev, desired_shot: shot }));
-    const setMiss = (miss: string) => setPrompt(prev => ({ ...prev, miss }));
-    const setExtra = (extra: string) => setPrompt(prev => ({ ...prev, extra }));
 
+    const setDesiredShot = useCallback((shot: string) => setPrompt(prev => ({ ...prev, desired_shot: shot })), []);
+    const setMiss = useCallback((miss: string) => setPrompt(prev => ({ ...prev, miss })), []);
+    const setExtra = useCallback((extra: string) => setPrompt(prev => ({ ...prev, extra })), []);
 
     return {
-        prompt
-        , setDesiredShot, setMiss, setExtra
+        prompt,
+        setDesiredShot,
+        setMiss,
+        setExtra
      } as UsePromptReturn;
 }
