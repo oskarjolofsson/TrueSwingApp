@@ -40,15 +40,12 @@ export function useUpload(): UploadProps {
 
     const checkAnalysisStatus = async (analysisId: string) => {
         setError(null);
-        setLoading(true);
         try {
             const status: AnalysisStatusResponse = await get_analysis_status(analysisId);
             setAnalysisStatus(status);
         } catch (err) {
             console.error('Error checking analysis status:', err);
             setError(err instanceof Error ? err.message : 'An unknown error occurred while checking analysis status');
-        } finally {
-            setLoading(false);
         }
 
         return analysisStatus;

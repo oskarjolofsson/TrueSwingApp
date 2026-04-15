@@ -3,21 +3,24 @@ import { View, Text, ActivityIndicator } from "react-native";
 import { ScreenProps, AnalysisStatusResponse } from "../types";
 import { UploadProps } from "../hooks/useUpload";
 import * as Progress from 'react-native-progress';
+import LoadingState from "features/shared/components/LoadingState";
+import ErrorState from "features/shared/components/ErrorState";
+import AnalysisSuccess from "../components/greenCheck";
 
 type ProgressScreenProps = ScreenProps & {
-    upload?: UploadProps;
+    upload: UploadProps;
 };
 
 export default function ProgressScreen({ onBack, onNext, upload }: ProgressScreenProps) {
     const [progress, setProgress] = useState(0);
     const [status, setStatus] = useState<AnalysisStatusResponse | null>(null);
 
-    const success = status && !status.error_message && status.status === 'completed';
+    const success = status && !status.error_message;
 
     // Track 45-second timer
     useEffect(() => {
         if (!upload) return;
-        
+
         if (upload.loading) {
             const interval = setInterval(() => {
                 setProgress(p => {
@@ -27,7 +30,7 @@ export default function ProgressScreen({ onBack, onNext, upload }: ProgressScree
                     }
                     return p + (1 / 100);
                 });
-            }, 450); // 45s / 100 ticks = 450ms per tick
+            }, 350); // 45s / 100 ticks = 450ms per tick
 
             return () => clearInterval(interval);
         }
@@ -53,47 +56,49 @@ export default function ProgressScreen({ onBack, onNext, upload }: ProgressScree
         }
 
         return () => { isActive = false; };
-    }, [upload?.loading, progress, upload?.analysisId]);
+    }, [upload.loading]);
 
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text className="text-2xl font-bold mb-8 text-white">
-                {progress >= 1 || (!upload?.loading && upload?.analysisId) ? "Finalizing Analysis..." : "Analyzing Video..."}
-            </Text>
+    if (!upload) {
+        return <ErrorState message="Upload data is missing. Please restart the upload process." onRetry={onBack} />;
+    }
 
-            <Progress.Circle 
-                size={150} 
-                progress={progress} 
-                showsText={true}
-                formatText={() => `${Math.round(progress * 100)}%`}
-                color="#ffffff"
-                unfilledColor="#333333"
-                thickness={8}
-                textStyle={{ fontWeight: 'bold' }}
-            />
+    if (upload.error) {
+        console.error('Upload Error:', upload.error);
+        return <ErrorState message={`Upload failed`} onRetry={onBack} />;
+    }
 
-            {status && (
-                <View className="mt-8 items-center">
-                    <Text className="text-white text-lg mb-2 font-semibold">
-                        Status: {success ? 'Complete' : 'Failed or In Progress'}
-                    </Text>
-                    <Text className="text-white bg-blue-600 px-6 py-3 mt-4 rounded-lg font-bold overflow-hidden" onPress={onNext}>
-                        View Results
+    if (upload.loading) {
+        return (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text className="text-2xl font-bold mb-8 text-white">
+                    {progress >= 1 || (!upload?.loading && upload?.analysisId) ? "Finalizing Analysis..." : "Analyzing Video..."}
+                </Text>
+
+                <Progress.Circle
+                    size={150}
+                    progress={progress}
+                    showsText={true}
+                    formatText={() => `${Math.round(progress * 100)}%`}
+                    color="#ffffff"
+                    unfilledColor="#333333"
+                    thickness={8}
+                    textStyle={{ fontWeight: 'bold' }}
+                />
+
+                <View className="mt-12 flex-row space-x-4">
+                    <Text className="text-white bg-gray-600 px-6 py-3 rounded-lg overflow-hidden" onPress={onBack}>
+                        Cancel
                     </Text>
                 </View>
-            )}
-
-            {upload?.error && (
-                <Text className="text-red-500 mt-4 text-center px-4 font-semibold">
-                    Error: {upload.error}
-                </Text>
-            )}
-
-            <View className="mt-12 flex-row space-x-4">
-                <Text className="text-white bg-gray-600 px-6 py-3 rounded-lg overflow-hidden" onPress={onBack}>
-                    Cancel
-                </Text>
             </View>
-        </View>
-    );
+        );
+    }
+
+    if (success) {
+        return (
+            <AnalysisSuccess onNext={onBack} />
+        );
+    }
+
+    return <LoadingState title="Verifying..."/>;
 }

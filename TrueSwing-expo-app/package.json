@@ -27,6 +27,7 @@
     "expo-video-thumbnails": "^55.0.14",
     "expo-web-browser": "~55.0.14",
     "lucide-react-native": "^1.8.0",
+    "moti": "^0.30.0",
     "nativewind": "latest",
     "react": "19.2.0",
     "react-dom": "19.2.0",

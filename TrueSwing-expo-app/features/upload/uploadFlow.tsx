@@ -29,8 +29,8 @@ export default function UploadFlow() {
         promptActions.setStartTime(0);
         promptActions.setEndTime(endTime);
 
-        if (videoUri && promptActions.prompt) {
-            upload.startUpload(videoUri, promptActions.prompt, 0, endTime);
+        if (trimmedVideoUri && promptActions.prompt) {
+            upload.startUpload(trimmedVideoUri, promptActions.prompt, 0, endTime);
             next();
         }
     };

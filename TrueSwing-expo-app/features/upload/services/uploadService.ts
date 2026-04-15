@@ -60,5 +60,5 @@ export async function get_analysis_status(analysisId: string): Promise<AnalysisS
     if (!analysisId) {
         throw new Error('Invalid analysis ID for status check');
     }
-    return await apiClient.get<AnalysisStatusResponse>(`/api/v1/analyses/${analysisId}/status/`) as AnalysisStatusResponse;
+    return await apiClient.get<AnalysisStatusResponse>(`/api/v1/analyses/${analysisId}/`) as AnalysisStatusResponse;
 }
