@@ -8,8 +8,9 @@ import type { Prompt, CreateAnalysisResponse, AnalysisStatusResponse } from "../
 export type UploadProps = {
     error: string | null;
     loading: boolean;
-    startUpload: (videoUri: string, prompt: Prompt) => Promise<void>;
-    checkAnalysisStatus?: (analysisId: string) => Promise<AnalysisStatusResponse | null>;
+    analysisId: string | null;
+    startUpload: (videoUri: string, prompt: Prompt, startTime?: number, endTime?: number) => Promise<void>;
+    checkAnalysisStatus: (analysisId: string) => Promise<AnalysisStatusResponse | null>;
 }
 
 
@@ -17,15 +18,17 @@ export function useUpload(): UploadProps {
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [analysisStatus, setAnalysisStatus] = useState<AnalysisStatusResponse | null>(null);
+    const [analysisId, setAnalysisId] = useState<string | null>(null);
 
-    const startUpload = async (videoUri: string, prompt: Prompt) => {
+    const startUpload = async (videoUri: string, prompt: Prompt, startTime: number = 0, endTime: number = 0) => {
         setError(null);
         setLoading(true);
 
         try {
-            const createAnalaysisResponse: CreateAnalysisResponse = await create_analysis(prompt);
-            await upload_video(createAnalaysisResponse.uploadUrl, videoUri);
-            await confirm_upload(createAnalaysisResponse.analysisId);
+            const createAnalaysisResponse: CreateAnalysisResponse = await create_analysis(prompt, startTime, endTime);
+            setAnalysisId(createAnalaysisResponse.analysis_id);
+            await upload_video(createAnalaysisResponse.upload_url, videoUri);
+            await confirm_upload(createAnalaysisResponse.analysis_id);
         } catch (err) {
             console.error('Upload process failed:', err);
             setError(err instanceof Error ? err.message : 'An unknown error occurred during upload');
@@ -54,6 +57,8 @@ export function useUpload(): UploadProps {
     return {
         error,
         loading,
-        startUpload
+        analysisId,
+        startUpload,
+        checkAnalysisStatus
     } as UploadProps;
 }

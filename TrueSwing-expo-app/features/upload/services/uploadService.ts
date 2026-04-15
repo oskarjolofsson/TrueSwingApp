@@ -1,12 +1,12 @@
 import type { Prompt, CreateAnalysisResponse, AnalysisStatusResponse } from '../types';
 import apiClient from 'lib/apiClient';
 
-export async function create_analysis(prompt: Prompt): Promise<CreateAnalysisResponse> {
+export async function create_analysis(prompt: Prompt, startTime: number = 0, endTime: number = 0): Promise<CreateAnalysisResponse> {
     // create body for the request
     const requestBody = {
-        start_time: null,
-        end_time: null,
-        model: null,
+        start_time: startTime,
+        end_time: endTime,
+        model: "gemini-3-pro-preview",
         prompt_shape: prompt.desired_shot,
         prompt_miss: prompt.miss,
         prompt_extra: prompt.extra
@@ -14,14 +14,11 @@ export async function create_analysis(prompt: Prompt): Promise<CreateAnalysisRes
 
     const result = await apiClient.post<CreateAnalysisResponse>('/api/v1/analyses/', requestBody) as CreateAnalysisResponse;
 
-    if (!result || !result.uploadUrl || !result.analysisId) {
+    if (!result || !result.upload_url || !result.analysis_id) {
         throw new Error('Failed to create analysis and get upload URL');
     }
 
-    return {
-        uploadUrl: result.uploadUrl,
-        analysisId: result.analysisId
-    } as CreateAnalysisResponse;
+    return result;
 }
 
 
@@ -55,7 +52,7 @@ export async function confirm_upload(analysisId: string): Promise<void> {
     if (!analysisId) {
         throw new Error('Invalid analysis ID for confirmation');
     }
-    const result = await apiClient.patch('/api/v1/analyses/${analysisId}/');
+    const result = await apiClient.patch(`/api/v1/analyses/${analysisId}/`);
 }
 
 

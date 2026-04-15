@@ -47,7 +47,9 @@ export async function fetchWithAuth<T>(
         
         try {
             const errorData = await response.json();
-            detail = errorData.detail;
+            detail = typeof errorData.detail === 'string' 
+                ? errorData.detail 
+                : JSON.stringify(errorData.detail);
         } catch {
             // Response is not JSON, use statusText
             detail = response.statusText;
