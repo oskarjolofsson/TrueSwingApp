@@ -16,15 +16,18 @@ import TextBox from "features/shared/components/TextBox";
 import Reel from "features/analysis/components/Reel";
 import type { Analysis } from "features/analysis/types";
 import InactiveAnalysisReel from "features/analysis/components/InActiveReel";
+import AnalysisService from "features/analysis/services/analysisService";
 
 const { width, height } = Dimensions.get("window");
 
 function ReelContainer({
     analysis,
     isActive,
+    refetch,
 }: {
     analysis: Analysis;
     isActive: boolean;
+    refetch: () => Promise<void>;
 }) {
     const { videoURL, issues, activeIssue, setActiveIssue, loading } = useAnalysisData(analysis);
 
@@ -44,6 +47,10 @@ function ReelContainer({
             active_issue={activeIssue}
             setActiveIssue={setActiveIssue}
             shouldPlay={isActive}
+            onDelete={async () => {
+                await AnalysisService.deleteAnalysis(analysis.analysis_id);
+                refetch();
+            }}
         />
     );
 }
@@ -152,6 +159,7 @@ export default function AnalysisResultScreen() {
                         <ReelContainer
                             analysis={item}
                             isActive={isActive}
+                            refetch={refetch}
                         />
                     );
                 }}
