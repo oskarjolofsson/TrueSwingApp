@@ -336,30 +336,24 @@ function ReelHeader({
 
     return (
         <>
-            <View className="absolute top-0 left-0 right-0 z-50 border-b border-white/10 bg-slate-950/65 px-4 pt-16 pb-3">
-                <View className="flex-row items-center justify-between">
+            <View className="absolute top-0 left-0 right-0 z-50 border-b border-white/10 bg-slate-950/85 px-6 pt-20 pb-6">
+                <View className="flex-row items-center justify-between gap-4">
                     {/* Left */}
                     <Pressable
                         onPress={() => setShowDeleteConfirm(true)}
-                        className="flex-row items-center gap-2 rounded-lg bg-white/10 px-3 py-2 active:bg-white/20"
+                        className="flex-row items-center gap-3 rounded-lg bg-white/10 px-5 py-3 active:bg-white/20"
                     >
-                        <Trash2 size={18} color="red" />
-                        <Text className="text-sm font-medium text-white">Delete</Text>
+                        <Trash2 size={22} color="red" />
+                        <Text className="text-base font-semibold text-white">Delete</Text>
                     </Pressable>
 
                     {/* Center */}
-                    <View className="items-center">
-                        <Text className="text-sm font-bold text-white p-2">{dateLabel}</Text>
+                    <View className="flex-1 items-center">
+                        <Text className="text-lg font-bold text-white">{dateLabel}</Text>
                     </View>
 
-                    {/* Right */}
-                    {/* <Pressable
-              onPress={onShare}
-              className="flex-row items-center gap-2 rounded-lg bg-white/10 px-3 py-2 active:bg-white/20"
-            >
-              <Share2 size={18} color="white" />
-              <Text className="text-sm font-medium text-white">Share</Text>
-            </Pressable> */}
+                    {/* Right - Empty for balance */}
+                    <View style={{ width: 80 }} />
                 </View>
             </View>
 
