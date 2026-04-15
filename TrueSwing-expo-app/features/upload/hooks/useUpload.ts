@@ -43,12 +43,12 @@ export function useUpload(): UploadProps {
         try {
             const status: AnalysisStatusResponse = await get_analysis_status(analysisId);
             setAnalysisStatus(status);
+            return status;
         } catch (err) {
             console.error('Error checking analysis status:', err);
             setError(err instanceof Error ? err.message : 'An unknown error occurred while checking analysis status');
+            return null;
         }
-
-        return analysisStatus;
     };
 
     return {

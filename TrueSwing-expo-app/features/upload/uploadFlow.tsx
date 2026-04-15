@@ -7,6 +7,8 @@ import UploadProgressScreen from "./screens/UploadProgressScreen";
 import { useVideo } from "./hooks/useVideo";
 import { usePrompt } from "./hooks/usePrompt";
 import { useUpload } from "./hooks/useUpload";
+import { useFocusEffect } from '@react-navigation/native';
+import React  from "react";
 
 
 interface ScreenMap {
@@ -23,6 +25,17 @@ export default function UploadFlow() {
     const { videoUri, setVideoUri, removeVideo, trimmedVideoUri, setTrimmedVideoUri, trimVideo, endTime } = useVideo();
     const promptActions = usePrompt();
     const upload = useUpload();
+
+    // Reset the flow
+    useFocusEffect(
+        React.useCallback(() => {
+            console.log("Resetting upload flow state");
+            removeVideo();
+            promptActions.setEndTime(0);
+            goTo('SelectVideo');
+        }, [])
+    )
+
 
     const handleStartUpload = () => {
         // set start and end-time to correct values before starting upload

@@ -6,6 +6,7 @@ import * as Progress from 'react-native-progress';
 import LoadingState from "features/shared/components/LoadingState";
 import ErrorState from "features/shared/components/ErrorState";
 import AnalysisSuccess from "../components/greenCheck";
+import { useRouter } from "expo-router";
 
 type ProgressScreenProps = ScreenProps & {
     upload: UploadProps;
@@ -14,6 +15,7 @@ type ProgressScreenProps = ScreenProps & {
 export default function ProgressScreen({ onBack, onNext, upload }: ProgressScreenProps) {
     const [progress, setProgress] = useState(0);
     const [status, setStatus] = useState<AnalysisStatusResponse | null>(null);
+    const router = useRouter(); 
 
     const success = status && !status.error_message;
 
@@ -56,7 +58,7 @@ export default function ProgressScreen({ onBack, onNext, upload }: ProgressScree
         }
 
         return () => { isActive = false; };
-    }, [upload.loading]);
+    }, [upload.loading, progress]);
 
     if (!upload) {
         return <ErrorState message="Upload data is missing. Please restart the upload process." onRetry={onBack} />;
@@ -96,9 +98,9 @@ export default function ProgressScreen({ onBack, onNext, upload }: ProgressScree
 
     if (success) {
         return (
-            <AnalysisSuccess onNext={onBack} />
+            <AnalysisSuccess onNext={() => router.push('/(tabs)')} />
         );
     }
-
+ 
     return <LoadingState title="Verifying..."/>;
 }

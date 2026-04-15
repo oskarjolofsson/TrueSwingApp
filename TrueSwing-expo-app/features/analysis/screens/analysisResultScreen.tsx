@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useFocusEffect } from '@react-navigation/native';
 import {
     View,
     Text,
@@ -52,10 +53,18 @@ export default function AnalysisResultScreen() {
         allAnalyses,
         loading,
         error,
+        refetch,
     } = useAnalyses();
 
     const reelRef = useRef<FlatList>(null);
     const [activeAnalysisIndex, setActiveAnalysisIndex] = useState(0);
+
+    // Refetch analyses when screen comes into focus
+    useFocusEffect(
+        useCallback(() => {
+            refetch();
+        }, [])
+    );
 
     const analyses = allAnalyses;
 
