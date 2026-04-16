@@ -1,11 +1,11 @@
 {
   "expo": {
     "scheme": "trueswing",
-    "name": "my-expo-app",
-    "slug": "my-expo-app",
+    "name": "True Swing",
+    "slug": "trueswing",
     "version": "1.0.0",
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/true_swing_logo2.png"
     },
     "experiments": {
       "tsconfigPaths": true
@@ -32,12 +32,12 @@
       ]
     ],
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/true_swing_logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/true_swing_logo3.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#121827"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -52,8 +52,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/true_swing_logo3.png",
+        "backgroundColor": "#121827"
       },
       "permissions": [
         "android.permission.CAMERA",
