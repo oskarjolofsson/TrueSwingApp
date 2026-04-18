@@ -20,7 +20,7 @@ interface UseAnalysisDataReturn {
 /**
  * Custom hook to fetch and manage analysis details (issues, video string, etc.)
  */
-export default function useAnalysisData(initialAnalysis: Analysis): UseAnalysisDataReturn {
+export default function useAnalysisData(initialAnalysis: Analysis | null): UseAnalysisDataReturn {
     const [analysis, setAnalysis] = useState<AnalysisWithIssues | null>(null);
     const [loading, setLoading] = useState(false);
     const [activeIssue, setActiveIssue] = useState<number>(0);
@@ -33,6 +33,12 @@ export default function useAnalysisData(initialAnalysis: Analysis): UseAnalysisD
         const fetchDetails = async () => {
             setLoading(true);
             setAnalysisError(null);
+
+            if (!initialAnalysis) {
+                setAnalysis(null);
+                setLoading(false);
+                return;
+            }
             
             try {
                 // Fetch issues for this analysis
@@ -72,8 +78,11 @@ export default function useAnalysisData(initialAnalysis: Analysis): UseAnalysisD
 
         if (initialAnalysis?.analysis_id) {
             fetchDetails();
+        } else {
+            setAnalysis(null);
+            setLoading(false);
         }
-    }, [initialAnalysis.analysis_id]);
+    }, [initialAnalysis?.analysis_id]);
 
     const sortedIssues = analysis?.issues
         ? [...analysis.issues].sort((a, b) => (b.confidence || 0) - (a.confidence || 0))
