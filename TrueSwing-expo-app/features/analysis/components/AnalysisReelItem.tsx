@@ -13,6 +13,7 @@ type AnalysisReelItemProps = {
     isActive: boolean;
     activeIssueIndex: number;
     onActiveIssueChange: (index: number) => void;
+    startPractice: () => void;
 };
 
 export default function AnalysisReelItem({
@@ -20,6 +21,7 @@ export default function AnalysisReelItem({
     isActive,
     activeIssueIndex,
     onActiveIssueChange,
+    startPractice,
 }: AnalysisReelItemProps) {
     const { videoURL, issues } = useAnalysisData(analysis);
 
@@ -45,6 +47,7 @@ export default function AnalysisReelItem({
                 issues={issues}
                 activeIssueIndex={activeIssueIndex}
                 onActiveIssueChange={onActiveIssueChange}
+                startPractice={startPractice}
             />
         </View>
     );

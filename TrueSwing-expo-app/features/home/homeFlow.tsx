@@ -21,14 +21,14 @@ export default function HomeFlow() {
             console.log("Resetting upload flow state");
             goTo('Analysis');
             analysisController.refetch();
-        }, [goTo, analysisController.refetch])
+        }, [analysisController.refetch, goTo])
     )
     
     return (
         <HomeAnalysisProvider value={analysisController}>
             <View style={{ flex: 1 }}>
-                {currentScreen === 'Analysis' && <AnalysisResultScreen />}
-                {currentScreen === 'Practice' && <PracticeFlow />}
+                {currentScreen === 'Analysis' && <AnalysisResultScreen onBack={() => {}} onNext={() => goTo('Practice')} />}
+                {currentScreen === 'Practice' && <PracticeFlow onBack={() => goTo('Analysis')} onNext={() => {}} />}
             </View>
         </HomeAnalysisProvider>
     )

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import analysisService from '../services/analysisService';
 import issueService from 'features/issues/services/issueService';
 import type { Analysis, AnalysisWithIssues } from '../types';
@@ -23,7 +23,7 @@ export default function useAnalyses(): UseAnalysesReturn {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    const refetch = async () => {
+    const refetch = useCallback(async () => {
         try {
             setLoading(true);
             setError(null);
@@ -46,13 +46,13 @@ export default function useAnalyses(): UseAnalysesReturn {
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
 
     useEffect(() => {
         refetch();
-    }, []);
+    }, [refetch]);
 
-    const deleteActiveAnalysis = async (analysis_id: string): Promise<void> => {
+    const deleteActiveAnalysis = useCallback(async (analysis_id: string): Promise<void> => {
         try {
             await analysisService.deleteAnalysis(analysis_id);
             // Refresh the list of analyses after deletion
@@ -62,13 +62,13 @@ export default function useAnalyses(): UseAnalysesReturn {
             console.error('Error deleting analysis:', err);
             setError(err instanceof Error ? err.message : 'Failed to delete analysis');
         }
-    };
+    }, []);
 
     return {
         allAnalyses,
         loading,
         error,
         deleteActiveAnalysis,
-        refetch
+        refetch,
     };
 }

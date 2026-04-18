@@ -13,10 +13,11 @@ import AnalysisHeaderOverlay from "features/analysis/components/AnalysisHeaderOv
 import DeleteConfirmation from "features/analysis/components/DeleteConfirmation";
 import AnalysisReelItem from "features/analysis/components/AnalysisReelItem";
 import { useHomeAnalysis } from "features/home/context/HomeAnalysisContext";
+import type { ScreenProps } from "features/shared/types";
 
 const { height } = Dimensions.get("window");
 
-export default function AnalysisResultScreen() {
+export default function AnalysisResultScreen({ onNext }: ScreenProps) {
     const {
         allAnalyses,
         loading,
@@ -136,6 +137,7 @@ export default function AnalysisResultScreen() {
                             onActiveIssueChange={(nextIssueIndex) =>
                                 handleActiveIssueChange(item.analysis_id, nextIssueIndex)
                             }
+                            startPractice={() => onNext()}
                         />
                     );
                 }}
