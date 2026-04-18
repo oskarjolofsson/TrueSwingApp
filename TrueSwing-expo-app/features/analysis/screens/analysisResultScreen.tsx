@@ -14,11 +14,12 @@ import DeleteConfirmation from "features/analysis/components/DeleteConfirmation"
 import AnalysisReelItem from "features/analysis/components/AnalysisReelItem";
 import { useHomeAnalysis } from "features/home/context/HomeAnalysisContext";
 import { useRouter } from "expo-router";
+import { Issue } from "features/issues/types";
 
 const { height } = Dimensions.get("window");
 
 type AnalysisResultScreenProps = {
-    onNext: (analysisIssueId: string) => void;
+    onNext: (activeIssue: Issue) => void;
 };
 
 export default function AnalysisResultScreen({ onNext }: AnalysisResultScreenProps) {

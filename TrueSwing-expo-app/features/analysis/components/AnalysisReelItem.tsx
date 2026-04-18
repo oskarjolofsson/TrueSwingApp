@@ -5,6 +5,7 @@ import type { Analysis } from "features/analysis/types";
 import useAnalysisData from "features/analysis/hooks/useAnalysisData";
 import Reel from "features/analysis/components/Reel";
 import IssueShowcaseOverlay from "features/analysis/components/IssueShowcaseOverlay";
+import { Issue } from "features/issues/types";
 
 const { height } = Dimensions.get("window");
 
@@ -13,7 +14,7 @@ type AnalysisReelItemProps = {
     isActive: boolean;
     activeIssueIndex: number;
     onActiveIssueChange: (index: number) => void;
-    startPractice: (analysisIssueId: string) => void;
+    startPractice: (activeIssue: Issue) => void;
 };
 
 export default function AnalysisReelItem({

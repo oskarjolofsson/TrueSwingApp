@@ -3,6 +3,7 @@ import AnalysisResultScreen from "features/analysis/screens/analysisResultScreen
 import PracticeFlow from "features/practice/practiceFlow";
 import useHomeAnalysisController from "features/home/hooks/useHomeAnalysisController";
 import { HomeAnalysisProvider } from "features/home/context/HomeAnalysisContext";
+import type { Issue } from "features/issues/types";
 
 import { useFocusEffect } from '@react-navigation/native';
 import { View } from "react-native";
@@ -14,14 +15,14 @@ const allScreens = ['Analysis', 'Practice'];
 export default function HomeFlow() {
     const { currentScreen, next, prev, goTo, } = useScreenSequence({ screens: allScreens });
     const analysisController = useHomeAnalysisController();
-    const [selectedAnalysisIssueId, setSelectedAnalysisIssueId] = React.useState<string | null>(null);
+    const [selectedIssue, setSelectedIssue] = React.useState<Issue | null>(null);
 
     // Reset the flow in case use navigates away from this tab and comes back
     useFocusEffect(
         React.useCallback(() => {
             console.log("Resetting upload flow state");
             goTo('Analysis');
-            setSelectedAnalysisIssueId(null);
+            setSelectedIssue(null);
             analysisController.refetch();
         }, [analysisController.refetch, goTo])
     )
@@ -31,8 +32,8 @@ export default function HomeFlow() {
             <View style={{ flex: 1 }}>
                 {currentScreen === 'Analysis' && (
                     <AnalysisResultScreen
-                        onNext={(analysisIssueId) => {
-                            setSelectedAnalysisIssueId(analysisIssueId);
+                        onNext={(issue) => {
+                            setSelectedIssue(issue);
                             goTo('Practice');
                         }}
                     />
@@ -40,7 +41,7 @@ export default function HomeFlow() {
                 {currentScreen === 'Practice' && (
                     <PracticeFlow
                         onBack={() => goTo('Analysis')}
-                        selectedAnalysisIssueId={selectedAnalysisIssueId}
+                        selectedIssue={selectedIssue as Issue}
                     />
                 )}
             </View>
