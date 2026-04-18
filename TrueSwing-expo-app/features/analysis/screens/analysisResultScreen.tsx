@@ -5,18 +5,16 @@ import {
     FlatList,
     Dimensions,
 } from "react-native";
-import ReelContainer from "features/analysis/components/ReelContainer";
 
 import useAnalyses from "features/analysis/hooks/useAnalyses";
-import useAnalysisData from "features/analysis/hooks/useAnalysisData";
 import LoadingState from "features/shared/components/LoadingState";
 import ErrorState from "features/shared/components/ErrorState";
 import TextBox from "features/shared/components/TextBox";
 import InactiveAnalysisReel from "features/analysis/components/InActiveReel";
 import AnalysisHeaderOverlay from "features/analysis/components/AnalysisHeaderOverlay";
-import IssueShowcaseOverlay from "features/analysis/components/IssueShowcaseOverlay";
 import DeleteConfirmation from "features/analysis/components/DeleteConfirmation";
 import AnalysisService from "features/analysis/services/analysisService";
+import AnalysisReelItem from "features/analysis/components/AnalysisReelItem";
 
 const { height } = Dimensions.get("window");
 
@@ -30,8 +28,6 @@ export default function AnalysisResultScreen() {
 
     const activeAnalysis = allAnalyses[activeAnalysisIndex] ?? null;
     const activeAnalysisId = activeAnalysis?.analysis_id;
-    const activeIssueIndex = activeAnalysisId ? (issueIndexByAnalysisId[activeAnalysisId] ?? 0) : 0;
-    const { issues: activeIssues } = useAnalysisData(activeAnalysis);
 
     // Refetch analyses when screen comes into focus
     useFocusEffect(
@@ -50,25 +46,6 @@ export default function AnalysisResultScreen() {
             setActiveAnalysisIndex(allAnalyses.length - 1);
         }
     }, [allAnalyses.length, activeAnalysisIndex]);
-
-    useEffect(() => {
-        if (!activeAnalysisId) return;
-
-        if (!activeIssues.length && activeIssueIndex !== 0) {
-            setIssueIndexByAnalysisId((previous) => ({
-                ...previous,
-                [activeAnalysisId]: 0,
-            }));
-            return;
-        }
-
-        if (activeIssues.length && activeIssueIndex > activeIssues.length - 1) {
-            setIssueIndexByAnalysisId((previous) => ({
-                ...previous,
-                [activeAnalysisId]: activeIssues.length - 1,
-            }));
-        }
-    }, [activeAnalysisId, activeIssueIndex, activeIssues.length]);
 
     const syncActiveAnalysis = useCallback(
         (index: number) => {
@@ -100,15 +77,13 @@ export default function AnalysisResultScreen() {
     }).current;
 
     const handleActiveIssueChange = useCallback(
-        (index: number) => {
-            if (!activeAnalysisId) return;
-
+        (analysisId: string, index: number) => {
             setIssueIndexByAnalysisId((previous) => ({
                 ...previous,
-                [activeAnalysisId]: index,
+                [analysisId]: index,
             }));
         },
-        [activeAnalysisId]
+        []
     );
 
     const handleDeleteActiveAnalysis = useCallback(async () => {
@@ -183,9 +158,13 @@ export default function AnalysisResultScreen() {
                     }
 
                     return (
-                        <ReelContainer
+                        <AnalysisReelItem
                             analysis={item}
                             isActive={isActive}
+                            activeIssueIndex={issueIndexByAnalysisId[item.analysis_id] ?? 0}
+                            onActiveIssueChange={(nextIssueIndex) =>
+                                handleActiveIssueChange(item.analysis_id, nextIssueIndex)
+                            }
                         />
                     );
                 }}
@@ -198,12 +177,6 @@ export default function AnalysisResultScreen() {
                     onDeletePress={() => setShowDeleteConfirm(true)}
                 />
             ) : null}
-
-            <IssueShowcaseOverlay
-                issues={activeIssues}
-                activeIssueIndex={activeIssueIndex}
-                onActiveIssueChange={handleActiveIssueChange}
-            />
 
             <DeleteConfirmation
                 visible={showDeleteConfirm}

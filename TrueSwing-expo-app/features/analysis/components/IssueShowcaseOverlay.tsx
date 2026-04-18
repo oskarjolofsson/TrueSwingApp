@@ -51,7 +51,7 @@ export default function IssueShowcaseOverlay({
 
     return (
         <SafeAreaView
-            className="absolute inset-x-0 bottom-0 z-40"
+            className="absolute inset-x-0 bottom-10 z-40"
             style={{ paddingBottom: 10 }}
             pointerEvents="box-none"
         >
