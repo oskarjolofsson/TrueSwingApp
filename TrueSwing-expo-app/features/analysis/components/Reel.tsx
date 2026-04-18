@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { Text, View, StatusBar, Dimensions, Pressable } from "react-native";
+import { useState, useEffect } from "react";
+import { Text, View, StatusBar, Dimensions, Pressable, Image } from "react-native";
 import { useVideoPlayer, VideoView, VideoSource } from "expo-video";
 import { LinearGradient } from "expo-linear-gradient";
 import TextBox from "features/shared/components/TextBox";
@@ -9,11 +9,13 @@ const { width, height } = Dimensions.get("window");
 
 type ReelProps = {
     video_url: string | null
+    thumbnail_url?: string | null
     shouldPlay?: boolean
 }
 
 export default function Reel({
     video_url,
+    thumbnail_url,
     shouldPlay = true,
 }: ReelProps) {
 
@@ -66,6 +68,29 @@ export default function Reel({
             <StatusBar barStyle="light-content" />
 
             <View className="absolute inset-0">
+                {thumbnail_url ? (
+                    <>
+                        <Image
+                            source={{ uri: thumbnail_url }}
+                            style={{
+                                position: "absolute",
+                                width: "100%",
+                                height: "100%",
+                            }}
+                            blurRadius={28}
+                            resizeMode="cover"
+                        />
+                        <View
+                            style={{
+                                position: "absolute",
+                                width: "100%",
+                                height: "100%",
+                                backgroundColor: "rgba(0, 0, 0, 0.15)",
+                            }}
+                        />
+                    </>
+                ) : null}
+
                 {video_url ? (
                     <VideoView
                         player={player}

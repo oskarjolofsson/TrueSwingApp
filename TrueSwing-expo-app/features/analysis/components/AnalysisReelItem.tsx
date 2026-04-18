@@ -36,7 +36,11 @@ export default function AnalysisReelItem({
 
     return (
         <View style={{ height }} className="bg-black">
-            <Reel video_url={videoURL ?? null} shouldPlay={isActive} />
+            <Reel
+                video_url={videoURL ?? null}
+                thumbnail_url={analysis.thumbnail_url}
+                shouldPlay={isActive}
+            />
             <IssueShowcaseOverlay
                 issues={issues}
                 activeIssueIndex={activeIssueIndex}
