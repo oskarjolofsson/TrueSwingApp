@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { DrillService } from 'features/drills/services/drillService';
+import { DrillService } from 'features/practice/services/drillService';
 import { IssueService }  from 'features/issues/services/issueService';
 import { usePracticeActions } from './usePracticeActions';
 import type { Drill, DrillRun, PracticeSession } from '../types';

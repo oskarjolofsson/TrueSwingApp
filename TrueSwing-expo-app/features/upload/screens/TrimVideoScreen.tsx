@@ -6,7 +6,7 @@ import { Pause, RotateCcw } from "lucide-react-native";
 import VideoTrimBar from "../components/videoTrimBar";
 import { useVideoPlayer, VideoView, VideoSource } from "expo-video";
 
-import { ScreenProps } from "../types";
+import { ScreenProps } from "features/shared/types";
 
 const { width, height } = Dimensions.get("window");
 

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { usePracticeActions } from "./usePracticeActions";
-import { DrillRun, PracticeSession } from "features/drills/types";
+import { DrillRun, PracticeSession } from "features/practice/types";
 
 interface usePracticeResultsStateReturn {
     PracticeSession: PracticeSession | null;

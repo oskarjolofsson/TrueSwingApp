@@ -8,7 +8,7 @@ import {
     Platform,
 } from "react-native";
 import { useEffect, useState, type ReactNode } from "react";
-import type { ScreenProps } from "../types";
+import type { ScreenProps } from "features/shared/types";
 import type { UsePromptReturn } from "../hooks/usePrompt";
 
 type Props = ScreenProps & {

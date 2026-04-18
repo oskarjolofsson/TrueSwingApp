@@ -1,4 +1,4 @@
-import { useScreenSequence } from "./hooks/useScreenState";
+import { useScreenSequence } from "../shared/hooks/useScreenState";
 import { View, Text, Button, TouchableOpacity } from "react-native";
 import SelectVideoScreen from "./screens/SelectVideoScreen";
 import TrimVideoScreen from "./screens/TrimVideoScreen";

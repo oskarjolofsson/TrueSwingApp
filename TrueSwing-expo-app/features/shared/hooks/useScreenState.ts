@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-// Vi lägger till <T extends string> för att göra den generisk
 export function useScreenSequence<T extends string>({ screens }: { screens: T[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -16,7 +15,7 @@ export function useScreenSequence<T extends string>({ screens }: { screens: T[] 
     }
   };
 
-  const goTo = (name: T) => { // Nu tillåts bara giltiga skärmnamn här
+  const goTo = (name: T) => { 
     const index = screens.indexOf(name);
     if (index !== -1) {
       setCurrentIndex(index);

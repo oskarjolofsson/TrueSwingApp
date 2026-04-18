@@ -1,9 +1,5 @@
 import type { Analysis } from "features/analysis/types";
 
-export interface ScreenProps {
-    onNext: () => void | undefined;
-    onBack: () => void | undefined;
-}
 
 
 export interface Prompt {

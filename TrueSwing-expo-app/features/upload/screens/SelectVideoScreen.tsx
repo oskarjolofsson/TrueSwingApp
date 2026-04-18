@@ -1,4 +1,4 @@
-import { ScreenProps } from "../types";
+import { ScreenProps } from "features/shared/types";
 import { memo, useEffect, useRef, useState } from "react";
 import { ActivityIndicator, Alert, Pressable, StyleSheet, Text, View } from "react-native";
 import {

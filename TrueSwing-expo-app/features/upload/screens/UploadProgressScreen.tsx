@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
-import { ScreenProps, AnalysisStatusResponse } from "../types";
+import { AnalysisStatusResponse } from "../types";
+import { ScreenProps } from "features/shared/types";
 import { UploadProps } from "../hooks/useUpload";
 import * as Progress from 'react-native-progress';
 import LoadingState from "features/shared/components/LoadingState";
