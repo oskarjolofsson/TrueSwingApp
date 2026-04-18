@@ -2,17 +2,15 @@ import { useState, useEffect } from 'react';
 import analysisService from '../services/analysisService';
 import type { Analysis } from '../types';
 
-// 1. Create a cache outside the component to survive unmounts
 const urlCache: Record<string, { url: string; expiresAt: number }> = {};
-
-// 1 hour in milliseconds
-const ONE_HOUR_MS = 60 * 60 * 1000;
+const CACHE_TTL_MS = 30 * 60 * 1000;
 
 export default function useVideoURL(activeAnalysis: Analysis | null): string | null {
     const [videoURL, setVideoURL] = useState<string | null>(null);
+    const analysisId = activeAnalysis?.analysis_id ?? null;
 
     useEffect(() => {
-        let isMounted = true; // To prevent state updates on unmounted components
+        let isMounted = true; 
 
         const fetchVideoURL = async () => {
             if (!activeAnalysis) {
@@ -27,6 +25,7 @@ export default function useVideoURL(activeAnalysis: Analysis | null): string | n
             const cachedItem = urlCache[analysisId];
             if (cachedItem && cachedItem.expiresAt > now) {
                 console.log('Using cached URL for:', analysisId);
+                console.log('Cached expiering at:', cachedItem.expiresAt, 'Current time:', now);
                 setVideoURL(cachedItem.url);
                 return;
             }
@@ -47,7 +46,7 @@ export default function useVideoURL(activeAnalysis: Analysis | null): string | n
                 if (isMounted) {
                     urlCache[analysisId] = {
                         url,
-                        expiresAt: now + ONE_HOUR_MS,
+                        expiresAt: now + CACHE_TTL_MS,
                     };
                     setVideoURL(url);
                 }
@@ -62,7 +61,7 @@ export default function useVideoURL(activeAnalysis: Analysis | null): string | n
         return () => {
             isMounted = false;
         };
-    }, [activeAnalysis]);
+    }, [analysisId]);
 
     return videoURL;
 }

@@ -1,13 +1,7 @@
 import { apiClient } from 'lib/apiClient';
 import type { Analysis, AnalysisIssue, VideoUrlResponse } from '../types';
 
-interface VideoURLCache {
-    [key: string]: string;
-}
-
 class AnalysisService {
-    private videoURLCache: VideoURLCache = {};
-
     /**
      * Fetch all analyses for current user
      */
@@ -24,27 +18,14 @@ class AnalysisService {
     }
 
     /**
-     * Get signed video URL for analysis with caching
+     * Get signed video URL for analysis
      */
     async getAnalysisVideoURL(analysisId: string, videoKey: string): Promise<string | null> {
-        // Check cache first
-        if (this.videoURLCache[analysisId]) {
-            console.log('Using cached video URL for analysis:', analysisId);
-            return this.videoURLCache[analysisId];
-        }
-
         const data = await apiClient.get<VideoUrlResponse>(
             `/api/v1/analyses/${analysisId}/video-url/?video_key=${encodeURIComponent(videoKey)}`
         );
-        
-        const url = data?.video_url || null;
 
-        // Cache the result
-        if (url) {
-            this.videoURLCache[analysisId] = url;
-        }
-
-        return url;
+        return data?.video_url || null;
     }
 
     /**
