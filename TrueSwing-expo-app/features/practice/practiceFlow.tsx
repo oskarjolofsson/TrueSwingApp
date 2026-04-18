@@ -1,14 +1,15 @@
 import { Text, View } from "react-native";
+import { useHomeAnalysis } from "features/home/context/HomeAnalysisContext";
 
-type Props = {
-    analysisIssueId: string;
-}
-
-export default function PracticeFlow({analysisIssueId} : Props) {
+export default function PracticeFlow() {
+    const { activeAnalysis } = useHomeAnalysis();
+    const activeAnalysisLabel = activeAnalysis
+        ? `${activeAnalysis.analysis_id} (${activeAnalysis.status})`
+        : "none selected";
 
     return (
         <View style={{ flex: 1 }}>
-            <Text>Practice flow for issue {analysisIssueId}</Text>
+            <Text>Practice flow for analysis {activeAnalysisLabel}</Text>
          </View>
     )
 }
