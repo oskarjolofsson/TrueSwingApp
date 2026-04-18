@@ -14,12 +14,14 @@ const allScreens = ['Analysis', 'Practice'];
 export default function HomeFlow() {
     const { currentScreen, next, prev, goTo, } = useScreenSequence({ screens: allScreens });
     const analysisController = useHomeAnalysisController();
+    const [selectedAnalysisIssueId, setSelectedAnalysisIssueId] = React.useState<string | null>(null);
 
     // Reset the flow in case use navigates away from this tab and comes back
     useFocusEffect(
         React.useCallback(() => {
             console.log("Resetting upload flow state");
             goTo('Analysis');
+            setSelectedAnalysisIssueId(null);
             analysisController.refetch();
         }, [analysisController.refetch, goTo])
     )
@@ -27,8 +29,20 @@ export default function HomeFlow() {
     return (
         <HomeAnalysisProvider value={analysisController}>
             <View style={{ flex: 1 }}>
-                {currentScreen === 'Analysis' && <AnalysisResultScreen onBack={() => {}} onNext={() => goTo('Practice')} />}
-                {currentScreen === 'Practice' && <PracticeFlow onBack={() => goTo('Analysis')} onNext={() => {}} />}
+                {currentScreen === 'Analysis' && (
+                    <AnalysisResultScreen
+                        onNext={(analysisIssueId) => {
+                            setSelectedAnalysisIssueId(analysisIssueId);
+                            goTo('Practice');
+                        }}
+                    />
+                )}
+                {currentScreen === 'Practice' && (
+                    <PracticeFlow
+                        onBack={() => goTo('Analysis')}
+                        selectedAnalysisIssueId={selectedAnalysisIssueId}
+                    />
+                )}
             </View>
         </HomeAnalysisProvider>
     )

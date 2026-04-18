@@ -13,11 +13,17 @@ import AnalysisHeaderOverlay from "features/analysis/components/AnalysisHeaderOv
 import DeleteConfirmation from "features/analysis/components/DeleteConfirmation";
 import AnalysisReelItem from "features/analysis/components/AnalysisReelItem";
 import { useHomeAnalysis } from "features/home/context/HomeAnalysisContext";
-import type { ScreenProps } from "features/shared/types";
+import { useRouter } from "expo-router";
 
 const { height } = Dimensions.get("window");
 
-export default function AnalysisResultScreen({ onNext }: ScreenProps) {
+type AnalysisResultScreenProps = {
+    onNext: (analysisIssueId: string) => void;
+};
+
+export default function AnalysisResultScreen({ onNext }: AnalysisResultScreenProps) {
+    const router = useRouter();
+
     const {
         allAnalyses,
         loading,
@@ -93,6 +99,7 @@ export default function AnalysisResultScreen({ onNext }: ScreenProps) {
                 header={"You have no analyses made yet"}
                 text={"Upload a video to get your first swing analysis"}
                 ctaText={"Create Analysis"}
+                ctaOnClick={() => router.push("/(tabs)/upload")}
             />
         );
     }
@@ -137,7 +144,7 @@ export default function AnalysisResultScreen({ onNext }: ScreenProps) {
                             onActiveIssueChange={(nextIssueIndex) =>
                                 handleActiveIssueChange(item.analysis_id, nextIssueIndex)
                             }
-                            startPractice={() => onNext()}
+                            startPractice={onNext}
                         />
                     );
                 }}

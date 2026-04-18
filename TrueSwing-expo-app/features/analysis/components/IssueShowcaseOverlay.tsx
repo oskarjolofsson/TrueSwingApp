@@ -14,7 +14,7 @@ type IssueShowcaseOverlayProps = {
     issues: IssueWithConfidence[];
     activeIssueIndex: number;
     onActiveIssueChange: (index: number) => void;
-    startPractice: () => void;
+    startPractice: (analysisIssueId: string) => void;
 };
 
 export default function IssueShowcaseOverlay({
@@ -50,6 +50,8 @@ export default function IssueShowcaseOverlay({
         if (activeIssueIndex >= issues.length - 1) return;
         onActiveIssueChange(activeIssueIndex + 1);
     };
+
+    const activeAnalysisIssueId = issues[activeIssueIndex]?.analysis_issue_id;
 
     return (
         <SafeAreaView
@@ -98,7 +100,11 @@ export default function IssueShowcaseOverlay({
                                     <TouchableOpacity
                                         activeOpacity={0.9}
                                         className="mt-5 self-start rounded-2xl bg-white px-5 py-3 flex-row items-center gap-2"
-                                        onPress={startPractice}
+                                        onPress={() => {
+                                            if (!activeAnalysisIssueId) return;
+                                            startPractice(activeAnalysisIssueId);
+                                        }}
+                                        disabled={!activeAnalysisIssueId}
                                     >
                                         <Dumbbell size={16} color="#000" />
                                         <Text className="font-semibold text-black">

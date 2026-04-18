@@ -13,7 +13,7 @@ type AnalysisReelItemProps = {
     isActive: boolean;
     activeIssueIndex: number;
     onActiveIssueChange: (index: number) => void;
-    startPractice: () => void;
+    startPractice: (analysisIssueId: string) => void;
 };
 
 export default function AnalysisReelItem({

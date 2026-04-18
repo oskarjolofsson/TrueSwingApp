@@ -1,9 +1,12 @@
 import { Pressable, Text, View } from "react-native";
 import { useHomeAnalysis } from "features/home/context/HomeAnalysisContext";
 
-import type { ScreenProps } from "features/shared/types";
+type PracticeFlowProps = {
+    onBack: () => void;
+    selectedAnalysisIssueId: string | null;
+};
 
-export default function PracticeFlow({ onBack }: ScreenProps) {
+export default function PracticeFlow({ onBack, selectedAnalysisIssueId }: PracticeFlowProps) {
     const { activeAnalysis } = useHomeAnalysis();
 
     const activeAnalysisLabel = activeAnalysis
@@ -14,6 +17,10 @@ export default function PracticeFlow({ onBack }: ScreenProps) {
         <View className="flex-1 items-center justify-center bg-slate-950 px-6">
             <Text className="mb-6 text-center text-xl font-semibold text-white">
                 Practice flow for analysis {activeAnalysisLabel}
+            </Text>
+
+            <Text className="mb-6 text-center text-base text-slate-300">
+                Selected AnalysisIssueId: {selectedAnalysisIssueId ?? "none selected"}
             </Text>
 
             <Pressable
