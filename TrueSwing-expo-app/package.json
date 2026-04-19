@@ -33,6 +33,7 @@
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-native": "0.83.4",
+    "react-native-chart-kit": "^6.12.0",
     "react-native-gesture-handler": "~2.30.0",
     "react-native-media-toolkit": "^2.0.3",
     "react-native-nitro-modules": "^0.35.4",

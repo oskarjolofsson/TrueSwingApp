@@ -35,7 +35,7 @@ export default function PracticeFlow({ onBack, selectedIssue, selectedSession }:
                 />
             )}
             {drillScreenSequenceProps.currentScreen === 'Result' && (
-                <DrillResultScreen />
+                <DrillResultScreen session={selectedSession} onNext={() => {}} onBack={onBack} />
             )}
         </View>
     );
