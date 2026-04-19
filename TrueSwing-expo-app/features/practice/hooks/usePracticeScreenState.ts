@@ -1,9 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { DrillService } from 'features/practice/services/drillService';
-import { IssueService }  from 'features/issues/services/issueService';
 import { usePracticeActions } from './usePracticeActions';
-import type { Drill, DrillRun, PracticeSession } from '../types';
 import type { Issue } from 'features/issues/types';
+import type { Drill, DrillRun, PracticeSession } from '../types';
 
 const REPS_PER_DRILL = 12;
 
@@ -22,24 +21,27 @@ interface UsePracticeDrillsReturn {
     error: string | null;
 }
 
-export function usePracticeScreenState(issueId: string): UsePracticeDrillsReturn {
+export function usePracticeScreenState(
+        issue: Issue,
+        session: PracticeSession | null,
+        onSessionCompleted: () => void
+    ): UsePracticeDrillsReturn
+{
+
     const { actions, state } = usePracticeActions();
-    const { startSession, startDrill, endDrill, endSession } = actions;
+    const { startDrill, endDrill, endSession } = actions;
 
     const [allDrills, setDrills] = useState<Drill[]>([]);
-    const [issue, setIssue] = useState<Issue | null>(null);
     const [screenLoading, setScreenLoading] = useState<boolean>(true);
     const [screenError, setScreenError] = useState<string | null>(null);
 
     const [currentDrillIndex, setCurrentDrillIndex] = useState<number>(0);
     const [currentDrillRun, setCurrentDrillRun] = useState<DrillRun | null>(null);
-    const [currentPracticeSession, setCurrentPracticeSession] = useState<PracticeSession | null>(null);
     const [flowError, setFlowError] = useState<string | null>(null);
     const hasInitializedRef = useRef(false);
     const lastCompletedRunIdRef = useRef<string | null>(null);
 
     const drillService = new DrillService();
-    const issueService = new IssueService();
 
     const activeDrill = currentDrillIndex < allDrills.length ? allDrills[currentDrillIndex] : null;
     const succeeded = currentDrillRun?.successful_reps ?? 0;
@@ -48,9 +50,8 @@ export function usePracticeScreenState(issueId: string): UsePracticeDrillsReturn
     // Fetch issue and all drills for the issue when the component mounts or when the issueId changes
     useEffect(() => {
         const fetchIssueAndDrills = async () => {
-            if (!issueId) {
+            if (!issue) {
                 setDrills([]);
-                setIssue(null);
                 setScreenLoading(false);
                 return;
             }
@@ -58,15 +59,12 @@ export function usePracticeScreenState(issueId: string): UsePracticeDrillsReturn
             try {
                 setScreenLoading(true);
                 setScreenError(null);
-                const fetchedDrills = await drillService.getDrillsByIssue(issueId);
-                const fetchedIssue: Issue = await issueService.getIssueById(issueId);
+                const fetchedDrills = await drillService.getDrillsByIssue(issue.id);
                 setDrills(fetchedDrills);
-                setIssue(fetchedIssue);
             } catch (err) {
                 console.error('Error fetching drills or issue:', err);
                 setScreenError(err instanceof Error ? err.message : 'Internal error occurred while loading drills');
                 setDrills([]);
-                setIssue(null);
             } finally {
                 setScreenLoading(false);
             }
@@ -74,17 +72,16 @@ export function usePracticeScreenState(issueId: string): UsePracticeDrillsReturn
 
         fetchIssueAndDrills();
 
-    }, [issueId]);
+    }, [issue]);
 
     // Reset practice state when issue changes
     useEffect(() => {
         hasInitializedRef.current = false;
         setCurrentDrillIndex(0);
         setCurrentDrillRun(null);
-        setCurrentPracticeSession(null);
         setFlowError(null);
         lastCompletedRunIdRef.current = null;
-    }, [issue?.id]);
+    }, [issue, session]);
 
     // Initialize practice session and start first drill when drills are loaded and issue is valid
     useEffect(() => {
@@ -92,28 +89,23 @@ export function usePracticeScreenState(issueId: string): UsePracticeDrillsReturn
 
         const initializePractice = async () => {
             if (!issue) {
-
                 return;
             }
 
-            if (!issue.analysis_issue_id) {
+            if (!session) {
                 hasInitializedRef.current = true;
-                setFlowError('Issue is missing analysis reference. Please refresh or choose another issue.');
+                setFlowError('Practice session is missing. Please go back and start practice again.');
                 return;
             }
 
-            if (allDrills.length === 0 || currentPracticeSession || hasInitializedRef.current) {
-                console.warn('Skipping practice initialization due to missing drills, existing session, or already initialized state. allDrills.length:', allDrills.length, 'currentPracticeSession:', currentPracticeSession, 'hasInitializedRef.current:', hasInitializedRef.current);
+            if (allDrills.length === 0 || hasInitializedRef.current) {
+                console.warn('Skipping practice initialization due to missing drills or already initialized state. allDrills.length:', allDrills.length, 'hasInitializedRef.current:', hasInitializedRef.current);
                 return;
             }
 
             try {
                 hasInitializedRef.current = true;
                 setFlowError(null);
-                const session = await startSession(issue.analysis_issue_id);
-                if (!isMounted) return;
-                setCurrentPracticeSession(session);
-
                 const firstDrillRun = await startDrill(session.id, allDrills[0].id);
                 if (!isMounted) return;
 
@@ -130,31 +122,35 @@ export function usePracticeScreenState(issueId: string): UsePracticeDrillsReturn
         return () => {
             isMounted = false;
         };
-    }, [issue?.id, allDrills.length, startDrill, startSession]);
+    }, [issue, session, allDrills.length, startDrill]);
 
     const moveToNextDrill = useCallback(async (completedDrillRun: DrillRun) => {
         console.log('Attempting to move to next drill. completedDrillRun:', completedDrillRun, 'currentDrillIndex:', currentDrillIndex);  // Debug log to trace drill completion
-        if (!currentPracticeSession) return;    // Guard against missing practice session
+        if (!session) return;    // Guard against missing practice session
         const nextIndex = currentDrillIndex + 1;                    // Calculate next drill index
         await endDrill(completedDrillRun);                       // End current drill run before moving to the next one
+        console.log('Ended drill run with ID:', completedDrillRun.id);  // Debug log to confirm drill run ended
 
         if (nextIndex >= allDrills.length) {
             // No more drills, end session and navigate to results
-            await endSession(currentPracticeSession.id);
-            // navigate(`/dashboard/drills/results?sessionId=${currentPracticeSession.id}`);
+            console.log('All drills completed. Ending practice session with ID:', session.id);  // Debug log to confirm all drills are done
+            await endSession(session.id);
+            onSessionCompleted();
             return;
         }
 
         // Start next drill
-        const nextDrillRun = await startDrill(currentPracticeSession.id, allDrills[nextIndex].id);
+
+        const nextDrillRun = await startDrill(session.id, allDrills[nextIndex].id);
+        console.log('started next drill run with success:', nextDrillRun.successful_reps, 'and failure:', nextDrillRun.failed_reps);  // Debug log to confirm next drill started
         setCurrentDrillRun(nextDrillRun);
         setCurrentDrillIndex(nextIndex);
-    }, [allDrills, currentDrillIndex, currentPracticeSession, endDrill, endSession, startDrill]);
+    }, [allDrills, currentDrillIndex, endDrill, endSession, session, startDrill, onSessionCompleted]);
 
 
     const handleRep = useCallback((repType: 'successful_reps' | 'failed_reps') => {
-        if (!currentPracticeSession || !currentDrillRun) {
-            console.warn('Attempted to record a rep without an active practice session or drill run. currentPracticeSession:', currentPracticeSession, 'currentDrillRun:', currentDrillRun);
+        if (!session || !currentDrillRun) {
+            console.warn('Attempted to record a rep without an active practice session or drill run');
             return;
         }
 
@@ -175,10 +171,10 @@ export function usePracticeScreenState(issueId: string): UsePracticeDrillsReturn
 
             return updatedDrillRun;
         });
-    }, [currentDrillRun, currentPracticeSession]);
+    }, [currentDrillRun, session]);
 
     useEffect(() => {
-        if (!currentDrillRun || !currentPracticeSession) {
+        if (!currentDrillRun || !session) {
             return;
         }
 
@@ -193,7 +189,7 @@ export function usePracticeScreenState(issueId: string): UsePracticeDrillsReturn
 
         lastCompletedRunIdRef.current = currentDrillRun.id;
         void moveToNextDrill(currentDrillRun);
-    }, [currentDrillRun, currentPracticeSession, moveToNextDrill]);
+    }, [currentDrillRun, session, moveToNextDrill]);
 
     const handleSuccess = useCallback(() => {
         void handleRep('successful_reps');
@@ -204,7 +200,7 @@ export function usePracticeScreenState(issueId: string): UsePracticeDrillsReturn
     }, [handleRep]);
 
     const remainingDrillsCount = Math.max(0, allDrills.length - currentDrillIndex - 1);
-    const practiceReady = Boolean(currentPracticeSession && currentDrillRun);
+    const practiceReady = Boolean(session && currentDrillRun);
     const isInitializingPractice = !screenLoading && allDrills.length > 0 && !flowError && !practiceReady;
 
     return {
