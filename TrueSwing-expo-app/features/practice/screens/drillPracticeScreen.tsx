@@ -1,12 +1,14 @@
 
 import type { Issue } from "features/issues/types";
 import { usePracticeScreenState } from "features/practice/hooks/usePracticeScreenState";
+import { useEffect, useRef, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import LoadingState from "features/shared/components/LoadingState";
 import ErrorState from "features/shared/components/ErrorState";
 import type { ScreenProps } from "features/shared/types";
 import type { PracticeSession } from "../types";
 import { ProgressBar } from "../components/ProgressBar";
+import DrillInstructionsOverlay from "../components/DrillInstructionsOverlay";
 import { CheckCircle2, XCircle, ClipboardList } from "lucide-react-native";
 import { MotiText } from "moti";
 
@@ -18,14 +20,29 @@ type Props = ScreenProps & {
 // OnNext in this case is to go to the result screen
 export default function DrillPracticeScreen({ issue, session, onNext }: Props) {
   const props = usePracticeScreenState(issue, session, onNext);
+  const [isInstructionsVisible, setInstructionsVisible] = useState(false);
+  const previousDrillIdRef = useRef<string | null>(null);
   const hasDrill = !!props.activeDrill;
   const disabled = props.loading || !props.practiceReady || !hasDrill;
+
+  useEffect(() => {
+    const drillId = props.activeDrill?.id ?? null;
+    if (!drillId) {
+      previousDrillIdRef.current = null;
+      return;
+    }
+
+    if (previousDrillIdRef.current !== drillId) {
+      previousDrillIdRef.current = drillId;
+      setInstructionsVisible(true);
+    }
+  }, [props.activeDrill?.id]);
 
   if (props.loading) return <LoadingState title="Loading practice session..." />;
   if (props.error) return <ErrorState title="Failed to load practice session" buttonText={"End Practice Session"} onRetry={onNext} />;
 
   const onOpenInstructions = () => {
-    console.log("Open instructions for drill");
+    setInstructionsVisible(true);
   }
 
   const currentRep = props.progress.failed + props.progress.succeeded;
@@ -56,7 +73,7 @@ export default function DrillPracticeScreen({ issue, session, onNext }: Props) {
             >
               <ClipboardList size={17} color="#cbd5e1" />
               <Text className="text-sm font-semibold text-slate-200">
-                How to
+                How To
               </Text>
             </Pressable>
           </View>
@@ -113,6 +130,12 @@ export default function DrillPracticeScreen({ issue, session, onNext }: Props) {
           </View>
         </View>
       </View>
+
+      <DrillInstructionsOverlay
+        visible={isInstructionsVisible}
+        drill={props.activeDrill}
+        onClose={() => setInstructionsVisible(false)}
+      />
     </View>
   );
 }
