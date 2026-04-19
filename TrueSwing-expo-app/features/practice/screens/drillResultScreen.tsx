@@ -5,6 +5,7 @@ import { usePracticeResultsState } from "../hooks/usePracticeResultsState";
 import type { DrillRun } from "../types";
 import { useMemo } from "react";
 import { ScrollView } from "react-native";
+import { ArrowLeft } from "lucide-react-native";
 
 type Props = ScreenProps & {
     session: PracticeSession;
@@ -197,7 +198,7 @@ export default function DrillResultScreen({ session, onNext, onBack }: Props) {
                 </View>
 
                 {/* Lower Practice Another section */}
-                <View className="mt-6 rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-4">
+                {/* <View className="mt-6 rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-4">
                     <Text className="text-base font-semibold text-white">
                         Ready for another one?
                     </Text>
@@ -224,7 +225,18 @@ export default function DrillResultScreen({ session, onNext, onBack }: Props) {
                         </Text>
                     </Pressable>
 
-                </View>
+                </View> */}
+
+                <Pressable
+                    onPress={onBack}
+                    className="mt-6 flex-row items-center justify-center gap-2 rounded-2xl border border-white/10 bg-slate-900/70 py-4 active:bg-slate-800/70"
+                >
+                    <ArrowLeft size={16} color="#f87171" />
+                    <Text className="text-base font-semibold text-slate-300">
+                        Exit Practice
+                    </Text>
+                </Pressable>
+
             </View>
         </View>
     )
