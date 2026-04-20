@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import { Text, View, StatusBar, Dimensions, Pressable, Image } from "react-native";
-import { useVideoPlayer, VideoView, VideoSource } from "expo-video";
+import { VideoView, type VideoSource } from "expo-video";
 import { LinearGradient } from "expo-linear-gradient";
 import TextBox from "features/shared/components/TextBox";
 import { Pause, RotateCcw } from "lucide-react-native";
+import useReelPlayback from "features/analysis/hooks/useReelPlayback";
 
 const { width, height } = Dimensions.get("window");
 
@@ -11,51 +12,30 @@ type ReelProps = {
     video_url: string | null
     thumbnail_url?: string | null
     shouldPlay?: boolean
+    allowTapToggle?: boolean
+    showCenterPlaybackIndicator?: boolean
 }
 
 export default function Reel({
     video_url,
     thumbnail_url,
     shouldPlay = true,
+    allowTapToggle = true,
+    showCenterPlaybackIndicator = true,
 }: ReelProps) {
 
     const source: VideoSource | null = video_url ? video_url : null;
-    const [isPlaying, setIsPlaying] = useState(shouldPlay);
-
-    const player = useVideoPlayer(source, (playerInstance) => {
-        playerInstance.loop = false;
-        playerInstance.muted = true;
-        playerInstance.volume = 0; // Add this line
-        if (shouldPlay) {
-            playerInstance.play();
-        }
+    const playback = useReelPlayback({
+        source,
+        shouldPlay,
+        muted: true,
+        loop: false,
     });
 
-    useEffect(() => {
-        if (!player) return;
-        if (shouldPlay) {
-            player.replay();
-        } else {
-            player.pause();
-        }
-    }, [shouldPlay, player]);
-
-    useEffect(() => {
-        if (!player) return;
-
-        // Set initial state
-        setIsPlaying(player.playing);
-
-        // Create a listener for when the playing state changes
-        const subscription = player.addListener('playingChange', (event) => {
-            setIsPlaying(event.isPlaying);
-        });
-
-        // Cleanup listener when component unmounts
-        return () => {
-            subscription.remove();
-        };
-    }, [player]);
+    const isPlaybackEnded = useMemo(
+        () => playback.duration > 0 && playback.currentTime >= playback.duration,
+        [playback.currentTime, playback.duration]
+    );
 
     if (!source) {
         return (
@@ -72,28 +52,17 @@ export default function Reel({
                     <>
                         <Image
                             source={{ uri: thumbnail_url }}
-                            style={{
-                                position: "absolute",
-                                width: "100%",
-                                height: "100%",
-                            }}
+                            className="absolute h-full w-full"
                             blurRadius={28}
                             resizeMode="cover"
                         />
-                        <View
-                            style={{
-                                position: "absolute",
-                                width: "100%",
-                                height: "100%",
-                                backgroundColor: "rgba(0, 0, 0, 0.15)",
-                            }}
-                        />
+                        <View className="absolute h-full w-full bg-black/15" />
                     </>
                 ) : null}
 
                 {video_url ? (
                     <VideoView
-                        player={player}
+                        player={playback.player}
                         style={{ width: "100%", height: "100%" }}
                         contentFit="contain"
                         nativeControls={false}
@@ -112,30 +81,20 @@ export default function Reel({
                         "rgba(0,0,0,0.58)",
                     ]}
                     locations={[0, 0.42, 1]}
-                    style={{ position: "absolute", inset: 0 }}
+                    className="absolute inset-0"
                 />
 
                 <Pressable
                     className="absolute inset-0 z-10"
-                    onPress={() => {
-                        if (player.playing) {
-                            player.pause();
-                        } else {
-                            // Check if the video has ended. If it has, replay from the start. Otherwise, just play.
-                            if (player.currentTime >= player.duration) {
-                                player.replay();
-                            } else {
-                                player.play();
-                            }
-                        }
-                    }}
+                    disabled={!allowTapToggle}
+                    onPress={playback.togglePlayPause}
                 />
             </View>
 
-            {!isPlaying && (
+            {showCenterPlaybackIndicator && !playback.isPlaying && (
                 <View className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
                     <View className="bg-black/30 rounded-full p-4 mb-40">
-                        {player.currentTime >= player.duration ? (
+                        {isPlaybackEnded ? (
                             <RotateCcw
                                 size={30}
                                 color="rgba(255, 255, 255, 0.6)" // 60% opacity for the outline

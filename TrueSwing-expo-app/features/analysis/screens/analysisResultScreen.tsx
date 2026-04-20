@@ -38,8 +38,10 @@ export default function AnalysisResultScreen({ onNext }: AnalysisResultScreenPro
     const reelRef = useRef<FlatList>(null);
     const [issueIndexByAnalysisId, setIssueIndexByAnalysisId] = useState<Record<string, number>>({});
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+    const [activeDrawingAnalysisId, setActiveDrawingAnalysisId] = useState<string | null>(null);
 
     const activeAnalysisId = activeAnalysis?.analysis_id;
+    const isDrawingModeActive = activeDrawingAnalysisId !== null;
 
     const syncActiveAnalysisRef = useRef(syncActiveAnalysisIndex);
     useEffect(() => {
@@ -111,6 +113,7 @@ export default function AnalysisResultScreen({ onNext }: AnalysisResultScreenPro
                 ref={reelRef}
                 data={allAnalyses}
                 keyExtractor={(item) => item.analysis_id}
+                scrollEnabled={!isDrawingModeActive}
                 pagingEnabled
                 showsVerticalScrollIndicator={false}
                 decelerationRate="fast"
@@ -141,6 +144,10 @@ export default function AnalysisResultScreen({ onNext }: AnalysisResultScreenPro
                         <AnalysisReelItem
                             analysis={item}
                             isActive={isActive}
+                            isDrawingMode={activeDrawingAnalysisId === item.analysis_id}
+                            onDrawingModeChange={(nextDrawingMode) => {
+                                setActiveDrawingAnalysisId(nextDrawingMode ? item.analysis_id : null);
+                            }}
                             activeIssueIndex={issueIndexByAnalysisId[item.analysis_id] ?? 0}
                             onActiveIssueChange={(nextIssueIndex) =>
                                 handleActiveIssueChange(item.analysis_id, nextIssueIndex)
@@ -151,7 +158,7 @@ export default function AnalysisResultScreen({ onNext }: AnalysisResultScreenPro
                 }}
             />
 
-            {activeAnalysis ? (
+            {activeAnalysis && !isDrawingModeActive ? (
                 <AnalysisHeaderOverlay
                     dateLabel={activeAnalysis.created_at ? new Date(activeAnalysis.created_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }) : ''}
                     deleting={isDeleting}
