@@ -10,6 +10,8 @@ type UseReelPlaybackParams = {
 
 const LIVE_SEEK_THROTTLE_MS = 33;
 const LIVE_SEEK_EPSILON_SECONDS = 0.03;
+const UI_TIME_EPSILON_SECONDS = 0.02;
+const DURATION_EPSILON_SECONDS = 0.05;
 
 function clamp(value: number, min: number, max: number) {
     return Math.min(max, Math.max(min, value));
@@ -41,6 +43,27 @@ export default function useReelPlayback({
     const scrubWasPlayingRef = useRef(false);
     const lastLiveSeekAtRef = useRef(0);
     const lastLiveSeekValueRef = useRef(0);
+
+    const setCurrentTimeIfChanged = useCallback((value: number) => {
+        if (!Number.isFinite(value)) return;
+        setCurrentTime((prev) =>
+            Math.abs(prev - value) >= UI_TIME_EPSILON_SECONDS ? value : prev
+        );
+    }, []);
+
+    const setDurationIfChanged = useCallback((value: number) => {
+        if (!Number.isFinite(value)) return;
+        setDuration((prev) =>
+            Math.abs(prev - value) >= DURATION_EPSILON_SECONDS ? value : prev
+        );
+    }, []);
+
+    const setScrubTimeIfChanged = useCallback((value: number) => {
+        if (!Number.isFinite(value)) return;
+        setScrubTime((prev) =>
+            Math.abs(prev - value) >= UI_TIME_EPSILON_SECONDS ? value : prev
+        );
+    }, []);
 
     const player = useVideoPlayer(source, (playerInstance) => {
         playerInstance.loop = loop;
@@ -80,8 +103,8 @@ export default function useReelPlayback({
         if (!player) return;
 
         setIsPlaying(player.playing);
-        setDuration(Number.isFinite(player.duration) ? player.duration : 0);
-        setCurrentTime(Number.isFinite(player.currentTime) ? player.currentTime : 0);
+        setDurationIfChanged(Number.isFinite(player.duration) ? player.duration : 0);
+        setCurrentTimeIfChanged(Number.isFinite(player.currentTime) ? player.currentTime : 0);
 
         const playingSubscription = player.addListener("playingChange", (event) => {
             setIsPlaying(event.isPlaying);
@@ -96,11 +119,11 @@ export default function useReelPlayback({
         const tick = setInterval(() => {
             if (!Number.isFinite(player.currentTime)) return;
             if (!isScrubbing) {
-                setCurrentTime(player.currentTime);
+                setCurrentTimeIfChanged(player.currentTime);
             }
 
             if (Number.isFinite(player.duration)) {
-                setDuration(player.duration);
+                setDurationIfChanged(player.duration);
             }
         }, 100);
 
@@ -109,16 +132,16 @@ export default function useReelPlayback({
             statusSubscription.remove();
             clearInterval(tick);
         };
-    }, [isScrubbing, player]);
+    }, [isScrubbing, player, setCurrentTimeIfChanged, setDurationIfChanged]);
 
     const seekTo = useCallback(
         (seconds: number) => {
             if (!player) return;
             const target = clamp(seconds, 0, Math.max(duration, 0));
             player.currentTime = target;
-            setCurrentTime(target);
+            setCurrentTimeIfChanged(target);
         },
-        [duration, player]
+        [duration, player, setCurrentTimeIfChanged]
     );
 
     const liveSeekTo = useCallback(
@@ -138,7 +161,6 @@ export default function useReelPlayback({
             }
 
             player.currentTime = target;
-            setCurrentTime(target);
             lastLiveSeekAtRef.current = now;
             lastLiveSeekValueRef.current = target;
         },
@@ -149,10 +171,12 @@ export default function useReelPlayback({
         if (!player) return;
 
         if (player.playing) {
+            setIsPlaying(false);
             player.pause();
             return;
         }
 
+        setIsPlaying(true);
         if (player.currentTime >= player.duration && player.duration > 0) {
             player.replay();
         } else {
@@ -168,32 +192,32 @@ export default function useReelPlayback({
         lastLiveSeekAtRef.current = 0;
         lastLiveSeekValueRef.current = currentTime;
         setIsScrubbing(true);
-        setScrubTime(currentTime);
+        setScrubTimeIfChanged(currentTime);
     }, [currentTime, player]);
 
     const updateScrub = useCallback(
         (seconds: number, liveSeek = false) => {
             const target = clamp(seconds, 0, Math.max(duration, 0));
-            setScrubTime(target);
+            setScrubTimeIfChanged(target);
 
             if (liveSeek) {
                 liveSeekTo(target);
             }
         },
-        [duration, liveSeekTo]
+        [duration, liveSeekTo, setScrubTimeIfChanged]
     );
 
     const updateScrubByRatio = useCallback(
         (ratio: number, liveSeek = false) => {
             const boundedRatio = clamp(ratio, 0, 1);
             const target = boundedRatio * Math.max(duration, 0);
-            setScrubTime(target);
+            setScrubTimeIfChanged(target);
 
             if (liveSeek) {
                 liveSeekTo(target);
             }
         },
-        [duration, liveSeekTo]
+        [duration, liveSeekTo, setScrubTimeIfChanged]
     );
 
     const endScrub = useCallback(

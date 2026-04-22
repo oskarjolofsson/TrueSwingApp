@@ -3,7 +3,7 @@ import { VideoView, type VideoSource } from "expo-video";
 import { LinearGradient } from "expo-linear-gradient";
 import { ArrowLeft, Trash2, RotateCcw, Play, Pause, Undo } from "lucide-react-native";
 import type { Analysis } from "features/analysis/types";
-import { useState, useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import useAnalysisDrawing from "features/analysis/hooks/useAnalysisDrawing";
 import useReelPlayback from "features/analysis/hooks/useReelPlayback";
 import AnalysisDrawingOverlay from "features/analysis/components/AnalysisDrawingOverlay";
@@ -28,7 +28,6 @@ const { height } = Dimensions.get("window");
 export default function DetailedVideo({ analysis, videoURL, onExit, isActive }: Props) {
     const insets = useSafeAreaInsets();
 
-    const [scrubberWidth, setScrubberWidth] = useState(0);
     const {
         strokes,
         activeStroke,
@@ -52,16 +51,6 @@ export default function DetailedVideo({ analysis, videoURL, onExit, isActive }: 
         clearAllStrokes();
         onExit();
     }, [clearAllStrokes, onExit]);
-
-
-    const handleScrubAtX = useCallback(
-        (locationX: number) => {
-            if (scrubberWidth <= 0) return;
-            const ratio = Math.max(0, Math.min(1, locationX / scrubberWidth));
-            drawPlayback.updateScrubByRatio(ratio, true);
-        },
-        [drawPlayback, scrubberWidth]
-    );
 
     useEffect(() => {
         return () => {
@@ -129,7 +118,8 @@ export default function DetailedVideo({ analysis, videoURL, onExit, isActive }: 
                         duration={drawPlayback.duration}
                         isPlaying={drawPlayback.isPlaying}
                         onSeekStart={drawPlayback.beginScrub}
-                        onSeekComplete={(time) => drawPlayback.endScrub()}
+                        onSeekChange={(time) => drawPlayback.updateScrub(time, true)}
+                        onSeekComplete={(time) => drawPlayback.endScrub(time)}
                         onPlayPause={drawPlayback.togglePlayPause}
                     />
                 </View>
