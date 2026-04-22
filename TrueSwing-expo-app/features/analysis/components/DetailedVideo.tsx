@@ -1,13 +1,16 @@
 import { Image, Pressable, StyleSheet, Text, View, Dimensions } from "react-native";
 import { VideoView, type VideoSource } from "expo-video";
 import { LinearGradient } from "expo-linear-gradient";
-import { ArrowLeft, Trash2, RotateCcw, Play, Pause } from "lucide-react-native";
+import { ArrowLeft, Trash2, RotateCcw, Play, Pause, Undo } from "lucide-react-native";
 import type { Analysis } from "features/analysis/types";
 import { useState, useCallback, useEffect } from "react";
 import useAnalysisDrawing from "features/analysis/hooks/useAnalysisDrawing";
 import useReelPlayback from "features/analysis/hooks/useReelPlayback";
 import AnalysisDrawingOverlay from "features/analysis/components/AnalysisDrawingOverlay";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { AnimatePresence, MotiView } from "moti";
+
+import VideoSeekBar from "./VideoSeekBar";
 
 type Props = {
     analysis: Analysis;
@@ -17,6 +20,10 @@ type Props = {
 }
 
 const { height } = Dimensions.get("window");
+
+// Features remaining to implement
+// - Scrubbing
+
 
 export default function DetailedVideo({ analysis, videoURL, onExit, isActive }: Props) {
     const insets = useSafeAreaInsets();
@@ -115,142 +122,240 @@ export default function DetailedVideo({ analysis, videoURL, onExit, isActive }: 
                 onStrokeEnd={commitStroke}
             />
 
-            <View pointerEvents="box-none" style={StyleSheet.absoluteFill} className="mb-10">
-                <View
-                    className="absolute left-4 right-4 rounded-[18px] border border-white/15 bg-black/80 px-3 pb-2.5 pt-2.5"
-                    style={{
-                        bottom: Math.max(insets.bottom + 8, 16),
-                    }}
-                >
-                    <View className="mb-2.5 flex-row items-center justify-between">
-                        <View className="flex-row" style={{ gap: 8 }}>
-                            <Pressable
-                                onPress={closeDrawingMode}
-                                className="flex-row items-center border border-white/20 px-3"
-                                style={({ pressed }) => ({
-                                    height: 38,
-                                    borderRadius: 999,
-                                    backgroundColor: pressed
-                                        ? "rgba(0,0,0,0.75)"
-                                        : "rgba(0,0,0,0.45)",
-                                    gap: 6,
-                                })}
-                            >
-                                <ArrowLeft size={14} color="white" />
-                                <Text className="text-[13px] font-semibold text-white">
-                                    Back
-                                </Text>
-                            </Pressable>
-
-                            <Pressable
-                                onPress={undoLastStroke}
-                                disabled={!strokes.length}
-                                className="items-center justify-center border border-white/20"
-                                style={({ pressed }) => ({
-                                    width: 38,
-                                    height: 38,
-                                    borderRadius: 999,
-                                    backgroundColor: pressed
-                                        ? "rgba(0,0,0,0.75)"
-                                        : "rgba(0,0,0,0.45)",
-                                    opacity: strokes.length ? 1 : 0.45,
-                                })}
-                            >
-                                <RotateCcw size={16} color="white" />
-                            </Pressable>
-
-                            <Pressable
-                                onPress={clearAllStrokes}
-                                disabled={!hasStrokes}
-                                className="items-center justify-center border border-white/20"
-                                style={({ pressed }) => ({
-                                    width: 38,
-                                    height: 38,
-                                    borderRadius: 999,
-                                    backgroundColor: pressed
-                                        ? "rgba(0,0,0,0.75)"
-                                        : "rgba(0,0,0,0.45)",
-                                    opacity: hasStrokes ? 1 : 0.45,
-                                })}
-                            >
-                                <Trash2 size={16} color="white" />
-                            </Pressable>
-                        </View>
-
-                        <Pressable
-                            onPress={drawPlayback.togglePlayPause}
-                            className="items-center justify-center border border-white/20"
-                            style={({ pressed }) => ({
-                                width: 38,
-                                height: 38,
-                                borderRadius: 999,
-                                backgroundColor: pressed
-                                    ? "rgba(0,0,0,0.75)"
-                                    : "rgba(0,0,0,0.45)",
-                            })}
-                        >
-                            {drawPlayback.isPlaying ? (
-                                <Pause size={16} color="white" />
-                            ) : (
-                                <Play size={16} color="white" />
-                            )}
-                        </Pressable>
-                    </View>
-
-                    <View className="flex-row items-center" style={{ gap: 10 }}>
-                        <Text className="w-[42px] text-xs text-white/90">
-                            {drawPlayback.currentTimeLabel}
-                        </Text>
-
-                        <View
-                            className="h-[26px] flex-1 justify-center"
-                            onLayout={(event) => {
-                                setScrubberWidth(event.nativeEvent.layout.width);
-                            }}
-                            onStartShouldSetResponder={() => true}
-                            onMoveShouldSetResponder={() => true}
-                            onResponderGrant={(event) => {
-                                drawPlayback.beginScrub();
-                                handleScrubAtX(event.nativeEvent.locationX);
-                            }}
-                            onResponderMove={(event) => {
-                                handleScrubAtX(event.nativeEvent.locationX);
-                            }}
-                            onResponderRelease={() => {
-                                drawPlayback.endScrub();
-                            }}
-                            onResponderTerminate={() => {
-                                drawPlayback.endScrub();
-                            }}
-                        >
-                            <View
-                                className="h-1.5 rounded-full bg-white/20"
-                            >
-                                <View
-                                    style={{
-                                        width: `${drawPlayback.progress * 100}%`,
-                                        height: "100%",
-                                        borderRadius: 999,
-                                        backgroundColor: "rgba(86, 230, 167, 0.95)",
-                                    }}
-                                />
-                            </View>
-
-                            <View
-                                className="absolute h-3 w-3 rounded-full bg-white"
-                                style={{
-                                    left: `${drawPlayback.progress * 100}%`,
-                                    transform: [{ translateX: -6 }],
-                                }}
-                            />
-                        </View>
-
-                        <Text className="w-[42px] text-right text-xs text-white/90">
-                            {drawPlayback.durationLabel}
-                        </Text>
-                    </View>
+            <View pointerEvents="box-none" style={StyleSheet.absoluteFill}>
+                <View style={{ position: "absolute", left: 8, right: 8, bottom: Math.max(insets.bottom + 45, 16), zIndex: 30, elevation: 30, }} >
+                    <VideoSeekBar
+                        currentTime={drawPlayback.currentTime}
+                        duration={drawPlayback.duration}
+                        isPlaying={drawPlayback.isPlaying}
+                        onSeekStart={drawPlayback.beginScrub}
+                        onSeekComplete={(time) => drawPlayback.endScrub()}
+                        onPlayPause={drawPlayback.togglePlayPause}
+                    />
                 </View>
             </View>
+
+
+            {/* Back button */}
+            <View
+                pointerEvents="box-none"
+                style={{
+                    position: "absolute",
+                    top: Math.max(insets.top + 8, 16),
+                    left: 20,
+                    zIndex: 50,
+                    elevation: 50,
+                }}
+            >
+                <Pressable
+                    onPress={closeDrawingMode}
+                    hitSlop={10}
+                    android_ripple={{ color: "rgba(255,255,255,0.12)", borderless: false }}
+                    style={({ pressed }) => ({
+                        alignSelf: "flex-start",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: 8,
+                        paddingHorizontal: 14,
+                        paddingVertical: 10,
+                        borderRadius: 999,
+                        borderWidth: 1,
+                        borderColor: "rgba(255,255,255,0.22)",
+                        backgroundColor: pressed ? "rgba(8,12,20,0.85)" : "rgba(8,12,20,0.62)",
+                        transform: [{ scale: pressed ? 0.98 : 1 }],
+                        shadowColor: "#000",
+                        shadowOpacity: 0.28,
+                        shadowRadius: 14,
+                        shadowOffset: { width: 0, height: 6 },
+                    })}
+                >
+                    <View
+                        style={{
+                            width: 50,
+                            height: 50,
+                            borderRadius: 25,
+                            alignItems: "center",
+                            justifyContent: "center",
+                            backgroundColor: "rgba(255,255,255,0.12)",
+                            borderWidth: 1,
+                            borderColor: "rgba(255,255,255,0.18)",
+                        }}
+                    >
+                        <ArrowLeft size={30} color="#E2E8F0" />
+                    </View>
+
+                </Pressable>
+            </View>
+
+
+            {/* Clear all Drawings */}
+            <View
+                pointerEvents="box-none"
+                style={{
+                    position: "absolute",
+                    top: Math.max(insets.top + 8, 16),
+                    right: 16,
+                    zIndex: 50,
+                    elevation: 50,
+                }}
+            >
+                <Pressable
+                    onPress={clearAllStrokes}
+                    hitSlop={10}
+                    android_ripple={{ color: "rgba(255,255,255,0.12)", borderless: false }}
+                    style={({ pressed }) => ({
+                        alignSelf: "flex-start",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: 8,
+                        paddingHorizontal: 14,
+                        paddingVertical: 10,
+                        borderRadius: 999,
+                        borderWidth: 1,
+                        borderColor: "rgba(255,255,255,0.22)",
+                        backgroundColor: pressed ? "rgba(8,12,20,0.85)" : "rgba(8,12,20,0.62)",
+                        transform: [{ scale: pressed ? 0.98 : 1 }],
+                        shadowColor: "#000",
+                        shadowOpacity: 0.28,
+                        shadowRadius: 14,
+                        shadowOffset: { width: 0, height: 6 },
+                    })}
+                >
+                    <View
+                        style={{
+                            width: 40,
+                            height: 40,
+                            borderRadius: 25,
+                            alignItems: "center",
+                            justifyContent: "center",
+                            backgroundColor: "rgba(255,255,255,0.12)",
+                            borderWidth: 1,
+                            borderColor: "rgba(255,255,255,0.18)",
+                        }}
+                    >
+                        <Trash2 size={20} color="#E2E8F0" />
+                    </View>
+
+                </Pressable>
+            </View>
+
+            {/* Take back latest stroke */}
+            <View
+                pointerEvents="box-none"
+                style={{
+                    position: "absolute",
+                    top: Math.max(insets.top + 8, 16),
+                    right: 66,
+                    zIndex: 50,
+                    elevation: 50,
+                }}
+            >
+                <Pressable
+                    onPress={undoLastStroke}
+                    hitSlop={10}
+                    android_ripple={{ color: "rgba(255,255,255,0.12)", borderless: false }}
+                    style={({ pressed }) => ({
+                        alignSelf: "flex-start",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: 8,
+                        paddingHorizontal: 14,
+                        paddingVertical: 10,
+                        borderRadius: 999,
+                        borderWidth: 1,
+                        borderColor: "rgba(255,255,255,0.22)",
+                        backgroundColor: pressed ? "rgba(8,12,20,0.85)" : "rgba(8,12,20,0.62)",
+                        transform: [{ scale: pressed ? 0.98 : 1 }],
+                        shadowColor: "#000",
+                        shadowOpacity: 0.28,
+                        shadowRadius: 14,
+                        shadowOffset: { width: 0, height: 6 },
+                    })}
+                >
+                    <View
+                        style={{
+                            width: 40,
+                            height: 40,
+                            borderRadius: 25,
+                            alignItems: "center",
+                            justifyContent: "center",
+                            backgroundColor: "rgba(255,255,255,0.12)",
+                            borderWidth: 1,
+                            borderColor: "rgba(255,255,255,0.18)",
+                        }}
+                    >
+                        <Undo size={20} color="#E2E8F0" />
+                    </View>
+
+                </Pressable>
+            </View>
+
+
+
+
+            {/* Play / Pause */}
+            <View pointerEvents="box-none" style={StyleSheet.absoluteFill}>
+                <View style={{
+                    position: "absolute",
+                    left: 8,
+                    right: 8,
+                    bottom: Math.max(insets.bottom + 95, 16),
+                    zIndex: 30,
+                    elevation: 30,
+                    alignItems: "center",
+                }} >
+                    <Pressable
+                        onPress={drawPlayback.togglePlayPause}
+                        hitSlop={10}
+                        android_ripple={{ color: "rgba(255,255,255,0.12)", borderless: false }}
+                        style={({ pressed }) => ({
+                            alignSelf: "center",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            gap: 8,
+                            paddingHorizontal: 14,
+                            paddingVertical: 10,
+                            borderRadius: 999,
+                            borderWidth: 1,
+                            borderColor: "rgba(255,255,255,0.22)",
+                            backgroundColor: pressed ? "rgba(8,12,20,0.85)" : "rgba(8,12,20,0.62)",
+                            transform: [{ scale: pressed ? 0.98 : 1 }],
+                            shadowColor: "#000",
+                            shadowOpacity: 0.28,
+                            shadowRadius: 14,
+                            shadowOffset: { width: 0, height: 6 },
+                        })}
+                    >
+                        <View
+                            style={{
+                                width: 40,
+                                height: 40,
+                                borderRadius: 25,
+                                alignItems: "center",
+                                justifyContent: "center",
+                                backgroundColor: "rgba(255,255,255,0.06)",
+                                borderWidth: 1,
+                                borderColor: "rgba(255,255,255,0.10)",
+                            }}
+                        >
+                            <MotiView
+                                key={drawPlayback.isPlaying ? "pause" : "play"}
+                                from={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ type: "timing", duration: 120 }}
+                            >
+                                {drawPlayback.isPlaying ? (
+                                    <Pause size={20} color="#E2E8F0" />
+                                ) : (
+                                    <Play size={20} color="#E2E8F0" fill="#E2E8F0" />
+                                )}
+                            </MotiView>
+                        </View>
+
+                    </Pressable>
+                </View>
+            </View>
+
         </View>
     )
 }

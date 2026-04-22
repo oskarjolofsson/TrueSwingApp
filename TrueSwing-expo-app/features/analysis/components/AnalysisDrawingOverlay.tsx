@@ -64,7 +64,7 @@ export default function AnalysisDrawingOverlay({
                         key={`${pathData}-${index}`}
                         d={pathData}
                         fill="none"
-                        stroke="rgba(70, 235, 155, 0.95)"
+                        stroke="rgb(255, 255, 255)"
                         strokeWidth={4}
                         strokeLinecap="round"
                         strokeLinejoin="round"

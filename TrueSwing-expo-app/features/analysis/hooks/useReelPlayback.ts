@@ -196,14 +196,22 @@ export default function useReelPlayback({
         [duration, liveSeekTo]
     );
 
-    const endScrub = useCallback(() => {
-        seekTo(scrubTime);
-        setIsScrubbing(false);
+    const endScrub = useCallback(
+        (finalTime?: number) => {
+            const target =
+                typeof finalTime === "number"
+                    ? clamp(finalTime, 0, Math.max(duration, 0))
+                    : scrubTime;
 
-        if (scrubWasPlayingRef.current && player) {
-            player.play();
-        }
-    }, [player, scrubTime, seekTo]);
+            seekTo(target);
+            setIsScrubbing(false);
+
+            if (scrubWasPlayingRef.current && player) {
+                player.play();
+            }
+        },
+        [duration, player, scrubTime, seekTo]
+    );
 
     const displayedTime = isScrubbing ? scrubTime : currentTime;
 
