@@ -20,16 +20,16 @@ export default function HomeFlow() {
     const [selectedIssue, setSelectedIssue] = React.useState<Issue | null>(null);
     const [selectedSession, setSelectedSession] = React.useState<PracticeSession | null>(null);
 
-    // // Reset the flow in case use navigates away from this tab and comes back
-    // useFocusEffect(
-    //     React.useCallback(() => {
-    //         console.log("Resetting upload flow state");
-    //         goTo('Analysis');
-    //         setSelectedIssue(null);
-    //         setSelectedSession(null);
-    //         analysisController.refetch();
-    //     }, [analysisController.refetch, goTo])
-    // )
+    // Reset the flow in case use navigates away from this tab and comes back
+    useFocusEffect(
+        React.useCallback(() => {
+            console.log("Resetting upload flow state");
+            goTo('Analysis');
+            setSelectedIssue(null);
+            setSelectedSession(null);
+            analysisController.refetch();
+        }, [analysisController.refetch, goTo])
+    )
     
     return (
         <HomeAnalysisProvider value={analysisController}>

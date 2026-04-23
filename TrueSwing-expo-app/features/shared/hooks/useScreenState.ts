@@ -5,15 +5,15 @@ export function useScreenSequence<T extends string>({ screens }: { screens: T[] 
 
   const next = useCallback(() => {
     if (currentIndex < screens.length - 1) {
-      setCurrentIndex(prev => prev + 1);
+      setCurrentIndex(prev => Math.min(prev + 1, screens.length - 1));
     }
-  },  [screens]);
+  },  [screens, currentIndex]);
 
   const prev = useCallback(() => {
     if (currentIndex > 0) {
-      setCurrentIndex(prev => prev - 1);
+      setCurrentIndex(prev => Math.max(prev - 1, 0));
     }
-  }, [screens]);
+  }, [screens, currentIndex]);
 
   const goTo = useCallback((name: T) => { 
     const index = screens.indexOf(name);

@@ -4,9 +4,10 @@ import Svg, { Circle, Path } from "react-native-svg";
 
 type AnalysisSuccessProps = {
   onNext: () => void;
+  onBack: () => void;
 };
 
-export default function AnalysisSuccess({ onNext }: AnalysisSuccessProps) {
+export default function AnalysisSuccess({ onNext, onBack }: AnalysisSuccessProps) {
   return (
     <View className="flex-1 items-center justify-center bg-black px-6">
       {/* Success icon + heading */}
@@ -92,6 +93,25 @@ export default function AnalysisSuccess({ onNext }: AnalysisSuccessProps) {
             </Text>
           </Pressable>
         </MotiView>
+      </MotiView>
+
+      <MotiView
+        from={{ opacity: 0, translateY: 16, scale: 0.96 }}
+        animate={{ opacity: 1, translateY: 0, scale: 1 }}
+        transition={{ delay: 250, type: "spring", damping: 16, stiffness: 200 }}
+        className="mt-10 w-full px-6"
+      >
+        <Pressable
+          onPress={onBack}
+          className="w-full flex-row items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-6 py-4 active:opacity-80"
+          style={({ pressed }) => ({
+            transform: [{ scale: pressed ? 0.985 : 1 }],
+          })}
+        >
+          <Text className="text-white">
+            Go Back
+          </Text>
+        </Pressable>
       </MotiView>
     </View>
   );

@@ -32,7 +32,6 @@ export function useUpload(): UploadProps {
         } catch (err) {
             console.error('Upload process failed:', err);
             setError(err instanceof Error ? err.message : 'An unknown error occurred during upload');
-            Alert.alert('Upload Error', error || 'An unknown error occurred during upload');
         } finally {
             setLoading(false);
         }

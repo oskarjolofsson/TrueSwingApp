@@ -73,21 +73,66 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
         if (!microphonePermission?.granted) {
             requestMicrophonePermission();
         }
-    }, []);
+        if (!hasMediaLibraryPermission?.granted) {
+            requestMediaLibraryPermission();
+        }
+    }, [
+        cameraPermission?.granted,
+        microphonePermission?.granted,
+        hasMediaLibraryPermission?.granted,
+        requestCameraPermission,
+        requestMicrophonePermission,
+        requestMediaLibraryPermission,
+    ]);
 
-    const hasPermissions = cameraPermission?.granted && microphonePermission?.granted && hasMediaLibraryPermission;
+    const hasPermissions =
+        cameraPermission?.granted &&
+        microphonePermission?.granted &&
+        hasMediaLibraryPermission?.granted;
 
     const pickImageAsync = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ['videos'],
-            allowsEditing: false,
-            quality: 1,
-        });
+        try {
+            let mediaPermission = hasMediaLibraryPermission;
 
-        if (!result.canceled) {
-            setVideoUri(result.assets[0].uri);
-        } else {
-            alert('You did not select any video.');
+            if (!mediaPermission?.granted) {
+                const requested = await requestMediaLibraryPermission();
+                mediaPermission = requested;
+
+                if (!requested.granted) {
+                    Alert.alert(
+                        "Media permission needed",
+                        "Allow Photos access to select a video."
+                    );
+                    return;
+                }
+            }
+
+            const result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ['videos'],
+                allowsEditing: false,
+                quality: 1,
+            });
+
+            if (result.canceled) {
+                return;
+            }
+
+            const selectedUri = result.assets?.[0]?.uri;
+            if (!selectedUri) {
+                Alert.alert(
+                    "Could not read video",
+                    "Please select another video or try again."
+                );
+                return;
+            }
+
+            setVideoUri(selectedUri);
+        } catch (error) {
+            console.error("Video picker error:", error);
+            Alert.alert(
+                "Could not open selected video",
+                "This can happen with cloud-only videos or limited Photos access. Please download the video locally in Photos and try again."
+            );
         }
     };
 
@@ -156,6 +201,7 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
                     onPress={async () => {
                         await requestCameraPermission();
                         await requestMicrophonePermission();
+                        await requestMediaLibraryPermission();
                     }}
                 >
                     <Text className="font-bold text-zinc-950">Grant permissions</Text>
@@ -189,7 +235,7 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
             >
                 <View className="flex-row items-center justify-center px-6 pt-2 pb-5 min-h-[100px]">
 
-                    <View
+                    {/* <View
                         className="absolute left-6"
                         style={{ opacity: isRecording ? 0 : 1 }}
                         pointerEvents={isRecording ? "none" : "auto"}
@@ -202,7 +248,7 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
                             <RefreshCw size={20} color="white" />
                             <Text className="text-xs text-white">Flip</Text>
                         </Pressable>
-                    </View>
+                    </View> */}
 
                     <Pressable
                         onPress={isRecording ? stopRecording : startRecording}

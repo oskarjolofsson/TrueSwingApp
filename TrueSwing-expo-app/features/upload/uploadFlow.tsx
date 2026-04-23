@@ -7,9 +7,8 @@ import UploadProgressScreen from "./screens/UploadProgressScreen";
 import { useVideo } from "./hooks/useVideo";
 import { usePrompt } from "./hooks/usePrompt";
 import { useUpload } from "./hooks/useUpload";
-import { useFocusEffect } from '@react-navigation/native';
-import React  from "react";
-
+import { useFocusEffect } from "@react-navigation/native";
+import React, { useCallback, useRef } from "react";
 
 interface ScreenMap {
   SelectVideo: undefined;
@@ -22,19 +21,27 @@ const allScreens = ['SelectVideo', 'TrimVideo', 'Prompts', 'UploadProgress'];
 
 export default function UploadFlow() {
     const { currentScreen, next, prev, goTo } = useScreenSequence({ screens: allScreens });
-    const { videoUri, setVideoUri, removeVideo, trimmedVideoUri, setTrimmedVideoUri, trimVideo, endTime, startTime } = useVideo();
+    const { videoUri, setVideoUri, removeVideo, trimmedVideoUri, trimVideo, endTime, startTime } = useVideo();
     const promptActions = usePrompt();
     const upload = useUpload();
 
-    // Reset the flow
+    const didInitRef = useRef(false);
+
+    const resetFlow = useCallback(() => {
+        removeVideo();
+        promptActions.setStartTime(0);
+        promptActions.setEndTime(0);
+        goTo("SelectVideo");
+    }, [removeVideo, promptActions, goTo]);
+
+    // Run once when entering this flow for the first time, not on every refocus.
     useFocusEffect(
-        React.useCallback(() => {
-            console.log("Resetting upload flow state");
-            removeVideo();
-            promptActions.setEndTime(0);
-            promptActions.setStartTime(0);
-            goTo('SelectVideo');
-        }, [])
+        useCallback(() => {
+            if (!didInitRef.current) {
+                didInitRef.current = true;
+                resetFlow();
+            }
+        }, [resetFlow])
     )
 
 
@@ -44,7 +51,7 @@ export default function UploadFlow() {
         promptActions.setEndTime(endTime);
 
         if (trimmedVideoUri && promptActions.prompt) {
-            upload.startUpload(trimmedVideoUri, promptActions.prompt, 0, endTime);
+            upload.startUpload(trimmedVideoUri, promptActions.prompt, startTime, endTime);
             next();
         }
     };
@@ -54,7 +61,7 @@ export default function UploadFlow() {
             {currentScreen === 'SelectVideo' && <SelectVideoScreen onNext={next} onBack={() => {}} setVideoUri={setVideoUri} videoUri={videoUri} isActive={currentScreen === 'SelectVideo'} />}
             {currentScreen === 'TrimVideo' && <TrimVideoScreen onNext={next} onBack={prev} videoUri={videoUri}  removeVideo={removeVideo} setVideoUri={setVideoUri} trimVideo={trimVideo} />}
             {currentScreen === 'Prompts' && <PromptsScreen onNext={handleStartUpload} onBack={prev} prompt={promptActions} />}
-            {currentScreen === 'UploadProgress' && <UploadProgressScreen onBack={prev} onNext={() => {}} upload={upload} />}
+            {currentScreen === 'UploadProgress' && <UploadProgressScreen onBack={() => {resetFlow(); goTo("SelectVideo")}} onNext={() => {}} upload={upload} />}
         </View>
     );
 }

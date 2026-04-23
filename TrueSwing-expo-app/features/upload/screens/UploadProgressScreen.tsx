@@ -67,7 +67,7 @@ export default function ProgressScreen({ onBack, onNext, upload }: ProgressScree
 
     if (upload.error) {
         console.error('Upload Error:', upload.error);
-        return <ErrorState message={`Upload failed`} onRetry={onBack} />;
+        return <ErrorState message={`Upload failed due to backend error or faulty upload`} onRetry={onBack} />;
     }
 
     if (upload.loading) {
@@ -99,8 +99,12 @@ export default function ProgressScreen({ onBack, onNext, upload }: ProgressScree
 
     if (success) {
         return (
-            <AnalysisSuccess onNext={() => router.push('/(tabs)')} />
+            <AnalysisSuccess onNext={() => router.push('/(tabs)')} onBack={onBack} />
         );
+    }
+
+    if (status && status.error_message) {
+        return <ErrorState message={`Analysis failed: ${status.error_message}`} onRetry={onBack} />;
     }
  
     return <LoadingState title="Verifying..."/>;

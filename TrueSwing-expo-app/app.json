@@ -33,7 +33,7 @@
     ],
     "orientation": "portrait",
     "icon": "./assets/true_swing_logo.png",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/true_swing_logo2.png",
       "resizeMode": "contain",
