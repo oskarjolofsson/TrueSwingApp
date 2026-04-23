@@ -22,7 +22,7 @@ const allScreens = ['SelectVideo', 'TrimVideo', 'Prompts', 'UploadProgress'];
 
 export default function UploadFlow() {
     const { currentScreen, next, prev, goTo } = useScreenSequence({ screens: allScreens });
-    const { videoUri, setVideoUri, removeVideo, trimmedVideoUri, setTrimmedVideoUri, trimVideo, endTime } = useVideo();
+    const { videoUri, setVideoUri, removeVideo, trimmedVideoUri, setTrimmedVideoUri, trimVideo, endTime, startTime } = useVideo();
     const promptActions = usePrompt();
     const upload = useUpload();
 
@@ -32,6 +32,7 @@ export default function UploadFlow() {
             console.log("Resetting upload flow state");
             removeVideo();
             promptActions.setEndTime(0);
+            promptActions.setStartTime(0);
             goTo('SelectVideo');
         }, [])
     )
@@ -39,7 +40,7 @@ export default function UploadFlow() {
 
     const handleStartUpload = () => {
         // set start and end-time to correct values before starting upload
-        promptActions.setStartTime(0);
+        promptActions.setStartTime(startTime);
         promptActions.setEndTime(endTime);
 
         if (trimmedVideoUri && promptActions.prompt) {

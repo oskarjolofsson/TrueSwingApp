@@ -33,11 +33,11 @@
     ],
     "orientation": "portrait",
     "icon": "./assets/true_swing_logo.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/true_swing_logo3.png",
+      "image": "./assets/true_swing_logo2.png",
       "resizeMode": "contain",
-      "backgroundColor": "#121827"
+      "backgroundColor": "#0a0f1a"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -53,15 +53,19 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/true_swing_logo3.png",
-        "backgroundColor": "#121827"
+        "backgroundColor": "#0a0f1a"
       },
       "permissions": [
-        "android.permission.CAMERA",
-        "android.permission.RECORD_AUDIO",
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
       ],
       "package": "app.trueswing.se"
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "83665fdd-d5ac-4c47-9ea0-98f510bdb4ee"
+      }
     }
   }
 }
