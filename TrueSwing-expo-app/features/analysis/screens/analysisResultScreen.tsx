@@ -5,6 +5,8 @@ import {
     Dimensions,
 } from "react-native";
 
+import Welcome from "../components/Welcome";
+
 import LoadingState from "features/shared/components/LoadingState";
 import ErrorState from "features/shared/components/ErrorState";
 import TextBox from "features/shared/components/TextBox";
@@ -98,12 +100,10 @@ export default function AnalysisResultScreen({ onNext }: AnalysisResultScreenPro
 
     if (!allAnalyses.length) {
         return (
-            <TextBox
-                header={"You have no analyses made yet"}
-                text={"Upload a video to get your first swing analysis"}
-                ctaText={"Create Analysis"}
-                ctaOnClick={() => router.push("/(tabs)/upload")}
-            />
+            <View className="flex-1 justify-center items-center">
+                <Welcome onCreateAnalysis={() => router.push("/(tabs)/upload")} />
+            </View>
+            
         );
     }
 
