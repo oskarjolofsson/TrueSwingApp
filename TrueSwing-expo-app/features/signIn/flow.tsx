@@ -11,12 +11,12 @@ import EmailSignInScreen from "./screens/signInWithPasswordScreen";
 
 export default function SignInFlow() {
 
-    const { session, loading, signInWithGoogle, signInWithPassword } = useAuth();
+    const { session, loading, signInWithGoogle, signInWithPassword, signUpWithPassword } = useAuth();
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
     const Screens = ["landing", "emailSignIn"];
-    const { currentScreen, goTo, next, prev } = useScreenSequence({ screens: Screens });
+    const { currentScreen, goTo } = useScreenSequence({ screens: Screens });
 
     if (!loading && session) {
         return <Redirect href="/(app)/(tabs)" />;
@@ -46,6 +46,19 @@ export default function SignInFlow() {
         }
     }
 
+    const handleEmailSignUp = async (email: string, password: string, name: string) => {
+        try {
+            setSubmitting(true);
+            setError(null);
+            await signUpWithPassword(email, password, name);
+        } catch (err: any) {
+            setError(err.message ?? "Failed to sign up");
+            throw err;
+        } finally {
+            setSubmitting(false);
+        }
+    }
+
     return (
         <View style={{ flex: 1 }}>
             {currentScreen === "landing" && (
@@ -62,6 +75,7 @@ export default function SignInFlow() {
                 <EmailSignInScreen
                     onBack={() => goTo("landing")}
                     handleEmailSignIn={handleEmailSignIn}
+                    handleEmailSignUp={handleEmailSignUp}
                 />
             )}
         </View>
