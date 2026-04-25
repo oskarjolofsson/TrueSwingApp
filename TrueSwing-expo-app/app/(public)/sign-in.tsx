@@ -1,5 +1,5 @@
-import SignInScreen from "features/signIn/screen";
+import SignInFlow from "features/signIn/flow";
 
 export default function SignIn() {
-    return <SignInScreen />;
+    return <SignInFlow />;
 }

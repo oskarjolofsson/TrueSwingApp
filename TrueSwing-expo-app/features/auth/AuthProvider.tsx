@@ -12,6 +12,7 @@ WebBrowser.maybeCompleteAuthSession();
 
 type AuthContextWithMethods = AuthContextType & {
   signInWithPassword: (email: string, password: string) => Promise<void>;
+  signUpWithPassword: (email: string, password: string, name: string) => Promise<void>;
   signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
 };
@@ -179,6 +180,22 @@ export function AuthProvider({ children }: PropsWithChildren) {
           throw new Error("Google sign-in was cancelled");
         } else if (result.type === "dismiss") {
           throw new Error("Google sign-in was dismissed");
+        }
+      },
+
+      signUpWithPassword: async (email: string, password: string, name: string) => {
+        const { error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              full_name: name,
+            },
+          },
+        })
+
+        if (error) {
+          throw error;
         }
       },
 
