@@ -1,5 +1,5 @@
 
-import { Text, TouchableOpacity, View, StatusBar, Image } from "react-native";
+import { Text, TouchableOpacity, View, StatusBar, Image, Linking } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 type Props = {
@@ -146,7 +146,21 @@ export default function LandingScreen({ onGoogleButtonPress, onEmailButtonPress,
                         className="text-zinc-600 text-center mt-6 mb-10"
                         style={{ fontSize: 12 }}
                     >
-                        By continuing, you agree to our Terms & Privacy Policy.
+                        By continuing, you agree to our{" "}
+                        <Text
+                            className="text-blue-400 underline"
+                            onPress={() => Linking.openURL("https://trueswing.se/legal/terms-and-conditions")}
+                        >
+                            Terms
+                        </Text>{" "}
+                        &{" "}
+                        <Text
+                            className="text-blue-400 underline"
+                            onPress={() => Linking.openURL("https://trueswing.se/legal/privacy-policy")}
+                        >
+                            Privacy Policy
+                        </Text>
+                        .
                     </Text>
                 </View>
             </View>
