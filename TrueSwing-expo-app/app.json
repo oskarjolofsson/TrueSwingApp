@@ -43,7 +43,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "app.trueswing.se",
       "infoPlist": {
         "NSCameraUsageDescription": "This app uses the camera to record your golf swing.",
