@@ -11,7 +11,7 @@ import EmailSignInScreen from "./screens/signInWithPasswordScreen";
 
 export default function SignInFlow() {
 
-    const { session, loading, signInWithGoogle, signInWithPassword, signUpWithPassword } = useAuth();
+    const { session, loading, signInWithGoogle, signInWithPassword, signUpWithPassword, signInWithApple } = useAuth();
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -59,6 +59,18 @@ export default function SignInFlow() {
         }
     }
 
+    const handleAppleSignIn = async () => {
+        try {
+            setSubmitting(true);
+            setError(null);
+            await signInWithApple();
+        } catch (err: any) {
+            setError(err.message ?? "Failed to sign in with Apple");
+        } finally {
+            setSubmitting(false);
+        }
+    }
+
     return (
         <View style={{ flex: 1 }}>
             {currentScreen === "landing" && (
@@ -67,6 +79,7 @@ export default function SignInFlow() {
                     onEmailButtonPress={() => {
                         goTo("emailSignIn");
                     }}
+                    onAppleButtonPress={handleAppleSignIn}
                     submitting={submitting}
                     error={error}
                 />

@@ -7,6 +7,8 @@ import * as WebBrowser from "expo-web-browser";
 import * as Linking from "expo-linking";
 import { supabase } from "lib/supabase";
 import type { AppUser, AuthContextType } from "./types";
+import * as AppleAuthentication from "expo-apple-authentication";
+import apiClient from "lib/apiClient";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -14,7 +16,9 @@ type AuthContextWithMethods = AuthContextType & {
   signInWithPassword: (email: string, password: string) => Promise<void>;
   signUpWithPassword: (email: string, password: string, name: string) => Promise<void>;
   signInWithGoogle: () => Promise<void>;
+  signInWithApple: () => Promise<void>;
   signOut: () => Promise<void>;
+  removeAccount: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextWithMethods | undefined>(undefined);
@@ -183,6 +187,43 @@ export function AuthProvider({ children }: PropsWithChildren) {
         }
       },
 
+      signInWithApple: async () => {
+        const credential = await AppleAuthentication.signInAsync({
+          requestedScopes: [
+            AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+            AppleAuthentication.AppleAuthenticationScope.EMAIL,
+          ],
+        });
+
+        if (!credential.identityToken) {
+          throw new Error("No Apple identity token returned");
+        }
+
+        const { data, error } = await supabase.auth.signInWithIdToken({
+          provider: "apple",
+          token: credential.identityToken,
+        });
+
+        if (error) {
+          alert("Apple sign-in error: " + error.message);
+          throw error;
+        }
+
+        const fullName = credential.fullName;
+
+        if (fullName?.givenName || fullName?.familyName) {
+          await supabase.auth.updateUser({
+            data: {
+              full_name: [fullName.givenName, fullName.familyName]
+                .filter(Boolean)
+                .join(" "),
+              given_name: fullName.givenName,
+              family_name: fullName.familyName,
+            },
+          });
+        }
+      },
+
       signUpWithPassword: async (email: string, password: string, name: string) => {
         const { error } = await supabase.auth.signUp({
           email,
@@ -205,6 +246,15 @@ export function AuthProvider({ children }: PropsWithChildren) {
           throw error;
         }
       },
+
+      removeAccount: async () => {
+        apiClient.delete(`/api/v1/users/${user?.id}/`)
+          .then(() => supabase.auth.signOut())
+          .catch((error) => {
+            console.error("Error deleting account:", error);
+            throw error;
+          });
+      }
     }),
     [session, user, loading]
   );

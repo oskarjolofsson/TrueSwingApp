@@ -29,7 +29,8 @@
           "photosPermission": "This app needs access to your photos for you to select swing videos from your gallery.",
           "savePhotosPermission": "This app needs permission to save trimmed swing videos to your gallery."
         }
-      ]
+      ],
+      "@react-native-google-signin/google-signin"
     ],
     "orientation": "portrait",
     "icon": "./assets/true_swing_logo.png",

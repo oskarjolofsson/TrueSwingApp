@@ -18,7 +18,7 @@ export default function ProfileScreen() {
         supportEmail: "team@trueswing.se",
     };
 
-    const { user, loading, signOut } = useAuth();
+    const { user, loading, signOut, removeAccount  } = useAuth();
 
     const handleContactSupport = async () => {
         const subject = encodeURIComponent("Support request");
@@ -115,6 +115,24 @@ export default function ProfileScreen() {
                 >
                     <Text className="text-center text-sm font-medium text-red-500/80 border border-red-500/20 rounded-lg py-3 mx-auto px-10">
                         Sign Out
+                    </Text>
+                </TouchableOpacity>
+
+                {/* Delete Account */}
+                <TouchableOpacity
+                    onPress={() => Alert.alert("Delete Account", "Are you sure you want to delete your account? This action cannot be undone.", [
+                        { text: "Cancel", style: "cancel" },
+                        { text: "Delete", style: "destructive", onPress: () => {
+                            removeAccount()
+                                .then(() => Alert.alert("Account Deleted", "Your account has been deleted."))
+                                .catch(() => Alert.alert("Error", "Failed to delete account."));
+                        } },
+                    ])}
+                    activeOpacity={0.7}
+                    className="mt-4 px-5"
+                >
+                    <Text className="text-center text-sm font-medium text-red-500/80 border border-red-500/20 rounded-lg py-3 mx-auto px-10">
+                        Delete Account
                     </Text>
                 </TouchableOpacity>
 
