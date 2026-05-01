@@ -82,7 +82,7 @@ export default function AnalysisReelItem({
                     className="absolute h-12 w-12 rounded-full border-2 border-white/50"
                     style={{
                         left: 16,
-                        top: "42%",
+                        top: "35%",
                         marginTop: -24,
                         zIndex: 999,
                         elevation: 999,

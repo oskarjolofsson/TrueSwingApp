@@ -18,7 +18,7 @@ export default function ProfileScreen() {
         supportEmail: "team@trueswing.se",
     };
 
-    const { user, loading, signOut, removeAccount  } = useAuth();
+    const { user, loading, signOut, removeAccount } = useAuth();
 
     const handleContactSupport = async () => {
         const subject = encodeURIComponent("Support request");
@@ -52,16 +52,16 @@ export default function ProfileScreen() {
             message="Please log in to view your profile."
             buttonText="Go to login"
             onRetry={() => {
-                // implement navigation to the login screen here
+                signOut();
             }}
         />;
     }
-            
+
 
     return (
-        <SafeAreaView className="flex-1 bg-slate-950">
+        <SafeAreaView className="flex-1 bg-slate-950" edges={["top"]}>
             <ScrollView
-                contentContainerStyle={{ padding: 20, paddingBottom: 40 }}
+                contentContainerStyle={{ padding: 20, paddingBottom: 24 }}
                 showsVerticalScrollIndicator={false}
                 bounces={false}
                 overScrollMode="never"
@@ -122,11 +122,13 @@ export default function ProfileScreen() {
                 <TouchableOpacity
                     onPress={() => Alert.alert("Delete Account", "Are you sure you want to delete your account? This action cannot be undone.", [
                         { text: "Cancel", style: "cancel" },
-                        { text: "Delete", style: "destructive", onPress: () => {
-                            removeAccount()
-                                .then(() => Alert.alert("Account Deleted", "Your account has been deleted."))
-                                .catch(() => Alert.alert("Error", "Failed to delete account."));
-                        } },
+                        {
+                            text: "Delete", style: "destructive", onPress: () => {
+                                removeAccount()
+                                    .then(() => Alert.alert("Account Deleted", "Your account has been deleted."))
+                                    .catch(() => Alert.alert("Error", "Failed to delete account."));
+                            }
+                        },
                     ])}
                     activeOpacity={0.7}
                     className="mt-4 px-5"
