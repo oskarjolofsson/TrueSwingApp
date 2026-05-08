@@ -38,6 +38,10 @@ export async function saveAiConsent(): Promise<void> {
     await SecureStore.setItemAsync(AI_CONSENT_KEY, JSON.stringify(consent));
 }
 
+export async function resetAiConsentForDebug() {
+  await SecureStore.deleteItemAsync(AI_CONSENT_KEY);
+}
+
 export async function clearAiConsent(): Promise<void> {
     await SecureStore.deleteItemAsync(AI_CONSENT_KEY);
 }

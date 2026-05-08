@@ -13,6 +13,7 @@ import type { UsePromptReturn } from "../hooks/usePrompt";
 
 type Props = ScreenProps & {
     prompt: UsePromptReturn;
+    onDeleteCache: () => void;
 };
 
 type ChipProps = {
@@ -83,7 +84,7 @@ const FieldGroup = ({ label, children }: FieldGroupProps) => (
     </View>
 );
 
-export default function PromptScreen({ onBack, onNext, prompt }: Props) {
+export default function PromptScreen({ onBack, onNext, prompt, onDeleteCache }: Props) {
     const { prompt: promptData, setDesiredShot, setMiss, setExtra } = prompt;
 
     const [dHeight, setDHeight] = useState<string | null>(() => {
@@ -163,6 +164,14 @@ export default function PromptScreen({ onBack, onNext, prompt }: Props) {
                 <Text className="text-3xl font-bold tracking-tight text-white">
                     Shot Details
                 </Text>
+            </View>
+
+            <View className="">
+                <Pressable onPress={() => {console.log("Debug: Clear AI Consent"); onDeleteCache();}} className="absolute top-4 right-4 z-50 rounded-full bg-red-600 px-3 py-1">
+                    <Text className="text-sm text-gray-400 mt-2 mb-4 px-4">
+                        Delete cache, debug
+                    </Text>
+                </Pressable>
             </View>
 
             <ScrollView
