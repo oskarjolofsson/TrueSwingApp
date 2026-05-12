@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
+import { Platform } from "react-native";
 
 type Props = {
   onGoogleButtonPress: () => Promise<void>;
@@ -95,44 +96,46 @@ export default function LandingScreen({
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              onPress={onAppleButtonPress}
-              disabled={submitting}
-              activeOpacity={0.75}
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#ffffff",
-                borderRadius: 16,
-                paddingVertical: 16,
-                paddingHorizontal: 24,
-                opacity: submitting ? 0.6 : 1,
-                shadowColor: "#ffffff",
-                shadowOffset: { width: 0, height: 0 },
-                shadowOpacity: 0.08,
-                shadowRadius: 20,
-                marginTop: 16,
-              }}
-            >
-              <View
-                className="absolute left-5 w-9 h-9 rounded-full items-center justify-center"
-                style={{ backgroundColor: "#f1f3f4" }}
-              >
-                <FontAwesome name="apple" size={18} color="#111111" />
-              </View>
-
-              <Text
+            {Platform.OS === "ios" && (
+              <TouchableOpacity
+                onPress={onAppleButtonPress}
+                disabled={submitting}
+                activeOpacity={0.75}
                 style={{
-                  color: "#111111",
-                  fontSize: 16,
-                  fontWeight: "600",
-                  letterSpacing: 0.1,
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#ffffff",
+                  borderRadius: 16,
+                  paddingVertical: 16,
+                  paddingHorizontal: 24,
+                  opacity: submitting ? 0.6 : 1,
+                  shadowColor: "#ffffff",
+                  shadowOffset: { width: 0, height: 0 },
+                  shadowOpacity: 0.08,
+                  shadowRadius: 20,
+                  marginTop: 16,
                 }}
               >
-                {submitting ? "Signing in..." : "Continue with Apple"}
-              </Text>
-            </TouchableOpacity>
+                <View
+                  className="absolute left-5 w-9 h-9 rounded-full items-center justify-center"
+                  style={{ backgroundColor: "#f1f3f4" }}
+                >
+                  <FontAwesome name="apple" size={18} color="#111111" />
+                </View>
+
+                <Text
+                  style={{
+                    color: "#111111",
+                    fontSize: 16,
+                    fontWeight: "600",
+                    letterSpacing: 0.1,
+                  }}
+                >
+                  {submitting ? "Signing in..." : "Continue with Apple"}
+                </Text>
+              </TouchableOpacity>
+            )}
 
             <TouchableOpacity
               onPress={onEmailButtonPress}
