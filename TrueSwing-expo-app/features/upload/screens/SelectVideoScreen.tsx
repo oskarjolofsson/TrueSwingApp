@@ -1,6 +1,6 @@
 import { ScreenProps } from "features/shared/types";
 import { memo, useEffect, useRef, useState } from "react";
-import { ActivityIndicator, Alert, Pressable, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, Alert, Linking, Pressable, StyleSheet, Text, View } from "react-native";
 import {
     CameraType,
     CameraView,
@@ -46,7 +46,7 @@ const RecordingTimer = memo(function RecordingTimer({ isRecording, insets }: { i
     );
 });
 
-export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUri, isActive }: ScreenProps & { setVideoUri: (uri: string | null) => void, videoUri: string | null, isActive: boolean}) {
+export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUri, isActive }: ScreenProps & { setVideoUri: (uri: string | null) => void, videoUri: string | null, isActive: boolean }) {
     const cameraRef = useRef<CameraView | null>(null);
     const insets = useSafeAreaInsets();
 
@@ -199,9 +199,28 @@ export default function SelectVideoScreen({ onBack, onNext, setVideoUri, videoUr
                 <Pressable
                     className="rounded-xl bg-white px-5 py-3"
                     onPress={async () => {
-                        await requestCameraPermission();
-                        await requestMicrophonePermission();
-                        await requestMediaLibraryPermission();
+                        const cameraResult = await requestCameraPermission();
+                        const microphoneResult = await requestMicrophonePermission();
+                        const mediaResult = await requestMediaLibraryPermission();
+
+                        const deniedPermanently =
+                            cameraResult.canAskAgain === false ||
+                            microphoneResult.canAskAgain === false ||
+                            mediaResult.canAskAgain === false;
+
+                        if (deniedPermanently) {
+                            Alert.alert(
+                                "Permissions blocked",
+                                "Please enable Camera, Microphone, and Photos access in your device settings.",
+                                [
+                                    { text: "Cancel", style: "cancel" },
+                                    {
+                                        text: "Open Settisngs",
+                                        onPress: () => Linking.openSettings(),
+                                    },
+                                ]
+                            );
+                        }
                     }}
                 >
                     <Text className="font-bold text-zinc-950">Grant permissions</Text>
