@@ -166,13 +166,13 @@ export default function PromptScreen({ onBack, onNext, prompt, onDeleteCache }: 
                 </Text>
             </View>
 
-            <View className="">
+            {/* <View className="">
                 <Pressable onPress={() => {console.log("Debug: Clear AI Consent"); onDeleteCache();}} className="absolute top-4 right-4 z-50 rounded-full bg-red-600 px-3 py-1">
                     <Text className="text-sm text-gray-400 mt-2 mb-4 px-4">
                         Delete cache, debug
                     </Text>
                 </Pressable>
-            </View>
+            </View> */}
 
             <ScrollView
                 className="flex-1"
