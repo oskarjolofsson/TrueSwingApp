@@ -60,7 +60,9 @@
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
       ],
-      "package": "app.trueswing.se"
+      "package": "se.trueswing.app",
+      "intentFilters": [],
+      "allowBackup": false
     },
     "extra": {
       "router": {},
