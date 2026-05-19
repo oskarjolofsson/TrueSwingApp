@@ -1,4 +1,4 @@
-import { Image, Pressable, StyleSheet, Text, View, Dimensions } from "react-native";
+import { ActivityIndicator, Image, Pressable, StyleSheet, Text, View, Dimensions } from "react-native";
 import { VideoView, type VideoSource } from "expo-video";
 import { LinearGradient } from "expo-linear-gradient";
 import { ArrowLeft, Trash2, RotateCcw, Play, Pause, Undo } from "lucide-react-native";
@@ -6,11 +6,12 @@ import type { Analysis } from "features/analysis/types";
 import { useCallback, useEffect } from "react";
 import useAnalysisDrawing from "features/analysis/hooks/useAnalysisDrawing";
 import useReelPlayback from "features/analysis/hooks/useReelPlayback";
+import useScrubFriendlyVideo from "features/analysis/hooks/useScrubFriendlyVideo";
 import AnalysisDrawingOverlay from "features/analysis/components/AnalysisDrawingOverlay";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AnimatePresence, MotiView } from "moti";
 
-import VideoSeekBar from "./VideoSeekBar";
+import VideoSeekBar from "../../../.claude/worktrees/dazzling-lovelace-5a5b5a/TrueSwing-expo-app/features/analysis/components/VideoSeekBar";
 
 type Props = {
     analysis: Analysis;
@@ -20,10 +21,6 @@ type Props = {
 }
 
 const { height } = Dimensions.get("window");
-
-// Features remaining to implement
-// - Scrubbing
-
 
 export default function DetailedVideo({ analysis, videoURL, onExit, isActive }: Props) {
     const insets = useSafeAreaInsets();
@@ -39,10 +36,16 @@ export default function DetailedVideo({ analysis, videoURL, onExit, isActive }: 
         clearAllStrokes,
     } = useAnalysisDrawing();
 
-    const drawingSource: VideoSource | null = videoURL;
+    const { uri: playableUri, status: prepStatus } = useScrubFriendlyVideo(
+        analysis.analysis_id,
+        videoURL,
+    );
+    const isPreparing = prepStatus === "preparing";
+
+    const drawingSource: VideoSource | null = playableUri;
     const drawPlayback = useReelPlayback({
         source: drawingSource,
-        shouldPlay: isActive,
+        shouldPlay: isActive && !isPreparing,
         muted: true,
         loop: false,
     });
@@ -78,7 +81,7 @@ export default function DetailedVideo({ analysis, videoURL, onExit, isActive }: 
                     </>
                 ) : null}
 
-                {drawPlayback.player ? (
+                {drawPlayback.player && !isPreparing ? (
                     <VideoView
                         player={drawPlayback.player}
                         style={StyleSheet.absoluteFill}
@@ -86,6 +89,11 @@ export default function DetailedVideo({ analysis, videoURL, onExit, isActive }: 
                         nativeControls={false}
                         fullscreenOptions={{ enable: false }}
                     />
+                ) : isPreparing ? (
+                    <View style={StyleSheet.absoluteFill} className="items-center justify-center">
+                        <ActivityIndicator size="large" color="#E2E8F0" />
+                        <Text className="text-zinc-300 mt-3">Preparing video…</Text>
+                    </View>
                 ) : (
                     <View className="flex-1 items-center justify-center bg-[#0B0D12]">
                         <Text className="text-zinc-500">No video available</Text>
