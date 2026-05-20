@@ -11,11 +11,23 @@ npm-debug.*
 web-build/
 .env*
 
+/android/
+/ios/
 
+/android/app/build/
+/android/build/
 
+# iOS build outputs  
+/ios/build/
+/ios/Pods/
 
-ios
-android
+modules/**/android/build/
+modules/**/android/.gradle/
+modules/**/ios/build/
+modules/**/ios/Pods/
+
+# EAS
+.eas/build
 
 # macOS
 .DS_Store
