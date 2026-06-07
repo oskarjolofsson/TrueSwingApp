@@ -6,7 +6,7 @@ import {
     getPracticeSessionResults,
 } from "../services/sessionService";
 import type { PracticeSession } from "../types/Session";
-import type { DrillRun } from "../types/DrillRun";
+import type { DrillRun } from "features/drill/types/DrillRun";
 
 interface UseSessionActionsReturn {
     session: PracticeSession | null;

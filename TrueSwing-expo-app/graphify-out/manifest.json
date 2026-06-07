@@ -230,9 +230,9 @@
     "semantic_hash": "ddb4fa3797be5a94841834c49b5b6e50"
   },
   "features/practice/components/DrillInstructionsOverlay.tsx": {
-    "mtime": 1776602711.401274,
-    "ast_hash": "b87e4fc27c9c18613387dbcf90ce3a5a",
-    "semantic_hash": "b87e4fc27c9c18613387dbcf90ce3a5a"
+    "mtime": 1780854340.1208012,
+    "ast_hash": "67ac3ac082a467a29480c18d1f1370f0",
+    "semantic_hash": ""
   },
   "features/practice/components/ProgressBar.tsx": {
     "mtime": 1776594302.0935302,
@@ -245,13 +245,13 @@
     "semantic_hash": "fd1f2c644000c07437251359076ca1b3"
   },
   "features/practice/hooks/usePracticeResultsState.ts": {
-    "mtime": 1780848782.4817376,
-    "ast_hash": "4aad1dffaea381c2edd7b2309f5713aa",
+    "mtime": 1780854321.197718,
+    "ast_hash": "1b3fb29e66382252878863a53c6f4bfc",
     "semantic_hash": ""
   },
   "features/practice/hooks/usePracticeScreenState.ts": {
-    "mtime": 1780848776.5863495,
-    "ast_hash": "e4d8b1d23e5eb22237bbeeeffc5ae015",
+    "mtime": 1780854330.59524,
+    "ast_hash": "1eb5f767f2276b47cad633a2410b1840",
     "semantic_hash": ""
   },
   "features/practice/practiceFlow.tsx": {
@@ -265,14 +265,9 @@
     "semantic_hash": "53c834c51eb8b664792d55479d1bc633"
   },
   "features/practice/screens/drillResultScreen.tsx": {
-    "mtime": 1776600991.8109512,
-    "ast_hash": "747518e38401304cf874262419509391",
-    "semantic_hash": "747518e38401304cf874262419509391"
-  },
-  "features/practice/services/drillService.ts": {
-    "mtime": 1780848128.4852393,
-    "ast_hash": "0b7e66e2263efd654f3a0ee3ff3c52a7",
-    "semantic_hash": "0b7e66e2263efd654f3a0ee3ff3c52a7"
+    "mtime": 1780854348.670224,
+    "ast_hash": "12d56b4f77b1967ff95d28938dbafa84",
+    "semantic_hash": ""
   },
   "features/practice/utils/parseInstructionSteps.ts": {
     "mtime": 1776601921.4015627,
@@ -629,34 +624,14 @@
     "ast_hash": "0ddcfc37f7ffa78bc2080d3e0f765153",
     "semantic_hash": ""
   },
-  "features/practice/hooks/useDrillRunActions.ts": {
-    "mtime": 1780848752.5291421,
-    "ast_hash": "e4e9e6f9aac8df5774f811e27ea9992e",
-    "semantic_hash": ""
-  },
   "features/practice/hooks/useSessionActions.ts": {
-    "mtime": 1780848744.5190022,
-    "ast_hash": "ceb568a85b9c93134e64287828b5b505",
-    "semantic_hash": ""
-  },
-  "features/practice/services/drillRunService.ts": {
-    "mtime": 1780848729.1186593,
-    "ast_hash": "bae6c7009279eab6ec5d10698a44a6db",
+    "mtime": 1780854317.4789212,
+    "ast_hash": "dd95fd2b997ccbbbc223667ac6eceb81",
     "semantic_hash": ""
   },
   "features/practice/services/sessionService.ts": {
-    "mtime": 1780848724.0832126,
-    "ast_hash": "7be726af0929faa8e6e508cb0d501745",
-    "semantic_hash": ""
-  },
-  "features/practice/types/Drill.ts": {
-    "mtime": 1780848701.5305054,
-    "ast_hash": "4e9cb3ea96f99ede7ccf1c21a21140ff",
-    "semantic_hash": ""
-  },
-  "features/practice/types/DrillRun.ts": {
-    "mtime": 1780848708.1252902,
-    "ast_hash": "dcb76af9f12965dd77f4b5bb82600c4e",
+    "mtime": 1780854313.2558603,
+    "ast_hash": "2081571920cc98f6f9e4c369d11a5025",
     "semantic_hash": ""
   },
   "features/practice/types/Session.ts": {
@@ -665,8 +640,38 @@
     "semantic_hash": ""
   },
   "features/practice/types/index.ts": {
-    "mtime": 1780848713.9805918,
-    "ast_hash": "8a7fe7756c6471bb89374ef35875d653",
+    "mtime": 1780854300.246631,
+    "ast_hash": "f1bc8a72abd8c417c3296c827d825d98",
+    "semantic_hash": ""
+  },
+  "features/drill/hooks/useDrillRunActions.ts": {
+    "mtime": 1780848752.5291421,
+    "ast_hash": "e4e9e6f9aac8df5774f811e27ea9992e",
+    "semantic_hash": ""
+  },
+  "features/drill/services/drillRunService.ts": {
+    "mtime": 1780848729.1186593,
+    "ast_hash": "bae6c7009279eab6ec5d10698a44a6db",
+    "semantic_hash": ""
+  },
+  "features/drill/services/drillService.ts": {
+    "mtime": 1780848128.4852393,
+    "ast_hash": "0b7e66e2263efd654f3a0ee3ff3c52a7",
+    "semantic_hash": ""
+  },
+  "features/drill/types/Drill.ts": {
+    "mtime": 1780848701.5305054,
+    "ast_hash": "4e9cb3ea96f99ede7ccf1c21a21140ff",
+    "semantic_hash": ""
+  },
+  "features/drill/types/DrillRun.ts": {
+    "mtime": 1780848708.1252902,
+    "ast_hash": "dcb76af9f12965dd77f4b5bb82600c4e",
+    "semantic_hash": ""
+  },
+  "features/drill/types/index.ts": {
+    "mtime": 1780854296.6884434,
+    "ast_hash": "eb046a3ba72ab23e25abbef2aa7f1fd1",
     "semantic_hash": ""
   }
 }

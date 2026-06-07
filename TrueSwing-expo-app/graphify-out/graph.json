@@ -1914,6 +1914,236 @@
       "norm_label": "appuser"
     },
     {
+      "label": "useDrillRunActions.ts",
+      "file_type": "code",
+      "source_file": "features/drill/hooks/useDrillRunActions.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "hooks_usedrillrunactions",
+      "community": 0,
+      "norm_label": "usedrillrunactions.ts"
+    },
+    {
+      "label": "UseDrillRunActionsReturn",
+      "file_type": "code",
+      "source_file": "features/drill/hooks/useDrillRunActions.ts",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "hooks_usedrillrunactions_usedrillrunactionsreturn",
+      "community": 0,
+      "norm_label": "usedrillrunactionsreturn"
+    },
+    {
+      "label": "toErrorMessage()",
+      "file_type": "code",
+      "source_file": "features/drill/hooks/useDrillRunActions.ts",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "hooks_usedrillrunactions_toerrormessage",
+      "community": 0,
+      "norm_label": "toerrormessage()"
+    },
+    {
+      "label": "useDrillRunActions()",
+      "file_type": "code",
+      "source_file": "features/drill/hooks/useDrillRunActions.ts",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "hooks_usedrillrunactions_usedrillrunactions",
+      "community": 0,
+      "norm_label": "usedrillrunactions()"
+    },
+    {
+      "label": "drillRunService.ts",
+      "file_type": "code",
+      "source_file": "features/drill/services/drillRunService.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "services_drillrunservice",
+      "community": 0,
+      "norm_label": "drillrunservice.ts"
+    },
+    {
+      "label": "startDrillRun()",
+      "file_type": "code",
+      "source_file": "features/drill/services/drillRunService.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "services_drillrunservice_startdrillrun",
+      "community": 0,
+      "norm_label": "startdrillrun()"
+    },
+    {
+      "label": "endDrillRun()",
+      "file_type": "code",
+      "source_file": "features/drill/services/drillRunService.ts",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "services_drillrunservice_enddrillrun",
+      "community": 0,
+      "norm_label": "enddrillrun()"
+    },
+    {
+      "label": "drillService.ts",
+      "file_type": "code",
+      "source_file": "features/drill/services/drillService.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "services_drillservice",
+      "community": 72,
+      "norm_label": "drillservice.ts"
+    },
+    {
+      "label": "DrillService",
+      "file_type": "code",
+      "source_file": "features/drill/services/drillService.ts",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "services_drillservice_drillservice",
+      "community": 72,
+      "norm_label": "drillservice"
+    },
+    {
+      "label": ".createDrill()",
+      "file_type": "code",
+      "source_file": "features/drill/services/drillService.ts",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "services_drillservice_drillservice_createdrill",
+      "community": 72,
+      "norm_label": ".createdrill()"
+    },
+    {
+      "label": ".getDrillsByIssue()",
+      "file_type": "code",
+      "source_file": "features/drill/services/drillService.ts",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "services_drillservice_drillservice_getdrillsbyissue",
+      "community": 72,
+      "norm_label": ".getdrillsbyissue()"
+    },
+    {
+      "label": ".getAllDrills()",
+      "file_type": "code",
+      "source_file": "features/drill/services/drillService.ts",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "services_drillservice_drillservice_getalldrills",
+      "community": 72,
+      "norm_label": ".getalldrills()"
+    },
+    {
+      "label": ".updateDrill()",
+      "file_type": "code",
+      "source_file": "features/drill/services/drillService.ts",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "services_drillservice_drillservice_updatedrill",
+      "community": 72,
+      "norm_label": ".updatedrill()"
+    },
+    {
+      "label": ".deleteDrill()",
+      "file_type": "code",
+      "source_file": "features/drill/services/drillService.ts",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "services_drillservice_drillservice_deletedrill",
+      "community": 72,
+      "norm_label": ".deletedrill()"
+    },
+    {
+      "label": ".bulkDeleteDrills()",
+      "file_type": "code",
+      "source_file": "features/drill/services/drillService.ts",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "services_drillservice_drillservice_bulkdeletedrills",
+      "community": 72,
+      "norm_label": ".bulkdeletedrills()"
+    },
+    {
+      "label": "Drill.ts",
+      "file_type": "code",
+      "source_file": "features/drill/types/Drill.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "types_drill",
+      "community": 72,
+      "norm_label": "drill.ts"
+    },
+    {
+      "label": "Drill",
+      "file_type": "code",
+      "source_file": "features/drill/types/Drill.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "types_drill_drill",
+      "community": 72,
+      "norm_label": "drill"
+    },
+    {
+      "label": "CreateDrillRequest",
+      "file_type": "code",
+      "source_file": "features/drill/types/Drill.ts",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "types_drill_createdrillrequest",
+      "community": 72,
+      "norm_label": "createdrillrequest"
+    },
+    {
+      "label": "CreateDrillResponse",
+      "file_type": "code",
+      "source_file": "features/drill/types/Drill.ts",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "types_drill_createdrillresponse",
+      "community": 72,
+      "norm_label": "createdrillresponse"
+    },
+    {
+      "label": "UpdateDrillRequest",
+      "file_type": "code",
+      "source_file": "features/drill/types/Drill.ts",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "types_drill_updatedrillrequest",
+      "community": 72,
+      "norm_label": "updatedrillrequest"
+    },
+    {
+      "label": "DrillRun.ts",
+      "file_type": "code",
+      "source_file": "features/drill/types/DrillRun.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "types_drillrun",
+      "community": 0,
+      "norm_label": "drillrun.ts"
+    },
+    {
+      "label": "DrillRun",
+      "file_type": "code",
+      "source_file": "features/drill/types/DrillRun.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "types_drillrun_drillrun",
+      "community": 0,
+      "norm_label": "drillrun"
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "features/drill/types/index.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "features_drill_types_index_ts_types_index",
+      "community": 72,
+      "norm_label": "index.ts"
+    },
+    {
       "label": "HomeAnalysisContext.tsx",
       "file_type": "code",
       "source_file": "features/home/context/HomeAnalysisContext.tsx",
@@ -2364,46 +2594,6 @@
       "norm_label": "useawakescreen()"
     },
     {
-      "label": "useDrillRunActions.ts",
-      "file_type": "code",
-      "source_file": "features/practice/hooks/useDrillRunActions.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "hooks_usedrillrunactions",
-      "community": 0,
-      "norm_label": "usedrillrunactions.ts"
-    },
-    {
-      "label": "UseDrillRunActionsReturn",
-      "file_type": "code",
-      "source_file": "features/practice/hooks/useDrillRunActions.ts",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "hooks_usedrillrunactions_usedrillrunactionsreturn",
-      "community": 0,
-      "norm_label": "usedrillrunactionsreturn"
-    },
-    {
-      "label": "toErrorMessage()",
-      "file_type": "code",
-      "source_file": "features/practice/hooks/useDrillRunActions.ts",
-      "source_location": "L12",
-      "_origin": "ast",
-      "id": "hooks_usedrillrunactions_toerrormessage",
-      "community": 0,
-      "norm_label": "toerrormessage()"
-    },
-    {
-      "label": "useDrillRunActions()",
-      "file_type": "code",
-      "source_file": "features/practice/hooks/useDrillRunActions.ts",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "hooks_usedrillrunactions_usedrillrunactions",
-      "community": 0,
-      "norm_label": "usedrillrunactions()"
-    },
-    {
       "label": "usePracticeResultsState.ts",
       "file_type": "code",
       "source_file": "features/practice/hooks/usePracticeResultsState.ts",
@@ -2644,116 +2834,6 @@
       "norm_label": "drillresultscreen()"
     },
     {
-      "label": "drillRunService.ts",
-      "file_type": "code",
-      "source_file": "features/practice/services/drillRunService.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "services_drillrunservice",
-      "community": 0,
-      "norm_label": "drillrunservice.ts"
-    },
-    {
-      "label": "startDrillRun()",
-      "file_type": "code",
-      "source_file": "features/practice/services/drillRunService.ts",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "services_drillrunservice_startdrillrun",
-      "community": 0,
-      "norm_label": "startdrillrun()"
-    },
-    {
-      "label": "endDrillRun()",
-      "file_type": "code",
-      "source_file": "features/practice/services/drillRunService.ts",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "services_drillrunservice_enddrillrun",
-      "community": 0,
-      "norm_label": "enddrillrun()"
-    },
-    {
-      "label": "drillService.ts",
-      "file_type": "code",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "services_drillservice",
-      "community": 0,
-      "norm_label": "drillservice.ts"
-    },
-    {
-      "label": "DrillService",
-      "file_type": "code",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "services_drillservice_drillservice",
-      "community": 0,
-      "norm_label": "drillservice"
-    },
-    {
-      "label": ".createDrill()",
-      "file_type": "code",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L13",
-      "_origin": "ast",
-      "id": "services_drillservice_drillservice_createdrill",
-      "community": 0,
-      "norm_label": ".createdrill()"
-    },
-    {
-      "label": ".getDrillsByIssue()",
-      "file_type": "code",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L20",
-      "_origin": "ast",
-      "id": "services_drillservice_drillservice_getdrillsbyissue",
-      "community": 0,
-      "norm_label": ".getdrillsbyissue()"
-    },
-    {
-      "label": ".getAllDrills()",
-      "file_type": "code",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L28",
-      "_origin": "ast",
-      "id": "services_drillservice_drillservice_getalldrills",
-      "community": 0,
-      "norm_label": ".getalldrills()"
-    },
-    {
-      "label": ".updateDrill()",
-      "file_type": "code",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L36",
-      "_origin": "ast",
-      "id": "services_drillservice_drillservice_updatedrill",
-      "community": 0,
-      "norm_label": ".updatedrill()"
-    },
-    {
-      "label": ".deleteDrill()",
-      "file_type": "code",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L43",
-      "_origin": "ast",
-      "id": "services_drillservice_drillservice_deletedrill",
-      "community": 0,
-      "norm_label": ".deletedrill()"
-    },
-    {
-      "label": ".bulkDeleteDrills()",
-      "file_type": "code",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L50",
-      "_origin": "ast",
-      "id": "services_drillservice_drillservice_bulkdeletedrills",
-      "community": 0,
-      "norm_label": ".bulkdeletedrills()"
-    },
-    {
       "label": "sessionService.ts",
       "file_type": "code",
       "source_file": "features/practice/services/sessionService.ts",
@@ -2804,76 +2884,6 @@
       "norm_label": "getpracticesessionresults()"
     },
     {
-      "label": "Drill.ts",
-      "file_type": "code",
-      "source_file": "features/practice/types/Drill.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "types_drill",
-      "community": 0,
-      "norm_label": "drill.ts"
-    },
-    {
-      "label": "Drill",
-      "file_type": "code",
-      "source_file": "features/practice/types/Drill.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "types_drill_drill",
-      "community": 0,
-      "norm_label": "drill"
-    },
-    {
-      "label": "CreateDrillRequest",
-      "file_type": "code",
-      "source_file": "features/practice/types/Drill.ts",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "types_drill_createdrillrequest",
-      "community": 0,
-      "norm_label": "createdrillrequest"
-    },
-    {
-      "label": "CreateDrillResponse",
-      "file_type": "code",
-      "source_file": "features/practice/types/Drill.ts",
-      "source_location": "L17",
-      "_origin": "ast",
-      "id": "types_drill_createdrillresponse",
-      "community": 0,
-      "norm_label": "createdrillresponse"
-    },
-    {
-      "label": "UpdateDrillRequest",
-      "file_type": "code",
-      "source_file": "features/practice/types/Drill.ts",
-      "source_location": "L22",
-      "_origin": "ast",
-      "id": "types_drill_updatedrillrequest",
-      "community": 0,
-      "norm_label": "updatedrillrequest"
-    },
-    {
-      "label": "DrillRun.ts",
-      "file_type": "code",
-      "source_file": "features/practice/types/DrillRun.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "types_drillrun",
-      "community": 0,
-      "norm_label": "drillrun.ts"
-    },
-    {
-      "label": "DrillRun",
-      "file_type": "code",
-      "source_file": "features/practice/types/DrillRun.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "types_drillrun_drillrun",
-      "community": 0,
-      "norm_label": "drillrun"
-    },
-    {
       "label": "Session.ts",
       "file_type": "code",
       "source_file": "features/practice/types/Session.ts",
@@ -2899,7 +2909,7 @@
       "source_file": "features/practice/types/index.ts",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "types_index",
+      "id": "features_practice_types_index_ts_types_index",
       "community": 0,
       "norm_label": "index.ts"
     },
@@ -6599,9 +6609,9 @@
       "source_file": ".claude/settings.local.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_settings_local",
-      "target": "claude_settings_local_permissions",
-      "confidence_score": 1.0
+      "target": "claude_settings_local_permissions"
     },
     {
       "relation": "contains",
@@ -6609,9 +6619,9 @@
       "source_file": ".claude/settings.local.json",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_settings_local_permissions",
-      "target": "claude_settings_local_permissions_allow",
-      "confidence_score": 1.0
+      "target": "claude_settings_local_permissions_allow"
     },
     {
       "relation": "contains",
@@ -8667,6 +8677,638 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/useDrillRunActions.ts",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usedrillrunactions",
+      "target": "hooks_usedrillrunactions_toerrormessage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/useDrillRunActions.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usedrillrunactions",
+      "target": "hooks_usedrillrunactions_usedrillrunactions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/useDrillRunActions.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usedrillrunactions",
+      "target": "hooks_usedrillrunactions_usedrillrunactionsreturn"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/useDrillRunActions.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usedrillrunactions",
+      "target": "services_drillrunservice"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/useDrillRunActions.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usedrillrunactions",
+      "target": "services_drillrunservice_enddrillrun"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/useDrillRunActions.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usedrillrunactions",
+      "target": "services_drillrunservice_startdrillrun"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/useDrillRunActions.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usedrillrunactions",
+      "target": "types_drillrun"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/useDrillRunActions.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usedrillrunactions",
+      "target": "types_drillrun_drillrun"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usepracticescreenstate",
+      "target": "hooks_usedrillrunactions"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/useDrillRunActions.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usedrillrunactions_usedrillrunactionsreturn",
+      "target": "types_drillrun_drillrun"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usepracticescreenstate",
+      "target": "hooks_usedrillrunactions_usedrillrunactions"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "hooks_usepracticescreenstate_usepracticescreenstate",
+      "target": "hooks_usedrillrunactions_usedrillrunactions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillRunService.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillrunservice",
+      "target": "services_drillrunservice_enddrillrun"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillRunService.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillrunservice",
+      "target": "services_drillrunservice_startdrillrun"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillRunService.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillrunservice",
+      "target": "types_drillrun"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillRunService.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillrunservice",
+      "target": "types_drillrun_drillrun"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice",
+      "target": "services_drillservice_drillservice"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice",
+      "target": "types_drill_createdrillrequest"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice",
+      "target": "types_drill_createdrillresponse"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice",
+      "target": "types_drill_drill"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice",
+      "target": "types_drill_updatedrillrequest"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice_drillservice",
+      "target": "services_drillservice_drillservice_bulkdeletedrills"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice_drillservice",
+      "target": "services_drillservice_drillservice_createdrill"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice_drillservice",
+      "target": "services_drillservice_drillservice_deletedrill"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice_drillservice",
+      "target": "services_drillservice_drillservice_getalldrills"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice_drillservice",
+      "target": "services_drillservice_drillservice_getdrillsbyissue"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice_drillservice",
+      "target": "services_drillservice_drillservice_updatedrill"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice_drillservice_createdrill",
+      "target": "types_drill_createdrillrequest"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice_drillservice_createdrill",
+      "target": "types_drill_createdrillresponse"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice_drillservice_getdrillsbyissue",
+      "target": "types_drill_drill"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice_drillservice_getalldrills",
+      "target": "types_drill_drill"
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice_drillservice_updatedrill",
+      "target": "types_drill_drill"
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/drillService.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_drillservice_drillservice_updatedrill",
+      "target": "types_drill_updatedrillrequest"
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "features/drill/types/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "features_drill_types_index_ts_types_index",
+      "target": "types_drill",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usepracticescreenstate",
+      "target": "types_drill"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/types/Drill.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "types_drill",
+      "target": "types_drill_createdrillrequest"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/types/Drill.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "types_drill",
+      "target": "types_drill_createdrillresponse"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/types/Drill.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "types_drill",
+      "target": "types_drill_drill"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/types/Drill.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "types_drill",
+      "target": "types_drill_updatedrillrequest"
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "features/drill/types/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "features_drill_types_index_ts_types_index",
+      "target": "types_drill_drill",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usepracticescreenstate",
+      "target": "types_drill_drill"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usepracticescreenstate_usepracticedrillsreturn",
+      "target": "types_drill_drill"
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "features/drill/types/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "features_drill_types_index_ts_types_index",
+      "target": "types_drill_createdrillrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "features/drill/types/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "features_drill_types_index_ts_types_index",
+      "target": "types_drill_createdrillresponse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "features/drill/types/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "features_drill_types_index_ts_types_index",
+      "target": "types_drill_updatedrillrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "features/drill/types/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "features_drill_types_index_ts_types_index",
+      "target": "types_drillrun",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/usePracticeResultsState.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usepracticeresultsstate",
+      "target": "types_drillrun"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usepracticescreenstate",
+      "target": "types_drillrun"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/useSessionActions.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usesessionactions",
+      "target": "types_drillrun"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/sessionService.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_sessionservice",
+      "target": "types_drillrun"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/types/DrillRun.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "types_drillrun",
+      "target": "types_drillrun_drillrun"
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "features/drill/types/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "features_drill_types_index_ts_types_index",
+      "target": "types_drillrun_drillrun",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/usePracticeResultsState.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usepracticeresultsstate",
+      "target": "types_drillrun_drillrun"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/usePracticeResultsState.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usepracticeresultsstate_usepracticeresultsstatereturn",
+      "target": "types_drillrun_drillrun"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usepracticescreenstate",
+      "target": "types_drillrun_drillrun"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/useSessionActions.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usesessionactions",
+      "target": "types_drillrun_drillrun"
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/hooks/useSessionActions.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usesessionactions_usesessionactionsreturn",
+      "target": "types_drillrun_drillrun"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/screens/drillResultScreen.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_drillresultscreen",
+      "target": "types_drillrun_drillrun"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "features/practice/services/sessionService.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_sessionservice",
+      "target": "types_drillrun_drillrun"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "features/home/context/HomeAnalysisContext.tsx",
       "source_location": "L8",
       "weight": 1.0,
@@ -9292,135 +9934,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/useDrillRunActions.ts",
-      "source_location": "L12",
-      "weight": 1.0,
-      "source": "hooks_usedrillrunactions",
-      "target": "hooks_usedrillrunactions_toerrormessage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/useDrillRunActions.ts",
-      "source_location": "L15",
-      "weight": 1.0,
-      "source": "hooks_usedrillrunactions",
-      "target": "hooks_usedrillrunactions_usedrillrunactions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/useDrillRunActions.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "hooks_usedrillrunactions",
-      "target": "hooks_usedrillrunactions_usedrillrunactionsreturn",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/useDrillRunActions.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "hooks_usedrillrunactions",
-      "target": "services_drillrunservice",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/useDrillRunActions.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "hooks_usedrillrunactions",
-      "target": "services_drillrunservice_enddrillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/useDrillRunActions.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "hooks_usedrillrunactions",
-      "target": "services_drillrunservice_startdrillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/useDrillRunActions.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "hooks_usedrillrunactions",
-      "target": "types_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/useDrillRunActions.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "hooks_usedrillrunactions",
-      "target": "types_drillrun_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "hooks_usepracticescreenstate",
-      "target": "hooks_usedrillrunactions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "field",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/useDrillRunActions.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "source": "hooks_usedrillrunactions_usedrillrunactionsreturn",
-      "target": "types_drillrun_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "hooks_usepracticescreenstate",
-      "target": "hooks_usedrillrunactions_usedrillrunactions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
-      "source_location": "L33",
-      "weight": 1.0,
-      "source": "hooks_usepracticescreenstate_usepracticescreenstate",
-      "target": "hooks_usedrillrunactions_usedrillrunactions"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "features/practice/hooks/usePracticeResultsState.ts",
       "source_location": "L10",
       "weight": 1.0,
@@ -9445,9 +9958,9 @@
       "source_file": "features/practice/hooks/usePracticeResultsState.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usepracticeresultsstate",
-      "target": "hooks_usesessionactions",
-      "confidence_score": 1.0
+      "target": "hooks_usesessionactions"
     },
     {
       "relation": "imports",
@@ -9456,31 +9969,9 @@
       "source_file": "features/practice/hooks/usePracticeResultsState.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usepracticeresultsstate",
-      "target": "hooks_usesessionactions_usesessionactions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/usePracticeResultsState.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "hooks_usepracticeresultsstate",
-      "target": "types_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/usePracticeResultsState.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "hooks_usepracticeresultsstate",
-      "target": "types_drillrun_drillrun",
-      "confidence_score": 1.0
+      "target": "hooks_usesessionactions_usesessionactions"
     },
     {
       "relation": "imports_from",
@@ -9489,9 +9980,9 @@
       "source_file": "features/practice/hooks/usePracticeResultsState.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usepracticeresultsstate",
-      "target": "types_session",
-      "confidence_score": 1.0
+      "target": "types_session"
     },
     {
       "relation": "imports",
@@ -9500,9 +9991,9 @@
       "source_file": "features/practice/hooks/usePracticeResultsState.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usepracticeresultsstate",
-      "target": "types_session_practicesession",
-      "confidence_score": 1.0
+      "target": "types_session_practicesession"
     },
     {
       "relation": "imports_from",
@@ -9520,22 +10011,11 @@
       "context": "field",
       "confidence": "EXTRACTED",
       "source_file": "features/practice/hooks/usePracticeResultsState.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "hooks_usepracticeresultsstate_usepracticeresultsstatereturn",
-      "target": "types_drillrun_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "field",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/usePracticeResultsState.ts",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usepracticeresultsstate_usepracticeresultsstatereturn",
-      "target": "types_session_practicesession",
-      "confidence_score": 1.0
+      "target": "types_session_practicesession"
     },
     {
       "relation": "calls",
@@ -9597,9 +10077,9 @@
       "source_file": "features/practice/hooks/usePracticeScreenState.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usepracticescreenstate",
-      "target": "hooks_usesessionactions",
-      "confidence_score": 1.0
+      "target": "hooks_usesessionactions"
     },
     {
       "relation": "imports",
@@ -9608,53 +10088,9 @@
       "source_file": "features/practice/hooks/usePracticeScreenState.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usepracticescreenstate",
-      "target": "hooks_usesessionactions_usesessionactions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "hooks_usepracticescreenstate",
-      "target": "types_drill",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "hooks_usepracticescreenstate",
-      "target": "types_drill_drill",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "hooks_usepracticescreenstate",
-      "target": "types_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "hooks_usepracticescreenstate",
-      "target": "types_drillrun_drillrun",
-      "confidence_score": 1.0
+      "target": "hooks_usesessionactions_usesessionactions"
     },
     {
       "relation": "imports_from",
@@ -9663,9 +10099,9 @@
       "source_file": "features/practice/hooks/usePracticeScreenState.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usepracticescreenstate",
-      "target": "types_session",
-      "confidence_score": 1.0
+      "target": "types_session"
     },
     {
       "relation": "imports",
@@ -9674,20 +10110,9 @@
       "source_file": "features/practice/hooks/usePracticeScreenState.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usepracticescreenstate",
-      "target": "types_session_practicesession",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "field",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/usePracticeScreenState.ts",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "hooks_usepracticescreenstate_usepracticedrillsreturn",
-      "target": "types_drill_drill",
-      "confidence_score": 1.0
+      "target": "types_session_practicesession"
     },
     {
       "relation": "calls",
@@ -9717,9 +10142,9 @@
       "source_file": "features/practice/hooks/useSessionActions.ts",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usesessionactions",
-      "target": "hooks_usesessionactions_toerrormessage",
-      "confidence_score": 1.0
+      "target": "hooks_usesessionactions_toerrormessage"
     },
     {
       "relation": "contains",
@@ -9727,9 +10152,9 @@
       "source_file": "features/practice/hooks/useSessionActions.ts",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usesessionactions",
-      "target": "hooks_usesessionactions_usesessionactions",
-      "confidence_score": 1.0
+      "target": "hooks_usesessionactions_usesessionactions"
     },
     {
       "relation": "contains",
@@ -9737,9 +10162,9 @@
       "source_file": "features/practice/hooks/useSessionActions.ts",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usesessionactions",
-      "target": "hooks_usesessionactions_usesessionactionsreturn",
-      "confidence_score": 1.0
+      "target": "hooks_usesessionactions_usesessionactionsreturn"
     },
     {
       "relation": "imports_from",
@@ -9748,9 +10173,9 @@
       "source_file": "features/practice/hooks/useSessionActions.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usesessionactions",
-      "target": "services_sessionservice",
-      "confidence_score": 1.0
+      "target": "services_sessionservice"
     },
     {
       "relation": "imports",
@@ -9759,9 +10184,9 @@
       "source_file": "features/practice/hooks/useSessionActions.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usesessionactions",
-      "target": "services_sessionservice_endpracticesession",
-      "confidence_score": 1.0
+      "target": "services_sessionservice_endpracticesession"
     },
     {
       "relation": "imports",
@@ -9770,9 +10195,9 @@
       "source_file": "features/practice/hooks/useSessionActions.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usesessionactions",
-      "target": "services_sessionservice_getpracticesessionbyid",
-      "confidence_score": 1.0
+      "target": "services_sessionservice_getpracticesessionbyid"
     },
     {
       "relation": "imports",
@@ -9781,9 +10206,9 @@
       "source_file": "features/practice/hooks/useSessionActions.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usesessionactions",
-      "target": "services_sessionservice_getpracticesessionresults",
-      "confidence_score": 1.0
+      "target": "services_sessionservice_getpracticesessionresults"
     },
     {
       "relation": "imports",
@@ -9792,31 +10217,9 @@
       "source_file": "features/practice/hooks/useSessionActions.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usesessionactions",
-      "target": "services_sessionservice_startpracticesession",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/useSessionActions.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "source": "hooks_usesessionactions",
-      "target": "types_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/useSessionActions.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "source": "hooks_usesessionactions",
-      "target": "types_drillrun_drillrun",
-      "confidence_score": 1.0
+      "target": "services_sessionservice_startpracticesession"
     },
     {
       "relation": "imports_from",
@@ -9825,9 +10228,9 @@
       "source_file": "features/practice/hooks/useSessionActions.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usesessionactions",
-      "target": "types_session",
-      "confidence_score": 1.0
+      "target": "types_session"
     },
     {
       "relation": "imports",
@@ -9836,20 +10239,9 @@
       "source_file": "features/practice/hooks/useSessionActions.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usesessionactions",
-      "target": "types_session_practicesession",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "field",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/hooks/useSessionActions.ts",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "hooks_usesessionactions_usesessionactionsreturn",
-      "target": "types_drillrun_drillrun",
-      "confidence_score": 1.0
+      "target": "types_session_practicesession"
     },
     {
       "relation": "references",
@@ -9858,9 +10250,9 @@
       "source_file": "features/practice/hooks/useSessionActions.ts",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "hooks_usesessionactions_usesessionactionsreturn",
-      "target": "types_session_practicesession",
-      "confidence_score": 1.0
+      "target": "types_session_practicesession"
     },
     {
       "relation": "contains",
@@ -9905,26 +10297,15 @@
       "target": "screens_drillresultscreen"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/practiceFlow.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "practice_practiceflow",
-      "target": "types_index",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "features/practice/practiceFlow.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "practice_practiceflow",
-      "target": "types_session_practicesession",
-      "confidence_score": 1.0
+      "target": "types_session_practicesession"
     },
     {
       "relation": "calls",
@@ -9958,26 +10339,15 @@
       "target": "screens_drillpracticescreen_props"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/screens/drillPracticeScreen.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "source": "screens_drillpracticescreen",
-      "target": "types_index",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "features/practice/screens/drillPracticeScreen.tsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_drillpracticescreen",
-      "target": "types_session_practicesession",
-      "confidence_score": 1.0
+      "target": "types_session_practicesession"
     },
     {
       "relation": "contains",
@@ -10054,266 +10424,11 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "features/practice/screens/drillResultScreen.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "screens_drillresultscreen",
-      "target": "types_drillrun_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/screens/drillResultScreen.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "screens_drillresultscreen",
-      "target": "types_index",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/screens/drillResultScreen.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_drillresultscreen",
-      "target": "types_session_practicesession",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillRunService.ts",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "services_drillrunservice",
-      "target": "services_drillrunservice_enddrillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillRunService.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "source": "services_drillrunservice",
-      "target": "services_drillrunservice_startdrillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillRunService.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "services_drillrunservice",
-      "target": "types_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillRunService.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "services_drillrunservice",
-      "target": "types_drillrun_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "services_drillservice",
-      "target": "services_drillservice_drillservice"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "services_drillservice",
-      "target": "types_drill_createdrillrequest",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "services_drillservice",
-      "target": "types_drill_createdrillresponse",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "services_drillservice",
-      "target": "types_drill_drill",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "services_drillservice",
-      "target": "types_drill_updatedrillrequest",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "services_drillservice",
-      "target": "types_index",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L50",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "services_drillservice_drillservice",
-      "target": "services_drillservice_drillservice_bulkdeletedrills"
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "services_drillservice_drillservice",
-      "target": "services_drillservice_drillservice_createdrill"
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L43",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "services_drillservice_drillservice",
-      "target": "services_drillservice_drillservice_deletedrill"
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L28",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "services_drillservice_drillservice",
-      "target": "services_drillservice_drillservice_getalldrills"
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "services_drillservice_drillservice",
-      "target": "services_drillservice_drillservice_getdrillsbyissue"
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "services_drillservice_drillservice",
-      "target": "services_drillservice_drillservice_updatedrill"
-    },
-    {
-      "relation": "references",
-      "context": "parameter_type",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "services_drillservice_drillservice_createdrill",
-      "target": "types_drill_createdrillrequest",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "services_drillservice_drillservice_createdrill",
-      "target": "types_drill_createdrillresponse",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L20",
-      "weight": 1.0,
-      "source": "services_drillservice_drillservice_getdrillsbyissue",
-      "target": "types_drill_drill",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L28",
-      "weight": 1.0,
-      "source": "services_drillservice_drillservice_getalldrills",
-      "target": "types_drill_drill",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L36",
-      "weight": 1.0,
-      "source": "services_drillservice_drillservice_updatedrill",
-      "target": "types_drill_drill",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "parameter_type",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/drillService.ts",
-      "source_location": "L36",
-      "weight": 1.0,
-      "source": "services_drillservice_drillservice_updatedrill",
-      "target": "types_drill_updatedrillrequest",
-      "confidence_score": 1.0
+      "target": "types_session_practicesession"
     },
     {
       "relation": "contains",
@@ -10321,9 +10436,9 @@
       "source_file": "features/practice/services/sessionService.ts",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_sessionservice",
-      "target": "services_sessionservice_endpracticesession",
-      "confidence_score": 1.0
+      "target": "services_sessionservice_endpracticesession"
     },
     {
       "relation": "contains",
@@ -10331,9 +10446,9 @@
       "source_file": "features/practice/services/sessionService.ts",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_sessionservice",
-      "target": "services_sessionservice_getpracticesessionbyid",
-      "confidence_score": 1.0
+      "target": "services_sessionservice_getpracticesessionbyid"
     },
     {
       "relation": "contains",
@@ -10341,9 +10456,9 @@
       "source_file": "features/practice/services/sessionService.ts",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_sessionservice",
-      "target": "services_sessionservice_getpracticesessionresults",
-      "confidence_score": 1.0
+      "target": "services_sessionservice_getpracticesessionresults"
     },
     {
       "relation": "contains",
@@ -10351,31 +10466,9 @@
       "source_file": "features/practice/services/sessionService.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_sessionservice",
-      "target": "services_sessionservice_startpracticesession",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/sessionService.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "services_sessionservice",
-      "target": "types_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/services/sessionService.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "services_sessionservice",
-      "target": "types_drillrun_drillrun",
-      "confidence_score": 1.0
+      "target": "services_sessionservice_startpracticesession"
     },
     {
       "relation": "imports_from",
@@ -10384,9 +10477,9 @@
       "source_file": "features/practice/services/sessionService.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_sessionservice",
-      "target": "types_session",
-      "confidence_score": 1.0
+      "target": "types_session"
     },
     {
       "relation": "imports",
@@ -10395,49 +10488,9 @@
       "source_file": "features/practice/services/sessionService.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_sessionservice",
-      "target": "types_session_practicesession",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/types/Drill.ts",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "types_drill",
-      "target": "types_drill_createdrillrequest",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/types/Drill.ts",
-      "source_location": "L17",
-      "weight": 1.0,
-      "source": "types_drill",
-      "target": "types_drill_createdrillresponse",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/types/Drill.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "types_drill",
-      "target": "types_drill_drill",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/types/Drill.ts",
-      "source_location": "L22",
-      "weight": 1.0,
-      "source": "types_drill",
-      "target": "types_drill_updatedrillrequest",
-      "confidence_score": 1.0
+      "target": "types_session_practicesession"
     },
     {
       "relation": "re_exports",
@@ -10446,94 +10499,7 @@
       "source_file": "features/practice/types/index.ts",
       "source_location": "L1",
       "weight": 1.0,
-      "source": "types_index",
-      "target": "types_drill",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/types/index.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "types_index",
-      "target": "types_drill_drill",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/types/index.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "types_index",
-      "target": "types_drill_createdrillrequest",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/types/index.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "types_index",
-      "target": "types_drill_createdrillresponse",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/types/index.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "types_index",
-      "target": "types_drill_updatedrillrequest",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/types/DrillRun.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "types_drillrun",
-      "target": "types_drillrun_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "re_exports",
-      "context": "export",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/types/index.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "types_index",
-      "target": "types_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/types/index.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "types_index",
-      "target": "types_drillrun_drillrun",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "re_exports",
-      "context": "export",
-      "confidence": "EXTRACTED",
-      "source_file": "features/practice/types/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "types_index",
+      "source": "features_practice_types_index_ts_types_index",
       "target": "types_session",
       "confidence_score": 1.0
     },
@@ -10543,18 +10509,18 @@
       "source_file": "features/practice/types/Session.ts",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "types_session",
-      "target": "types_session_practicesession",
-      "confidence_score": 1.0
+      "target": "types_session_practicesession"
     },
     {
       "relation": "re_exports",
       "context": "re-export",
       "confidence": "EXTRACTED",
       "source_file": "features/practice/types/index.ts",
-      "source_location": "L2",
+      "source_location": "L1",
       "weight": 1.0,
-      "source": "types_index",
+      "source": "features_practice_types_index_ts_types_index",
       "target": "types_session_practicesession",
       "confidence_score": 1.0
     },
@@ -14635,9 +14601,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude",
-      "target": "claude_claude_md",
-      "confidence_score": 1.0
+      "target": "claude_claude_md"
     },
     {
       "relation": "contains",
@@ -14645,9 +14611,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_architecture",
-      "confidence_score": 1.0
+      "target": "claude_architecture"
     },
     {
       "relation": "contains",
@@ -14655,9 +14621,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_commands",
-      "confidence_score": 1.0
+      "target": "claude_commands"
     },
     {
       "relation": "contains",
@@ -14665,9 +14631,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_conventions",
-      "confidence_score": 1.0
+      "target": "claude_conventions"
     },
     {
       "relation": "contains",
@@ -14675,9 +14641,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_graphify",
-      "confidence_score": 1.0
+      "target": "claude_graphify"
     },
     {
       "relation": "contains",
@@ -14685,9 +14651,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_what_this_project_is",
-      "confidence_score": 1.0
+      "target": "claude_what_this_project_is"
     },
     {
       "relation": "contains",
@@ -14695,9 +14661,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_architecture",
-      "target": "claude_auth_features_auth_authprovider_tsx",
-      "confidence_score": 1.0
+      "target": "claude_auth_features_auth_authprovider_tsx"
     },
     {
       "relation": "contains",
@@ -14705,9 +14671,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_architecture",
-      "target": "claude_backend_api_lib_apiclient_ts",
-      "confidence_score": 1.0
+      "target": "claude_backend_api_lib_apiclient_ts"
     },
     {
       "relation": "contains",
@@ -14715,9 +14681,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_architecture",
-      "target": "claude_environment",
-      "confidence_score": 1.0
+      "target": "claude_environment"
     },
     {
       "relation": "contains",
@@ -14725,9 +14691,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_architecture",
-      "target": "claude_features_features",
-      "confidence_score": 1.0
+      "target": "claude_features_features"
     },
     {
       "relation": "contains",
@@ -14735,9 +14701,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_architecture",
-      "target": "claude_native_modules",
-      "confidence_score": 1.0
+      "target": "claude_native_modules"
     },
     {
       "relation": "contains",
@@ -14745,9 +14711,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_architecture",
-      "target": "claude_path_aliases",
-      "confidence_score": 1.0
+      "target": "claude_path_aliases"
     },
     {
       "relation": "contains",
@@ -14755,9 +14721,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_architecture",
-      "target": "claude_routing_app",
-      "confidence_score": 1.0
+      "target": "claude_routing_app"
     },
     {
       "relation": "contains",
@@ -14765,9 +14731,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_architecture",
-      "target": "claude_styling",
-      "confidence_score": 1.0
+      "target": "claude_styling"
     },
     {
       "relation": "contains",
@@ -14775,9 +14741,9 @@
       "source_file": "features/CLAUDE.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "features_claude",
-      "target": "features_claude_features_directory",
-      "confidence_score": 1.0
+      "target": "features_claude_features_directory"
     },
     {
       "relation": "contains",
@@ -14785,9 +14751,9 @@
       "source_file": "features/CLAUDE.md",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "features_claude_features_directory",
-      "target": "features_claude_conventions",
-      "confidence_score": 1.0
+      "target": "features_claude_conventions"
     },
     {
       "relation": "contains",
@@ -14795,9 +14761,9 @@
       "source_file": "features/CLAUDE.md",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "features_claude_features_directory",
-      "target": "features_claude_what_this_folder_is_and_layout",
-      "confidence_score": 1.0
+      "target": "features_claude_what_this_folder_is_and_layout"
     },
     {
       "relation": "contains",
@@ -14805,9 +14771,9 @@
       "source_file": "features/CLAUDE.md",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "features_claude_features_directory",
-      "target": "features_claude_what_to_avoid",
-      "confidence_score": 1.0
+      "target": "features_claude_what_to_avoid"
     },
     {
       "relation": "references",
@@ -15031,5 +14997,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0ca3e07e36378a843917bd3c528227c091076b3c"
+  "built_at_commit": "c819853db33873c0b09c923fb3d62b5c36142648"
 }

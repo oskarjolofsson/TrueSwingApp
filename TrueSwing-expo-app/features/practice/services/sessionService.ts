@@ -1,6 +1,6 @@
 import { apiClient } from 'lib/apiClient';
 import type { PracticeSession } from '../types/Session';
-import type { DrillRun } from '../types/DrillRun';
+import type { DrillRun } from 'features/drill/types/DrillRun';
 
 export async function startPracticeSession(analysisIssueId: string) {
     return apiClient.post<PracticeSession>('/api/v1/practice/sessions/start/', {

@@ -1,642 +1,672 @@
 {
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/.claude/settings.json": {
+  ".claude/settings.json": {
     "mtime": 1780839186.2636833,
     "ast_hash": "bfee062c3962c14264fd704e975a6b38",
     "semantic_hash": "bfee062c3962c14264fd704e975a6b38"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/App.tsx": {
+  "App.tsx": {
     "mtime": 1775712179.9112554,
     "ast_hash": "e5bc7b9f9eeb9572f800b8f5954e7e4b",
     "semantic_hash": "e5bc7b9f9eeb9572f800b8f5954e7e4b"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/app.json": {
+  "app.json": {
     "mtime": 1779394196.4654322,
     "ast_hash": "0e8ca3dafa98dd7ec709743c7a295ff5",
     "semantic_hash": "0e8ca3dafa98dd7ec709743c7a295ff5"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/app/(app)/(tabs)/_layout.tsx": {
+  "app/(app)/(tabs)/_layout.tsx": {
     "mtime": 1778581487.2767575,
     "ast_hash": "26c97fa5eb6b62aae9124a96c4fe9676",
     "semantic_hash": "26c97fa5eb6b62aae9124a96c4fe9676"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/app/(app)/(tabs)/index.tsx": {
+  "app/(app)/(tabs)/index.tsx": {
     "mtime": 1776497865.7108026,
     "ast_hash": "3eaf52d42bb58848f317642ecb73b153",
     "semantic_hash": "3eaf52d42bb58848f317642ecb73b153"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/app/(app)/(tabs)/profile.tsx": {
+  "app/(app)/(tabs)/profile.tsx": {
     "mtime": 1775816951.148676,
     "ast_hash": "6c4281b6cc650ed175465c3e17021414",
     "semantic_hash": "6c4281b6cc650ed175465c3e17021414"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/app/(app)/(tabs)/upload.tsx": {
+  "app/(app)/(tabs)/upload.tsx": {
     "mtime": 1776107609.1855834,
     "ast_hash": "c1b2d74e41d8b9f3e8e392e4528111c7",
     "semantic_hash": "c1b2d74e41d8b9f3e8e392e4528111c7"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/app/(app)/_layout.tsx": {
+  "app/(app)/_layout.tsx": {
     "mtime": 1778581355.2968724,
     "ast_hash": "7b0f0d5a79e206d8da2c81800cfada57",
     "semantic_hash": "7b0f0d5a79e206d8da2c81800cfada57"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/app/(public)/_layout.tsx": {
+  "app/(public)/_layout.tsx": {
     "mtime": 1775745089.4493442,
     "ast_hash": "c8d087a8d36f2593a4fa414c251fe01f",
     "semantic_hash": "c8d087a8d36f2593a4fa414c251fe01f"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/app/(public)/sign-in.tsx": {
+  "app/(public)/sign-in.tsx": {
     "mtime": 1777101539.5313997,
     "ast_hash": "e9dfb665af54310b3355a954b595c5de",
     "semantic_hash": "e9dfb665af54310b3355a954b595c5de"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/app/_layout.tsx": {
+  "app/_layout.tsx": {
     "mtime": 1779002724.9589517,
     "ast_hash": "42018d23787971b8b819192f223695aa",
     "semantic_hash": "42018d23787971b8b819192f223695aa"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/babel.config.js": {
+  "babel.config.js": {
     "mtime": 1775715080.8824553,
     "ast_hash": "91e2a44aca486730f8ccd7e3391b1877",
     "semantic_hash": "91e2a44aca486730f8ccd7e3391b1877"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/eas.json": {
+  "eas.json": {
     "mtime": 1779264920.549272,
     "ast_hash": "0ba11be2e2109e62f5e4000683df8ce3",
     "semantic_hash": "0ba11be2e2109e62f5e4000683df8ce3"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/eslint.config.js": {
+  "eslint.config.js": {
     "mtime": 1775712179.9310818,
     "ast_hash": "770ca308364a328621db7a5a954bd3f6",
     "semantic_hash": "770ca308364a328621db7a5a954bd3f6"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/components/AnalysisDrawingOverlay.tsx": {
+  "features/analysis/components/AnalysisDrawingOverlay.tsx": {
     "mtime": 1779136339.0320578,
     "ast_hash": "0e8b5ec685515cd4d49b377d88031472",
     "semantic_hash": "0e8b5ec685515cd4d49b377d88031472"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/components/AnalysisHeaderOverlay.tsx": {
+  "features/analysis/components/AnalysisHeaderOverlay.tsx": {
     "mtime": 1776513669.3358939,
     "ast_hash": "128cfda9ef8aa1adde1e467602544eac",
     "semantic_hash": "128cfda9ef8aa1adde1e467602544eac"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/components/AnalysisReelItem.tsx": {
+  "features/analysis/components/AnalysisReelItem.tsx": {
     "mtime": 1779136339.0325096,
     "ast_hash": "bbae981a932fc4c5d9cc14a39f76516f",
     "semantic_hash": "bbae981a932fc4c5d9cc14a39f76516f"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/components/DeleteConfirmation.tsx": {
+  "features/analysis/components/DeleteConfirmation.tsx": {
     "mtime": 1776285359.1218042,
     "ast_hash": "06d57d37cb6797d9eb2aa2bb230f995a",
     "semantic_hash": "06d57d37cb6797d9eb2aa2bb230f995a"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/components/DetailedVideo.tsx": {
+  "features/analysis/components/DetailedVideo.tsx": {
     "mtime": 1779219066.936162,
     "ast_hash": "4bb47a7d613f27dbfb18ba02b6c4726b",
     "semantic_hash": "4bb47a7d613f27dbfb18ba02b6c4726b"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/components/InActiveReel.tsx": {
+  "features/analysis/components/InActiveReel.tsx": {
     "mtime": 1776151451.933718,
     "ast_hash": "7fad7a8d8f75c3aaeb004ebee7e23f9e",
     "semantic_hash": "7fad7a8d8f75c3aaeb004ebee7e23f9e"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/components/IssuePill.tsx": {
+  "features/analysis/components/IssuePill.tsx": {
     "mtime": 1776071337.8642995,
     "ast_hash": "72a26b318b6a61356b208cfb39b287b6",
     "semantic_hash": "72a26b318b6a61356b208cfb39b287b6"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/components/IssueShowcaseOverlay.tsx": {
+  "features/analysis/components/IssueShowcaseOverlay.tsx": {
     "mtime": 1776520642.8885398,
     "ast_hash": "e4e8fe770d2d5c22b5bc3a8d58b91070",
     "semantic_hash": "e4e8fe770d2d5c22b5bc3a8d58b91070"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/components/Reel.tsx": {
+  "features/analysis/components/Reel.tsx": {
     "mtime": 1776718721.2895005,
     "ast_hash": "f633d26d0fa310bec8044dde508c3692",
     "semantic_hash": "f633d26d0fa310bec8044dde508c3692"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/components/ReelContainer.tsx": {
+  "features/analysis/components/ReelContainer.tsx": {
     "mtime": 1776501627.919095,
     "ast_hash": "958cd3a790f4e1781cd9832f6695043d",
     "semantic_hash": "958cd3a790f4e1781cd9832f6695043d"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/components/VideoSeekBar.tsx": {
+  "features/analysis/components/VideoSeekBar.tsx": {
     "mtime": 1779218027.1854799,
     "ast_hash": "4ac09c91de8fdcd2e4d059f11047f74f",
     "semantic_hash": "4ac09c91de8fdcd2e4d059f11047f74f"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/components/Welcome.tsx": {
+  "features/analysis/components/Welcome.tsx": {
     "mtime": 1776932521.7843778,
     "ast_hash": "938f077d758ddd01b82dd6206969d36a",
     "semantic_hash": "938f077d758ddd01b82dd6206969d36a"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/hooks/useAnalyses.ts": {
+  "features/analysis/hooks/useAnalyses.ts": {
     "mtime": 1776518173.2035933,
     "ast_hash": "a961dbc5685dbb8623dd4933b871321b",
     "semantic_hash": "a961dbc5685dbb8623dd4933b871321b"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/hooks/useAnalysisData.ts": {
+  "features/analysis/hooks/useAnalysisData.ts": {
     "mtime": 1776501627.9191017,
     "ast_hash": "82763fb73af01fb79aab82a774ea1e2c",
     "semantic_hash": "82763fb73af01fb79aab82a774ea1e2c"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/hooks/useAnalysisDrawing.ts": {
+  "features/analysis/hooks/useAnalysisDrawing.ts": {
     "mtime": 1779136339.0329633,
     "ast_hash": "9c8c1d922502524dd040e29cfb67c807",
     "semantic_hash": "9c8c1d922502524dd040e29cfb67c807"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/hooks/useReelPlayback.ts": {
+  "features/analysis/hooks/useReelPlayback.ts": {
     "mtime": 1779134667.9247727,
     "ast_hash": "195a928f00430874128a9f1a4a702fc2",
     "semantic_hash": "195a928f00430874128a9f1a4a702fc2"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/hooks/useResultNavigation.ts": {
+  "features/analysis/hooks/useResultNavigation.ts": {
     "mtime": 1775822232.9153156,
     "ast_hash": "9729069ab1dc16c089d27334900480ad",
     "semantic_hash": "9729069ab1dc16c089d27334900480ad"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/hooks/useScrubFriendlyVideo.ts": {
+  "features/analysis/hooks/useScrubFriendlyVideo.ts": {
     "mtime": 1779215453.7871084,
     "ast_hash": "1201d61364bcbb797bbc3633b17013a3",
     "semantic_hash": "1201d61364bcbb797bbc3633b17013a3"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/hooks/useVideoURL.ts": {
+  "features/analysis/hooks/useVideoURL.ts": {
     "mtime": 1776524749.7598464,
     "ast_hash": "98f11a321927464543e332540b45bc10",
     "semantic_hash": "98f11a321927464543e332540b45bc10"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/screens/analysisResultScreen.tsx": {
+  "features/analysis/screens/analysisResultScreen.tsx": {
     "mtime": 1776932263.6590827,
     "ast_hash": "f44ff6c812529f1c4859e4b8c2993098",
     "semantic_hash": "f44ff6c812529f1c4859e4b8c2993098"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/services/analysisService.ts": {
+  "features/analysis/services/analysisService.ts": {
     "mtime": 1776524676.965971,
     "ast_hash": "65dc4d5171ff2c878ddf59154de6510a",
     "semantic_hash": "65dc4d5171ff2c878ddf59154de6510a"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/types.ts": {
+  "features/analysis/types.ts": {
     "mtime": 1775822306.247321,
     "ast_hash": "b551070a8b0d714e81f8ce253a2f306c",
     "semantic_hash": "b551070a8b0d714e81f8ce253a2f306c"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/analysis/utils/videoCache.ts": {
+  "features/analysis/utils/videoCache.ts": {
     "mtime": 1779215362.829676,
     "ast_hash": "157de301b3b2c4be98cb7dcde1b22b83",
     "semantic_hash": "157de301b3b2c4be98cb7dcde1b22b83"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/auth/AuthProvider.tsx": {
+  "features/auth/AuthProvider.tsx": {
     "mtime": 1777400510.6219027,
     "ast_hash": "f7c8b7e96c64ae7af09f75a618338873",
     "semantic_hash": "f7c8b7e96c64ae7af09f75a618338873"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/auth/types.ts": {
+  "features/auth/types.ts": {
     "mtime": 1775819218.7245247,
     "ast_hash": "dab3329b4a46735142d252806ac933eb",
     "semantic_hash": "dab3329b4a46735142d252806ac933eb"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/home/context/HomeAnalysisContext.tsx": {
+  "features/home/context/HomeAnalysisContext.tsx": {
     "mtime": 1776514746.237065,
     "ast_hash": "cf963efa4986021e8ec7d2cdca8de136",
     "semantic_hash": "cf963efa4986021e8ec7d2cdca8de136"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/home/homeFlow.tsx": {
-    "mtime": 1776965142.3520696,
-    "ast_hash": "a4e0ad931c3e93e61e7e548c6e26bb2b",
-    "semantic_hash": "a4e0ad931c3e93e61e7e548c6e26bb2b"
+  "features/home/homeFlow.tsx": {
+    "mtime": 1780848795.9558487,
+    "ast_hash": "87b8af4b3936eb3de26b27815c0f5e96",
+    "semantic_hash": ""
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/home/hooks/useHomeAnalysisController.ts": {
+  "features/home/hooks/useHomeAnalysisController.ts": {
     "mtime": 1776514746.2362263,
     "ast_hash": "932556b577d97ad97c93fe73ea69c863",
     "semantic_hash": "932556b577d97ad97c93fe73ea69c863"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/issues/hooks/useUserIssues.ts": {
+  "features/issues/hooks/useUserIssues.ts": {
     "mtime": 1775823748.0284355,
     "ast_hash": "f7200845ee7c7cefef1511793fb11d4e",
     "semantic_hash": "f7200845ee7c7cefef1511793fb11d4e"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/issues/services/issueService.ts": {
+  "features/issues/services/issueService.ts": {
     "mtime": 1775823659.6532807,
     "ast_hash": "a0ce7243fd2c5e410af406cccbf53479",
     "semantic_hash": "a0ce7243fd2c5e410af406cccbf53479"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/issues/types.ts": {
+  "features/issues/types.ts": {
     "mtime": 1775822299.2107806,
     "ast_hash": "23412809f7adbf5ad9d9faad75458300",
     "semantic_hash": "23412809f7adbf5ad9d9faad75458300"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/layout/components/BottomBar.tsx": {
+  "features/layout/components/BottomBar.tsx": {
     "mtime": 1776871419.8978071,
     "ast_hash": "ddb4fa3797be5a94841834c49b5b6e50",
     "semantic_hash": "ddb4fa3797be5a94841834c49b5b6e50"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/practice/components/DrillInstructionsOverlay.tsx": {
+  "features/practice/components/DrillInstructionsOverlay.tsx": {
     "mtime": 1776602711.401274,
     "ast_hash": "b87e4fc27c9c18613387dbcf90ce3a5a",
     "semantic_hash": "b87e4fc27c9c18613387dbcf90ce3a5a"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/practice/components/ProgressBar.tsx": {
+  "features/practice/components/ProgressBar.tsx": {
     "mtime": 1776594302.0935302,
     "ast_hash": "f85727e77a6f4f03f94f4595c6e28da6",
     "semantic_hash": "f85727e77a6f4f03f94f4595c6e28da6"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/practice/hooks/useAwakeScreen.ts": {
+  "features/practice/hooks/useAwakeScreen.ts": {
     "mtime": 1775823843.2216072,
     "ast_hash": "fd1f2c644000c07437251359076ca1b3",
     "semantic_hash": "fd1f2c644000c07437251359076ca1b3"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/practice/hooks/usePracticeActions.ts": {
-    "mtime": 1775823889.738401,
-    "ast_hash": "21f883ab35fde156f8324bad1b185234",
-    "semantic_hash": "21f883ab35fde156f8324bad1b185234"
+  "features/practice/hooks/usePracticeResultsState.ts": {
+    "mtime": 1780848782.4817376,
+    "ast_hash": "4aad1dffaea381c2edd7b2309f5713aa",
+    "semantic_hash": ""
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/practice/hooks/usePracticeResultsState.ts": {
-    "mtime": 1776588207.6565127,
-    "ast_hash": "340e01cd78536971a2f87310bd7bf157",
-    "semantic_hash": "340e01cd78536971a2f87310bd7bf157"
+  "features/practice/hooks/usePracticeScreenState.ts": {
+    "mtime": 1780848776.5863495,
+    "ast_hash": "e4d8b1d23e5eb22237bbeeeffc5ae015",
+    "semantic_hash": ""
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/practice/hooks/usePracticeScreenState.ts": {
-    "mtime": 1776586336.8063786,
-    "ast_hash": "c700aa59165f364bfa1b6222b3c0b221",
-    "semantic_hash": "c700aa59165f364bfa1b6222b3c0b221"
-  },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/practice/practiceFlow.tsx": {
+  "features/practice/practiceFlow.tsx": {
     "mtime": 1776592418.2680895,
     "ast_hash": "4970e2a016c96a9cf3fdacd3aa81acd2",
     "semantic_hash": "4970e2a016c96a9cf3fdacd3aa81acd2"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/practice/screens/drillPracticeScreen.tsx": {
+  "features/practice/screens/drillPracticeScreen.tsx": {
     "mtime": 1776601921.4017258,
     "ast_hash": "53c834c51eb8b664792d55479d1bc633",
     "semantic_hash": "53c834c51eb8b664792d55479d1bc633"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/practice/screens/drillResultScreen.tsx": {
+  "features/practice/screens/drillResultScreen.tsx": {
     "mtime": 1776600991.8109512,
     "ast_hash": "747518e38401304cf874262419509391",
     "semantic_hash": "747518e38401304cf874262419509391"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/practice/services/drillService.ts": {
-    "mtime": 1776521270.5483315,
+  "features/practice/services/drillService.ts": {
+    "mtime": 1780848128.4852393,
     "ast_hash": "0b7e66e2263efd654f3a0ee3ff3c52a7",
     "semantic_hash": "0b7e66e2263efd654f3a0ee3ff3c52a7"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/practice/services/practiceService.ts": {
-    "mtime": 1776497229.8598526,
-    "ast_hash": "6d73f1865793b51cb54a4cf2f1ed2da0",
-    "semantic_hash": "6d73f1865793b51cb54a4cf2f1ed2da0"
-  },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/practice/types.ts": {
-    "mtime": 1775823862.1644142,
-    "ast_hash": "767ac8344efba6ad3749f5141683ccb4",
-    "semantic_hash": "767ac8344efba6ad3749f5141683ccb4"
-  },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/practice/utils/parseInstructionSteps.ts": {
+  "features/practice/utils/parseInstructionSteps.ts": {
     "mtime": 1776601921.4015627,
     "ast_hash": "d822524465f8127ffd474064452564d7",
     "semantic_hash": "d822524465f8127ffd474064452564d7"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/privacy/components/AIconsentModel.tsx": {
+  "features/privacy/components/AIconsentModel.tsx": {
     "mtime": 1778242771.3665862,
     "ast_hash": "1e4187a3f223f596b339cc995a87b81a",
     "semantic_hash": "1e4187a3f223f596b339cc995a87b81a"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/privacy/types.ts": {
+  "features/privacy/types.ts": {
     "mtime": 1778242452.5882165,
     "ast_hash": "a2916cd6ebd2fcfae304f90ceb9115c0",
     "semantic_hash": "a2916cd6ebd2fcfae304f90ceb9115c0"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/privacy/utils/consentHelper.ts": {
+  "features/privacy/utils/consentHelper.ts": {
     "mtime": 1778245686.64228,
     "ast_hash": "7f1c85fec47ec9911d8197e7221fa19d",
     "semantic_hash": "7f1c85fec47ec9911d8197e7221fa19d"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/profile/screens/profileScreen.tsx": {
+  "features/profile/screens/profileScreen.tsx": {
     "mtime": 1777621484.9211977,
     "ast_hash": "ae2c7020724c958aec6bbaae8df9160a",
     "semantic_hash": "ae2c7020724c958aec6bbaae8df9160a"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/scrubber/components/DurationLabel.tsx": {
+  "features/scrubber/components/DurationLabel.tsx": {
     "mtime": 1779003274.9271371,
     "ast_hash": "bb3666289e268e80989cf3e2e46ade36",
     "semantic_hash": "bb3666289e268e80989cf3e2e46ade36"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/scrubber/components/ScrubberBar.tsx": {
+  "features/scrubber/components/ScrubberBar.tsx": {
     "mtime": 1779016218.798495,
     "ast_hash": "63855b8b2622e0108c6b1375dd1528a3",
     "semantic_hash": "63855b8b2622e0108c6b1375dd1528a3"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/scrubber/components/ScrubberHandle.tsx": {
+  "features/scrubber/components/ScrubberHandle.tsx": {
     "mtime": 1779002961.5435395,
     "ast_hash": "4e8df177c7662d33a7ee9484e4060a3e",
     "semantic_hash": "4e8df177c7662d33a7ee9484e4060a3e"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/scrubber/components/ThumbnailStrip.tsx": {
+  "features/scrubber/components/ThumbnailStrip.tsx": {
     "mtime": 1779002956.0478847,
     "ast_hash": "bc059e3d4bfa76f72e6463e05ff32095",
     "semantic_hash": "bc059e3d4bfa76f72e6463e05ff32095"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/scrubber/hooks/usePlayerSync.ts": {
+  "features/scrubber/hooks/usePlayerSync.ts": {
     "mtime": 1779002910.5332642,
     "ast_hash": "e319b0896f173c0f9fd4cd4b3d63d1f7",
     "semantic_hash": "e319b0896f173c0f9fd4cd4b3d63d1f7"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/scrubber/hooks/useScrubber.ts": {
+  "features/scrubber/hooks/useScrubber.ts": {
     "mtime": 1779016218.7988973,
     "ast_hash": "4edf73d140f12be628dac13fd0dd6a71",
     "semantic_hash": "4edf73d140f12be628dac13fd0dd6a71"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/scrubber/hooks/useThumbnails.ts": {
+  "features/scrubber/hooks/useThumbnails.ts": {
     "mtime": 1779002875.463252,
     "ast_hash": "997c9b90352e62da9886f46428a2d73f",
     "semantic_hash": "997c9b90352e62da9886f46428a2d73f"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/scrubber/index.ts": {
+  "features/scrubber/index.ts": {
     "mtime": 1779003028.2085347,
     "ast_hash": "8e1c8582af5657c4854b5600d9387885",
     "semantic_hash": "8e1c8582af5657c4854b5600d9387885"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/scrubber/screens/VideoScrubber.tsx": {
+  "features/scrubber/screens/VideoScrubber.tsx": {
     "mtime": 1779006796.864343,
     "ast_hash": "63c644b2bcb2f10e2c86d7bac0e45ff2",
     "semantic_hash": "63c644b2bcb2f10e2c86d7bac0e45ff2"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/scrubber/types.ts": {
+  "features/scrubber/types.ts": {
     "mtime": 1779002742.6027985,
     "ast_hash": "eebd36116c7983cd7c8610d59feb1f2c",
     "semantic_hash": "eebd36116c7983cd7c8610d59feb1f2c"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/scrubber/utils/constants.ts": {
+  "features/scrubber/utils/constants.ts": {
     "mtime": 1779006796.8646615,
     "ast_hash": "e7968b401cabe53dda7a504a386f658e",
     "semantic_hash": "e7968b401cabe53dda7a504a386f658e"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/scrubber/utils/fastSeek.ts": {
+  "features/scrubber/utils/fastSeek.ts": {
     "mtime": 1779005801.1955032,
     "ast_hash": "e017d5b24990da8f0194b81c2a24071b",
     "semantic_hash": "e017d5b24990da8f0194b81c2a24071b"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/scrubber/utils/scrubberMath.ts": {
+  "features/scrubber/utils/scrubberMath.ts": {
     "mtime": 1779002737.0981307,
     "ast_hash": "c20d11984e2b1f81e1b722ab23c17d35",
     "semantic_hash": "c20d11984e2b1f81e1b722ab23c17d35"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/shared/components/ErrorState.tsx": {
+  "features/shared/components/ErrorState.tsx": {
     "mtime": 1775818943.901329,
     "ast_hash": "3c250451591b1744b508f5182998b33e",
     "semantic_hash": "3c250451591b1744b508f5182998b33e"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/shared/components/InfoCard.tsx": {
+  "features/shared/components/InfoCard.tsx": {
     "mtime": 1775855743.9332068,
     "ast_hash": "da376cd8eb2a11d0feef35d949c24f05",
     "semantic_hash": "da376cd8eb2a11d0feef35d949c24f05"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/shared/components/LoadingState.tsx": {
+  "features/shared/components/LoadingState.tsx": {
     "mtime": 1775818228.8917081,
     "ast_hash": "f35a04ba83e3dfafd93c2fb62f5b984a",
     "semantic_hash": "f35a04ba83e3dfafd93c2fb62f5b984a"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/shared/components/TextBox.tsx": {
+  "features/shared/components/TextBox.tsx": {
     "mtime": 1776061434.9277592,
     "ast_hash": "28b7cd33f6f3b25fd5009506e6f18e88",
     "semantic_hash": "28b7cd33f6f3b25fd5009506e6f18e88"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/shared/hooks/useScreenState.ts": {
+  "features/shared/hooks/useScreenState.ts": {
     "mtime": 1776969350.1531334,
     "ast_hash": "621d7565bcd1dc22d1e0d8fff2bd40b8",
     "semantic_hash": "621d7565bcd1dc22d1e0d8fff2bd40b8"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/shared/types.ts": {
+  "features/shared/types.ts": {
     "mtime": 1776497603.1970036,
     "ast_hash": "5a7e1f94d317c5c7cf27498d1f960135",
     "semantic_hash": "5a7e1f94d317c5c7cf27498d1f960135"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/signIn/flow.tsx": {
+  "features/signIn/flow.tsx": {
     "mtime": 1777355521.0346935,
     "ast_hash": "86e47502b7a128c7547bd4db1bf30251",
     "semantic_hash": "86e47502b7a128c7547bd4db1bf30251"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/signIn/screens/landingScreen.tsx": {
+  "features/signIn/screens/landingScreen.tsx": {
     "mtime": 1778580520.203016,
     "ast_hash": "a9cb39fff72f8efe0bc75da62c30cf79",
     "semantic_hash": "a9cb39fff72f8efe0bc75da62c30cf79"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/signIn/screens/signInWithPasswordScreen.tsx": {
+  "features/signIn/screens/signInWithPasswordScreen.tsx": {
     "mtime": 1777106725.814483,
     "ast_hash": "452a241d40cc1e3f87ca3d40f4f062cc",
     "semantic_hash": "452a241d40cc1e3f87ca3d40f4f062cc"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/upload/components/greenCheck.tsx": {
+  "features/upload/components/greenCheck.tsx": {
     "mtime": 1776969478.0037012,
     "ast_hash": "623fa47341d671cb961844583ddf88f1",
     "semantic_hash": "623fa47341d671cb961844583ddf88f1"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/upload/components/theme.ts": {
+  "features/upload/components/theme.ts": {
     "mtime": 1776201635.3116329,
     "ast_hash": "5dffc195f60a47b6fd583a71d75ed737",
     "semantic_hash": "5dffc195f60a47b6fd583a71d75ed737"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/upload/hooks/usePrompt.ts": {
+  "features/upload/hooks/usePrompt.ts": {
     "mtime": 1776256904.4033365,
     "ast_hash": "1ba106a881067c421d4cfa87a9bad388",
     "semantic_hash": "1ba106a881067c421d4cfa87a9bad388"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/upload/hooks/useUpload.ts": {
+  "features/upload/hooks/useUpload.ts": {
     "mtime": 1776968393.127004,
     "ast_hash": "168e7b41ed6d9c65b2ed8d9c24c63158",
     "semantic_hash": "168e7b41ed6d9c65b2ed8d9c24c63158"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/upload/hooks/useVideo.ts": {
+  "features/upload/hooks/useVideo.ts": {
     "mtime": 1776931124.2605946,
     "ast_hash": "27843ebd981369e52afb1b0196f72d54",
     "semantic_hash": "27843ebd981369e52afb1b0196f72d54"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/upload/screens/PromptsScreen.tsx": {
+  "features/upload/screens/PromptsScreen.tsx": {
     "mtime": 1778581879.298625,
     "ast_hash": "477d4a5e35fbbb9d1df95c28b59e7a7a",
     "semantic_hash": "477d4a5e35fbbb9d1df95c28b59e7a7a"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/upload/screens/SelectVideoScreen.tsx": {
+  "features/upload/screens/SelectVideoScreen.tsx": {
     "mtime": 1778581830.664423,
     "ast_hash": "ac31258aa9da5cec38244ec0b37337b4",
     "semantic_hash": "ac31258aa9da5cec38244ec0b37337b4"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/upload/screens/TrimVideoScreen.tsx": {
+  "features/upload/screens/TrimVideoScreen.tsx": {
     "mtime": 1779004381.17027,
     "ast_hash": "a8b102fdae2ce305603a116a1696e4b3",
     "semantic_hash": "a8b102fdae2ce305603a116a1696e4b3"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/upload/screens/UploadProgressScreen.tsx": {
+  "features/upload/screens/UploadProgressScreen.tsx": {
     "mtime": 1776969004.144177,
     "ast_hash": "db79b8a813a64c3a958c8336230df605",
     "semantic_hash": "db79b8a813a64c3a958c8336230df605"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/upload/services/uploadService.ts": {
+  "features/upload/services/uploadService.ts": {
     "mtime": 1776929227.4279857,
     "ast_hash": "cd95754022603a4661f0210906645f52",
     "semantic_hash": "cd95754022603a4661f0210906645f52"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/upload/types.ts": {
+  "features/upload/types.ts": {
     "mtime": 1776929227.4279907,
     "ast_hash": "bae6200d7e70a17669b396f6ecbd3eeb",
     "semantic_hash": "bae6200d7e70a17669b396f6ecbd3eeb"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/upload/uploadFlow.tsx": {
+  "features/upload/uploadFlow.tsx": {
     "mtime": 1778265406.3720033,
     "ast_hash": "73da5af44745471a7b662d697e889929",
     "semantic_hash": "73da5af44745471a7b662d697e889929"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/global.d.ts": {
+  "global.d.ts": {
     "mtime": 1775714747.9525824,
     "ast_hash": "cc7616a05cbdb8080ecb173348d436cb",
     "semantic_hash": "cc7616a05cbdb8080ecb173348d436cb"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/index.js": {
+  "index.js": {
     "mtime": 1775713463.2924407,
     "ast_hash": "577e51950a329a62c9124a2d56e1fce7",
     "semantic_hash": "577e51950a329a62c9124a2d56e1fce7"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/lib/apiClient.ts": {
+  "lib/apiClient.ts": {
     "mtime": 1776256299.1214137,
     "ast_hash": "e43f8b28b535405b9fc28d5580f0dc2c",
     "semantic_hash": "e43f8b28b535405b9fc28d5580f0dc2c"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/lib/errors.ts": {
+  "lib/errors.ts": {
     "mtime": 1775823593.957246,
     "ast_hash": "a309c7d459f0ef438a93fa3c2d5cd0ee",
     "semantic_hash": "a309c7d459f0ef438a93fa3c2d5cd0ee"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/lib/supabase.ts": {
+  "lib/supabase.ts": {
     "mtime": 1775744789.8643413,
     "ast_hash": "a5d1344a10412dd7b54929ee755bfb60",
     "semantic_hash": "a5d1344a10412dd7b54929ee755bfb60"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/metro.config.js": {
+  "metro.config.js": {
     "mtime": 1775712179.9330447,
     "ast_hash": "dcb5d6305afce631e9df229a6693f679",
     "semantic_hash": "dcb5d6305afce631e9df229a6693f679"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/modules/expo-fast-seek/android/build.gradle": {
+  "modules/expo-fast-seek/android/build.gradle": {
     "mtime": 1779003814.0536635,
     "ast_hash": "e5c7db0a0f87493ba6c85a7884302c86",
     "semantic_hash": "e5c7db0a0f87493ba6c85a7884302c86"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/modules/expo-fast-seek/android/src/main/java/expo/modules/fastseek/FastSeekModule.kt": {
+  "modules/expo-fast-seek/android/src/main/java/expo/modules/fastseek/FastSeekModule.kt": {
     "mtime": 1779002812.0767927,
     "ast_hash": "8a2a5a953da721641e9f01887a1ae664",
     "semantic_hash": "8a2a5a953da721641e9f01887a1ae664"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/modules/expo-fast-seek/expo-module.config.json": {
+  "modules/expo-fast-seek/expo-module.config.json": {
     "mtime": 1779002783.537161,
     "ast_hash": "345fdd075f3a389a45e0f5a44c02b5ee",
     "semantic_hash": "345fdd075f3a389a45e0f5a44c02b5ee"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/modules/expo-fast-seek/index.ts": {
+  "modules/expo-fast-seek/index.ts": {
     "mtime": 1779134667.9252489,
     "ast_hash": "88a14fbfc59a714919e66f7bf77e0401",
     "semantic_hash": "88a14fbfc59a714919e66f7bf77e0401"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/modules/expo-fast-seek/ios/FastSeekModule.swift": {
+  "modules/expo-fast-seek/ios/FastSeekModule.swift": {
     "mtime": 1779002796.1758204,
     "ast_hash": "3a6ff69ff7d0d74ae71e904f848757c9",
     "semantic_hash": "3a6ff69ff7d0d74ae71e904f848757c9"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/modules/expo-fast-seek/package.json": {
+  "modules/expo-fast-seek/package.json": {
     "mtime": 1779002784.9972436,
     "ast_hash": "8187d5f4531680f5285e390a9287625a",
     "semantic_hash": "8187d5f4531680f5285e390a9287625a"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/modules/expo-video-rekeyframe/android/build.gradle": {
+  "modules/expo-video-rekeyframe/android/build.gradle": {
     "mtime": 1779215269.4439578,
     "ast_hash": "b0a0c6c20f6f0f71a2378ae06a00954b",
     "semantic_hash": "b0a0c6c20f6f0f71a2378ae06a00954b"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/modules/expo-video-rekeyframe/android/src/main/java/expo/modules/videorekeyframe/VideoRekeyframeModule.kt": {
+  "modules/expo-video-rekeyframe/android/src/main/java/expo/modules/videorekeyframe/VideoRekeyframeModule.kt": {
     "mtime": 1779215336.0348568,
     "ast_hash": "48f0c24d8a143a188757474e86f6593e",
     "semantic_hash": "48f0c24d8a143a188757474e86f6593e"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/modules/expo-video-rekeyframe/expo-module.config.json": {
+  "modules/expo-video-rekeyframe/expo-module.config.json": {
     "mtime": 1779215261.9261122,
     "ast_hash": "c16d202b1c06f00c7eef152095e97435",
     "semantic_hash": "c16d202b1c06f00c7eef152095e97435"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/modules/expo-video-rekeyframe/index.ts": {
+  "modules/expo-video-rekeyframe/index.ts": {
     "mtime": 1779215265.9404893,
     "ast_hash": "d0e4ec959f2e47b2e0766ff3769c377b",
     "semantic_hash": "d0e4ec959f2e47b2e0766ff3769c377b"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/modules/expo-video-rekeyframe/package.json": {
+  "modules/expo-video-rekeyframe/package.json": {
     "mtime": 1779215259.9071307,
     "ast_hash": "f5dc287681b4a6a69a7a86e3a7c8ae50",
     "semantic_hash": "f5dc287681b4a6a69a7a86e3a7c8ae50"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/nativewind-env.d.ts": {
+  "nativewind-env.d.ts": {
     "mtime": 1775712130.9819453,
     "ast_hash": "cf9f3aa159ffdc363a88fc4d27dfc4fa",
     "semantic_hash": "cf9f3aa159ffdc363a88fc4d27dfc4fa"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/package.json": {
+  "package.json": {
     "mtime": 1778242291.8598025,
     "ast_hash": "1139d2e6b6230319f944d58fe4f05142",
     "semantic_hash": "1139d2e6b6230319f944d58fe4f05142"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/prettier.config.js": {
+  "prettier.config.js": {
     "mtime": 1775712179.9744334,
     "ast_hash": "7103564e156522f05ba8c5e05017c2a9",
     "semantic_hash": "7103564e156522f05ba8c5e05017c2a9"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/tailwind.config.js": {
+  "tailwind.config.js": {
     "mtime": 1775817002.1710696,
     "ast_hash": "6e42eeb440203f875fe5d461cddae254",
     "semantic_hash": "6e42eeb440203f875fe5d461cddae254"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/tsconfig.json": {
+  "tsconfig.json": {
     "mtime": 1775737402.796373,
     "ast_hash": "be4022c3c47cf4ee2a5302146e5cce54",
     "semantic_hash": "be4022c3c47cf4ee2a5302146e5cce54"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/CLAUDE.md": {
+  "CLAUDE.md": {
     "mtime": 1780839186.263251,
     "ast_hash": "bc5862448c52a00d02ee61989330a1b7",
     "semantic_hash": "bc5862448c52a00d02ee61989330a1b7"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/features/CLAUDE.md": {
+  "features/CLAUDE.md": {
     "mtime": 1778608499.7097404,
     "ast_hash": "3efce54ec6c19bbca2b74ee833b195c6",
     "semantic_hash": "3efce54ec6c19bbca2b74ee833b195c6"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/assets/adaptive-icon.png": {
+  "assets/adaptive-icon.png": {
     "mtime": 1775712131.023058,
     "ast_hash": "97dae5a0e62ad8551d8a31897b425e63",
     "semantic_hash": "97dae5a0e62ad8551d8a31897b425e63"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/assets/favicon.png": {
+  "assets/favicon.png": {
     "mtime": 1775712131.023076,
     "ast_hash": "4f1cb2cac2370cd5050681232e8575a8",
     "semantic_hash": "4f1cb2cac2370cd5050681232e8575a8"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/assets/icon.png": {
+  "assets/icon.png": {
     "mtime": 1775712131.0231164,
     "ast_hash": "4e3f888fc8475f69fd5fa32f1ad5216a",
     "semantic_hash": "4e3f888fc8475f69fd5fa32f1ad5216a"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/assets/splash.png": {
+  "assets/splash.png": {
     "mtime": 1775712131.0231054,
     "ast_hash": "4dc203c1f48ad8b1e9734613e88be661",
     "semantic_hash": "4dc203c1f48ad8b1e9734613e88be661"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/assets/true_swing_logo.png": {
+  "assets/true_swing_logo.png": {
     "mtime": 1776320104.4617102,
     "ast_hash": "687ca4c1335d93599ca8ae7114ab53ee",
     "semantic_hash": "687ca4c1335d93599ca8ae7114ab53ee"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/assets/true_swing_logo2.png": {
+  "assets/true_swing_logo2.png": {
     "mtime": 1776320104.4648426,
     "ast_hash": "8b4918aec8cb8e2b3a2629df3e96e59d",
     "semantic_hash": "8b4918aec8cb8e2b3a2629df3e96e59d"
   },
-  "/Users/oskarolofsson/ws/personal/TrueSwingApp/TrueSwing-expo-app/assets/true_swing_logo3.png": {
+  "assets/true_swing_logo3.png": {
     "mtime": 1776320104.4567792,
     "ast_hash": "23ae03c9e4fb6e663caa38a4c571386f",
     "semantic_hash": "23ae03c9e4fb6e663caa38a4c571386f"
+  },
+  ".claude/settings.local.json": {
+    "mtime": 1780853973.5090292,
+    "ast_hash": "0ddcfc37f7ffa78bc2080d3e0f765153",
+    "semantic_hash": ""
+  },
+  "features/practice/hooks/useDrillRunActions.ts": {
+    "mtime": 1780848752.5291421,
+    "ast_hash": "e4e9e6f9aac8df5774f811e27ea9992e",
+    "semantic_hash": ""
+  },
+  "features/practice/hooks/useSessionActions.ts": {
+    "mtime": 1780848744.5190022,
+    "ast_hash": "ceb568a85b9c93134e64287828b5b505",
+    "semantic_hash": ""
+  },
+  "features/practice/services/drillRunService.ts": {
+    "mtime": 1780848729.1186593,
+    "ast_hash": "bae6c7009279eab6ec5d10698a44a6db",
+    "semantic_hash": ""
+  },
+  "features/practice/services/sessionService.ts": {
+    "mtime": 1780848724.0832126,
+    "ast_hash": "7be726af0929faa8e6e508cb0d501745",
+    "semantic_hash": ""
+  },
+  "features/practice/types/Drill.ts": {
+    "mtime": 1780848701.5305054,
+    "ast_hash": "4e9cb3ea96f99ede7ccf1c21a21140ff",
+    "semantic_hash": ""
+  },
+  "features/practice/types/DrillRun.ts": {
+    "mtime": 1780848708.1252902,
+    "ast_hash": "dcb76af9f12965dd77f4b5bb82600c4e",
+    "semantic_hash": ""
+  },
+  "features/practice/types/Session.ts": {
+    "mtime": 1780848704.6242006,
+    "ast_hash": "dd6a2cebfd983109be84bf5d0a2a203e",
+    "semantic_hash": ""
+  },
+  "features/practice/types/index.ts": {
+    "mtime": 1780848713.9805918,
+    "ast_hash": "8a7fe7756c6471bb89374ef35875d653",
+    "semantic_hash": ""
   }
 }

@@ -1,16 +1,16 @@
 # Graph Report - TrueSwing-expo-app  (2026-06-07)
 
 ## Corpus Check
-- 127 files · ~69,044 words
+- 128 files · ~69,044 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 646 nodes · 814 edges · 72 communities (46 shown, 26 thin omitted)
+- 647 nodes · 810 edges · 73 communities (47 shown, 26 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 17 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0ca3e07e`
+- Built from commit: `c819853d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -72,6 +72,7 @@
 - [[_COMMUNITY_Community 69|Community 69]]
 - [[_COMMUNITY_Community 70|Community 70]]
 - [[_COMMUNITY_Community 71|Community 71]]
+- [[_COMMUNITY_Community 72|Community 72]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `expo` - 16 edges
@@ -90,21 +91,21 @@
   App.tsx → CLAUDE.md
 - `AppLayout()` --calls--> `useAuth()`  [INFERRED]
   app/(app)/_layout.tsx → features/auth/AuthProvider.tsx
+- `UsePracticeDrillsReturn` --references--> `Drill`  [EXTRACTED]
+  features/practice/hooks/usePracticeScreenState.ts → features/drill/types/Drill.ts
 - `HomeFlow()` --calls--> `useScreenSequence()`  [INFERRED]
   features/home/homeFlow.tsx → features/shared/hooks/useScreenState.ts
 - `PracticeFlow()` --calls--> `useScreenSequence()`  [INFERRED]
   features/practice/practiceFlow.tsx → features/shared/hooks/useScreenState.ts
-- `SignInFlow()` --calls--> `useScreenSequence()`  [INFERRED]
-  features/signIn/flow.tsx → features/shared/hooks/useScreenState.ts
 
 ## Import Cycles
 - 1-file cycle: `metro.config.js -> metro.config.js`
 
-## Communities (72 total, 26 thin omitted)
+## Communities (73 total, 26 thin omitted)
 
 ### Community 0 - "Practice Flow"
-Cohesion: 0.07
-Nodes (31): DrillInstructionsOverlayProps, ProgressBar(), Props, useDrillRunActions(), UseDrillRunActionsReturn, usePracticeResultsState(), UsePracticeResultsStateReturn, UsePracticeDrillsReturn (+23 more)
+Cohesion: 0.09
+Nodes (26): DrillInstructionsOverlayProps, ProgressBar(), Props, useDrillRunActions(), UseDrillRunActionsReturn, usePracticeResultsState(), UsePracticeResultsStateReturn, UsePracticeDrillsReturn (+18 more)
 
 ### Community 1 - "Video Scrubber"
 Cohesion: 0.09
@@ -226,6 +227,10 @@ Nodes (13): Architecture, Auth (`features/auth/AuthProvider.tsx`), Backend API (
 Cohesion: 0.40
 Nodes (4): Conventions, FEATURES DIRECTORY, What this folder is and layout, What to avoid
 
+### Community 72 - "Community 72"
+Cohesion: 0.29
+Nodes (5): DrillService, CreateDrillRequest, CreateDrillResponse, Drill, UpdateDrillRequest
+
 ## Knowledge Gaps
 - **244 isolated node(s):** `PreToolUse`, `allow`, `scheme`, `name`, `slug` (+239 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -235,7 +240,7 @@ Nodes (4): Conventions, FEATURES DIRECTORY, What this folder is and layout, What
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `useScreenSequence()` connect `Upload Flow` to `Root Layout & Home`, `Analysis Reel Player`?**
-  _High betweenness centrality (0.131) - this node is a cross-community bridge._
+  _High betweenness centrality (0.132) - this node is a cross-community bridge._
 - **Why does `expo-video` connect `Video Scrubber` to `Detailed Video & Reel`, `Project Conventions`, `Expo Dependencies`?**
   _High betweenness centrality (0.117) - this node is a cross-community bridge._
 - **Why does `expo-router` connect `Root Layout & Home` to `Project Conventions`, `Upload Flow`?**
@@ -243,7 +248,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `PreToolUse`, `allow`, `scheme` to the rest of the system?**
   _247 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Practice Flow` be split into smaller, more focused modules?**
-  _Cohesion score 0.07247223845704266 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08599033816425121 - nodes in this community are weakly interconnected._
 - **Should `Video Scrubber` be split into smaller, more focused modules?**
   _Cohesion score 0.09435707678075855 - nodes in this community are weakly interconnected._
 - **Should `Upload Flow` be split into smaller, more focused modules?**

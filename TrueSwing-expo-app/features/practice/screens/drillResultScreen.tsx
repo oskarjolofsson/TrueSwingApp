@@ -2,7 +2,7 @@ import { Pressable, Text, View } from "react-native";
 import { ScreenProps } from "features/shared/types";
 import { PracticeSession } from "../types";
 import { usePracticeResultsState } from "../hooks/usePracticeResultsState";
-import type { DrillRun } from "../types";
+import type { DrillRun } from "features/drill/types/DrillRun";
 import { useMemo } from "react";
 import { ScrollView } from "react-native";
 import { ArrowLeft } from "lucide-react-native";

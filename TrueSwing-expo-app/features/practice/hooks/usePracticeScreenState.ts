@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { DrillService } from 'features/practice/services/drillService';
-import { useDrillRunActions } from './useDrillRunActions';
+import { DrillService } from 'features/drill/services/drillService';
+import { useDrillRunActions } from 'features/drill/hooks/useDrillRunActions';
 import { useSessionActions } from './useSessionActions';
 import type { Issue } from 'features/issues/types';
-import type { Drill } from '../types/Drill';
-import type { DrillRun } from '../types/DrillRun';
+import type { Drill } from 'features/drill/types/Drill';
+import type { DrillRun } from 'features/drill/types/DrillRun';
 import type { PracticeSession } from '../types/Session';
 
 const REPS_PER_DRILL = 12;
