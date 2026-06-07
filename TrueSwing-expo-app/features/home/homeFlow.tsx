@@ -4,7 +4,7 @@ import PracticeFlow from "features/practice/practiceFlow";
 import useHomeAnalysisController from "features/home/hooks/useHomeAnalysisController";
 import { HomeAnalysisProvider } from "features/home/context/HomeAnalysisContext";
 import type { Issue } from "features/issues/types";
-import { startPracticeSession } from "features/practice/services/practiceService";
+import { startPracticeSession } from "features/practice/services/sessionService";
 import type { PracticeSession } from "features/practice/types";
 
 import { useFocusEffect } from '@react-navigation/native';

@@ -1,29 +1,31 @@
 import { useEffect } from "react";
-import { usePracticeActions } from "./usePracticeActions";
-import { DrillRun, PracticeSession } from "features/practice/types";
+import { useSessionActions } from "./useSessionActions";
+import type { DrillRun } from "../types/DrillRun";
+import type { PracticeSession } from "../types/Session";
 
-interface usePracticeResultsStateReturn {
+interface UsePracticeResultsStateReturn {
     PracticeSession: PracticeSession | null;
-    DrillRuns: DrillRun[] ;
+    DrillRuns: DrillRun[];
+    loading: boolean;
+    error: string | null;
 }
 
-export function usePracticeResultsState({sessionId} : {sessionId: string | null}) : usePracticeResultsStateReturn {
-    const { actions, values } = usePracticeActions();
-    const { getPracticeSessionById, getResults } = actions;
-    const { PracticeSession, DrillRuns } = values;
+export function usePracticeResultsState({ sessionId }: { sessionId: string | null }): UsePracticeResultsStateReturn {
+    const { session, drillRuns, loading, error, loadSession, loadResults } = useSessionActions();
 
     useEffect(() => {
         const fetchResults = async () => {
             if (!sessionId) return;
-            await getPracticeSessionById(sessionId);
-            await getResults(sessionId);
+            await loadSession(sessionId);
+            await loadResults(sessionId);
         };
         fetchResults();
-    }, [sessionId, getPracticeSessionById, getResults]);
-
+    }, [sessionId, loadSession, loadResults]);
 
     return {
-        PracticeSession,
-        DrillRuns
-    }
+        PracticeSession: session,
+        DrillRuns: drillRuns,
+        loading,
+        error,
+    };
 }
