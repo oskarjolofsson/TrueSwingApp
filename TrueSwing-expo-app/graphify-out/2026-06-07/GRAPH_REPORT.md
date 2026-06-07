@@ -1,18 +1,13 @@
-# Graph Report - TrueSwing-expo-app  (2026-06-07)
+# Graph Report - .  (2026-06-07)
 
 ## Corpus Check
-- 127 files · ~69,044 words
+- 128 files · ~69,114 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 646 nodes · 814 edges · 72 communities (46 shown, 26 thin omitted)
+- 618 nodes · 768 edges · 69 communities (44 shown, 25 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 17 edges (avg confidence: 0.8)
-- Token cost: 0 input · 0 output
-
-## Graph Freshness
-- Built from commit: `0ca3e07e`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
+- Token cost: 136,159 input · 15,125 output
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_Practice Flow|Practice Flow]]
@@ -69,21 +64,18 @@
 - [[_COMMUNITY_TrueSwing Logo (Dark)|TrueSwing Logo (Dark)]]
 - [[_COMMUNITY_TrueSwing Logo (Light)|TrueSwing Logo (Light)]]
 - [[_COMMUNITY_TrueSwing Logo (Grey)|TrueSwing Logo (Grey)]]
-- [[_COMMUNITY_Community 69|Community 69]]
-- [[_COMMUNITY_Community 70|Community 70]]
-- [[_COMMUNITY_Community 71|Community 71]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `expo` - 16 edges
-2. `DrillRun` - 12 edges
-3. `IssueService` - 11 edges
-4. `Issue` - 11 edges
-5. `PracticeSession` - 11 edges
-6. `VideoRekeyframeModule` - 10 edges
-7. `TrueSwing Expo App` - 10 edges
-8. `Analysis` - 9 edges
-9. `Architecture` - 9 edges
-10. `expo-router` - 9 edges
+2. `IssueService` - 11 edges
+3. `Issue` - 11 edges
+4. `VideoRekeyframeModule` - 10 edges
+5. `TrueSwing Expo App` - 10 edges
+6. `Analysis` - 9 edges
+7. `PracticeSession` - 9 edges
+8. `expo-router` - 9 edges
+9. `android` - 8 edges
+10. `scripts` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `App()` --redirects_to--> `app/(public)/`  [EXTRACTED]
@@ -100,11 +92,11 @@
 ## Import Cycles
 - 1-file cycle: `metro.config.js -> metro.config.js`
 
-## Communities (72 total, 26 thin omitted)
+## Communities (69 total, 25 thin omitted)
 
 ### Community 0 - "Practice Flow"
 Cohesion: 0.07
-Nodes (31): DrillInstructionsOverlayProps, ProgressBar(), Props, useDrillRunActions(), UseDrillRunActionsReturn, usePracticeResultsState(), UsePracticeResultsStateReturn, UsePracticeDrillsReturn (+23 more)
+Nodes (32): DrillInstructionsOverlayProps, ProgressBar(), Props, PracticeResultsActions, PracticeResultsState, PracticeResultsValues, usePracticeActions(), UsePracticeResultsReturn (+24 more)
 
 ### Community 1 - "Video Scrubber"
 Cohesion: 0.09
@@ -218,32 +210,24 @@ Nodes (4): features/home/homeFlow.tsx, features/upload/uploadFlow.tsx, Flow file
 Cohesion: 0.67
 Nodes (3): config, { getDefaultConfig }, { withNativeWind }
 
-### Community 69 - "Community 69"
-Cohesion: 0.13
-Nodes (13): Architecture, Auth (`features/auth/AuthProvider.tsx`), Backend API (`lib/apiClient.ts`), Commands, Conventions, Environment, Features (`features/`), graphify (+5 more)
-
-### Community 70 - "Community 70"
-Cohesion: 0.40
-Nodes (4): Conventions, FEATURES DIRECTORY, What this folder is and layout, What to avoid
-
 ## Knowledge Gaps
-- **244 isolated node(s):** `PreToolUse`, `allow`, `scheme`, `name`, `slug` (+239 more)
+- **231 isolated node(s):** `PreToolUse`, `scheme`, `name`, `slug`, `version` (+226 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **26 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **25 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `useScreenSequence()` connect `Upload Flow` to `Root Layout & Home`, `Analysis Reel Player`?**
-  _High betweenness centrality (0.131) - this node is a cross-community bridge._
+  _High betweenness centrality (0.136) - this node is a cross-community bridge._
 - **Why does `expo-video` connect `Video Scrubber` to `Detailed Video & Reel`, `Project Conventions`, `Expo Dependencies`?**
-  _High betweenness centrality (0.117) - this node is a cross-community bridge._
+  _High betweenness centrality (0.126) - this node is a cross-community bridge._
 - **Why does `expo-router` connect `Root Layout & Home` to `Project Conventions`, `Upload Flow`?**
-  _High betweenness centrality (0.110) - this node is a cross-community bridge._
-- **What connects `PreToolUse`, `allow`, `scheme` to the rest of the system?**
-  _247 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.118) - this node is a cross-community bridge._
+- **What connects `PreToolUse`, `scheme`, `name` to the rest of the system?**
+  _234 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Practice Flow` be split into smaller, more focused modules?**
-  _Cohesion score 0.07247223845704266 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06848357791754019 - nodes in this community are weakly interconnected._
 - **Should `Video Scrubber` be split into smaller, more focused modules?**
   _Cohesion score 0.09435707678075855 - nodes in this community are weakly interconnected._
 - **Should `Upload Flow` be split into smaller, more focused modules?**
