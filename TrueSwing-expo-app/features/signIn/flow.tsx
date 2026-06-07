@@ -3,7 +3,7 @@ import { Redirect } from "expo-router";
 import { useAuth } from "features/auth/AuthProvider";
 import { View } from "react-native";
 
-import { useScreenSequence } from "features/shared/hooks/useScreenState";
+import { useSignInFlowSequence } from "./hooks/useSignInFlowSequence";
 
 import LandingScreen from "./screens/landingScreen";
 import EmailSignInScreen from "./screens/signInWithPasswordScreen";
@@ -15,8 +15,7 @@ export default function SignInFlow() {
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const Screens = ["landing", "emailSignIn"];
-    const { currentScreen, goTo } = useScreenSequence({ screens: Screens });
+    const { currentScreen, goToLanding, goToEmailSignIn } = useSignInFlowSequence();
 
     if (!loading && session) {
         return <Redirect href="/(app)/(tabs)" />;
@@ -76,9 +75,7 @@ export default function SignInFlow() {
             {currentScreen === "landing" && (
                 <LandingScreen
                     onGoogleButtonPress={handleGoogleSignIn}
-                    onEmailButtonPress={() => {
-                        goTo("emailSignIn");
-                    }}
+                    onEmailButtonPress={goToEmailSignIn}
                     onAppleButtonPress={handleAppleSignIn}
                     submitting={submitting}
                     error={error}
@@ -86,7 +83,7 @@ export default function SignInFlow() {
             )}
             {currentScreen === "emailSignIn" && (
                 <EmailSignInScreen
-                    onBack={() => goTo("landing")}
+                    onBack={goToLanding}
                     handleEmailSignIn={handleEmailSignIn}
                     handleEmailSignUp={handleEmailSignUp}
                 />

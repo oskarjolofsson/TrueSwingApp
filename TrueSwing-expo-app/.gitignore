@@ -36,4 +36,4 @@ modules/**/ios/Pods/
 .metro-health-check*
 
 # Graphify
-graphify-out/cache
+graphify-out/

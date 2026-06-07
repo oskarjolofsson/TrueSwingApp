@@ -1,4 +1,4 @@
-import { useScreenSequence } from "features/shared/hooks/useScreenState";
+import { useHomeFlowSequence } from "features/home/hooks/useHomeFlowSequence";
 import AnalysisResultScreen from "features/analysis/screens/analysisResultScreen";
 import PracticeFlow from "features/practice/practiceFlow";
 import useHomeAnalysisController from "features/home/hooks/useHomeAnalysisController";
@@ -12,23 +12,19 @@ import { View } from "react-native";
 import React from "react";
 
 
-const allScreens = ['Analysis', 'Practice'];
-
 export default function HomeFlow() {
-    const { currentScreen, next, prev, goTo, } = useScreenSequence({ screens: allScreens });
+    const { currentScreen, goToAnalysis, goToPractice } = useHomeFlowSequence();
     const analysisController = useHomeAnalysisController();
     const [selectedIssue, setSelectedIssue] = React.useState<Issue | null>(null);
     const [selectedSession, setSelectedSession] = React.useState<PracticeSession | null>(null);
 
-    // Reset the flow in case use navigates away from this tab and comes back
     useFocusEffect(
         React.useCallback(() => {
-            console.log("Resetting upload flow state");
-            goTo('Analysis');
+            goToAnalysis();
             setSelectedIssue(null);
             setSelectedSession(null);
             analysisController.refetch();
-        }, [analysisController.refetch, goTo])
+        }, [analysisController.refetch, goToAnalysis])
     )
     
     return (
@@ -43,7 +39,7 @@ export default function HomeFlow() {
                                 setSelectedIssue(issue);
                                 const session = await startPracticeSession(issue.analysis_issue_id);
                                 setSelectedSession(session);
-                                goTo('Practice');
+                                goToPractice();
                             } catch (error) {
                                 console.error('Failed to start practice session before navigation:', error);
                                 setSelectedSession(null);
@@ -53,7 +49,7 @@ export default function HomeFlow() {
                 )}
                 {currentScreen === 'Practice' && (
                     <PracticeFlow
-                        onBack={() => goTo('Analysis')}
+                        onBack={goToAnalysis}
                         selectedIssue={selectedIssue as Issue}
                         selectedSession={selectedSession}
                     />

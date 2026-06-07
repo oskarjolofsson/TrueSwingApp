@@ -1,10 +1,10 @@
-import { Pressable, Text, View } from "react-native";
+import { View } from "react-native";
 import { useHomeAnalysis } from "features/home/context/HomeAnalysisContext";
 import type { Issue } from "features/issues/types";
 import ErrorState from "features/shared/components/ErrorState";
 import DrillPracticeScreen from "./screens/drillPracticeScreen";
 import DrillResultScreen from "./screens/drillResultScreen";
-import { useScreenSequence } from "features/shared/hooks/useScreenState";
+import { usePracticeFlowSequence } from "./hooks/usePracticeFlowSequence";
 import type { PracticeSession } from "./types";
 
 
@@ -15,10 +15,10 @@ type PracticeFlowProps = {
 };
 
 export default function PracticeFlow({ onBack, selectedIssue, selectedSession }: PracticeFlowProps) {
-    const Screens = ['Practice', 'Result'];
-    const { activeAnalysis } = useHomeAnalysis();
-    const drillScreenSequenceProps = useScreenSequence({ screens: Screens });
+    const { currentScreen, goToResult } = usePracticeFlowSequence();
+    useHomeAnalysis();
 
+    console.log(selectedIssue)
 
     if (!selectedIssue.id) return <ErrorState title="No issue selected for practice" buttonText={"Go back"} onRetry={onBack} />;
     if(!selectedIssue.analysis_issue_id) return <ErrorState title="You have not recieved this Issue to Practice on!" buttonText={"Go back"} onRetry={onBack} />;
@@ -26,15 +26,15 @@ export default function PracticeFlow({ onBack, selectedIssue, selectedSession }:
 
     return (
         <View style={{ flex: 1 }}>
-            {drillScreenSequenceProps.currentScreen === 'Practice' && (
+            {currentScreen === 'Practice' && (
                 <DrillPracticeScreen
                     issue={selectedIssue}
                     session={selectedSession}
-                    onNext={() => drillScreenSequenceProps.next()}
+                    onNext={goToResult}
                     onBack={() => {}}
                 />
             )}
-            {drillScreenSequenceProps.currentScreen === 'Result' && (
+            {currentScreen === 'Result' && (
                 <DrillResultScreen session={selectedSession} onNext={() => {}} onBack={onBack} />
             )}
         </View>

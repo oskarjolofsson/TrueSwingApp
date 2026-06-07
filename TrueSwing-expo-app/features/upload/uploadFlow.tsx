@@ -1,4 +1,4 @@
-import { useScreenSequence } from "../shared/hooks/useScreenState";
+import { useUploadFlowSequence } from "./hooks/useUploadFlowSequence";
 import { Alert, View } from "react-native";
 import SelectVideoScreen from "./screens/SelectVideoScreen";
 import TrimVideoScreen from "./screens/TrimVideoScreen";
@@ -12,17 +12,8 @@ import React, { useCallback, useRef, useState } from "react";
 import { AiConsentModal } from "features/privacy/components/AIconsentModel";
 import { hasValidAiConsent, saveAiConsent, resetAiConsentForDebug } from "features/privacy/utils/consentHelper";
 
-interface ScreenMap {
-  SelectVideo: undefined;
-  TrimVideo: undefined; 
-  Prompts: undefined;
-  UploadProgress: undefined;
-}
-
-const allScreens = ['SelectVideo', 'TrimVideo', 'Prompts', 'UploadProgress'];
-
 export default function UploadFlow() {
-    const { currentScreen, next, prev, goTo } = useScreenSequence({ screens: allScreens });
+    const { currentScreen, next, prev, goToSelectVideo } = useUploadFlowSequence();
     const { videoUri, setVideoUri, removeVideo, trimmedVideoUri, trimVideo, endTime, startTime } = useVideo();
     const promptActions = usePrompt();
     const upload = useUpload();
@@ -34,8 +25,8 @@ export default function UploadFlow() {
         removeVideo();
         promptActions.setStartTime(0);
         promptActions.setEndTime(0);
-        goTo("SelectVideo");
-    }, [removeVideo, promptActions, goTo]);
+        goToSelectVideo();
+    }, [removeVideo, promptActions, goToSelectVideo]);
 
     // Run once when entering this flow for the first time, not on every refocus.
     useFocusEffect(
@@ -80,7 +71,7 @@ export default function UploadFlow() {
             {currentScreen === 'SelectVideo' && <SelectVideoScreen onNext={next} onBack={() => {}} setVideoUri={setVideoUri} videoUri={videoUri} isActive={currentScreen === 'SelectVideo'} />}
             {currentScreen === 'TrimVideo' && <TrimVideoScreen onNext={next} onBack={prev} videoUri={videoUri}  removeVideo={removeVideo} setVideoUri={setVideoUri} trimVideo={trimVideo} />}
             {currentScreen === 'Prompts' && <PromptsScreen onNext={() => void handleStartUpload()} onBack={prev} prompt={promptActions} onDeleteCache={resetAiConsentForDebug}/>}
-            {currentScreen === 'UploadProgress' && <UploadProgressScreen onBack={() => {resetFlow(); goTo("SelectVideo")}} onNext={() => {}} upload={upload} />}
+            {currentScreen === 'UploadProgress' && <UploadProgressScreen onBack={() => {resetFlow(); goToSelectVideo()}} onNext={() => {}} upload={upload} />}
             
             <AiConsentModal
                 visible={isConsentModalVisible}
