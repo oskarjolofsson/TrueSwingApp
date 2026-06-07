@@ -44,6 +44,7 @@
       "**/*"
     ],
     "ios": {
+      "version": "1.0.1",
       "supportsTablet": false,
       "bundleIdentifier": "app.trueswing.se",
       "infoPlist": {
